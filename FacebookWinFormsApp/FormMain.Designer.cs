@@ -43,7 +43,7 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(12, 12);
+            this.buttonLogin.Location = new System.Drawing.Point(168, 84);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(179, 23);
             this.buttonLogin.TabIndex = 36;
@@ -53,9 +53,10 @@
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Location = new System.Drawing.Point(12, 41);
+            this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonLogout.Location = new System.Drawing.Point(474, 93);
             this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(179, 23);
+            this.buttonLogout.Size = new System.Drawing.Size(80, 23);
             this.buttonLogout.TabIndex = 52;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
@@ -63,9 +64,9 @@
             // 
             // pictureBoxProfile
             // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(24, 84);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(474, 0);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(138, 139);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(80, 87);
             this.pictureBoxProfile.TabIndex = 53;
             this.pictureBoxProfile.TabStop = false;
             // 
@@ -77,9 +78,9 @@
             // 
             // pictureBoxFriends
             // 
-            this.pictureBoxFriends.Location = new System.Drawing.Point(385, 134);
+            this.pictureBoxFriends.Location = new System.Drawing.Point(304, 133);
             this.pictureBoxFriends.Name = "pictureBoxFriends";
-            this.pictureBoxFriends.Size = new System.Drawing.Size(213, 196);
+            this.pictureBoxFriends.Size = new System.Drawing.Size(124, 123);
             this.pictureBoxFriends.TabIndex = 54;
             this.pictureBoxFriends.TabStop = false;
             // 
@@ -106,16 +107,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 657);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(556, 425);
             this.Controls.Add(this.buttonPrevFriendImage);
             this.Controls.Add(this.buttonNextFriendImage);
             this.Controls.Add(this.pictureBoxFriends);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonLogin);
+            this.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Facebook";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriends)).EndInit();
             this.ResumeLayout(false);
