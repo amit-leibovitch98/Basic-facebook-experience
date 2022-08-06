@@ -73,6 +73,9 @@
     <Reference Include="FbGraphApiWrapper">
       <HintPath>..\FBApi\FbGraphApiWrapper.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
@@ -160,6 +163,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Facebook-PNG-Clipart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FacebookApplicationLogic\FacebookApplicationLogic.csproj">
+      <Project>{b79184b1-e93c-4145-ae32-3f09e9ee1b93}</Project>
+      <Name>FacebookApplicationLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
