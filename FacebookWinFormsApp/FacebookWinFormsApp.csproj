@@ -134,6 +134,33 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loginPicture.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loginPicture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loginPicture1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictureLogin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictureLogin2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imageLogin3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imageLogin31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\39446caa52f53369b92bc97253d2b2f1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Facebook-PNG-Clipart.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -32,10 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
-            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.TabWall = new System.Windows.Forms.TabPage();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxLikesIcon = new System.Windows.Forms.PictureBox();
             this.labelPostComments = new System.Windows.Forms.Label();
@@ -46,18 +44,30 @@
             this.labelPosts = new System.Windows.Forms.Label();
             this.TabLikedPages = new System.Windows.Forms.TabPage();
             this.labelPageCategory = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.labelPageLikes = new System.Windows.Forms.Label();
             this.buttonPrevPage = new System.Windows.Forms.Button();
             this.buttonNextPage = new System.Windows.Forms.Button();
-            this.pictureBoxPageLogo = new System.Windows.Forms.PictureBox();
             this.labelPageName = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxPageLogo = new System.Windows.Forms.PictureBox();
             this.pictureBoxPageCover = new System.Windows.Forms.PictureBox();
             this.TabGroups = new System.Windows.Forms.TabPage();
+            this.labelGroupMembers = new System.Windows.Forms.Label();
+            this.buttonNextGroup = new System.Windows.Forms.Button();
+            this.buttonPrevGroup = new System.Windows.Forms.Button();
+            this.LabelGroupName = new System.Windows.Forms.Label();
+            this.pictureBoxGroup = new System.Windows.Forms.PictureBox();
             this.TabFriends = new System.Windows.Forms.TabPage();
+            this.tabPageEvents = new System.Windows.Forms.TabPage();
+            this.tabPageTeams = new System.Windows.Forms.TabPage();
             this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
             this.imageListPageUploadedPictures = new System.Windows.Forms.ImageList(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            this.pictureBoxLogin = new System.Windows.Forms.PictureBox();
+            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
+            this.buttonPrevTeam = new System.Windows.Forms.Button();
+            this.buttonNextTeam = new System.Windows.Forms.Button();
+            this.labelTeamName = new System.Windows.Forms.Label();
+            this.pictureBoxTeam = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
             this.TabWall.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,6 +77,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPageLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPageCover)).BeginInit();
+            this.TabGroups.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).BeginInit();
+            this.tabPageTeams.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTeam)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -100,22 +116,14 @@
             this.buttonLogout.Visible = false;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
-            // pictureBoxProfile
-            // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(12, 7);
-            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(144, 125);
-            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProfile.TabIndex = 53;
-            this.pictureBoxProfile.TabStop = false;
-            // 
             // tabControl
             // 
             this.tabControl.Controls.Add(this.TabWall);
             this.tabControl.Controls.Add(this.TabLikedPages);
             this.tabControl.Controls.Add(this.TabGroups);
             this.tabControl.Controls.Add(this.TabFriends);
+            this.tabControl.Controls.Add(this.tabPageEvents);
+            this.tabControl.Controls.Add(this.tabPageTeams);
             this.tabControl.Location = new System.Drawing.Point(167, 4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -126,7 +134,6 @@
             // TabWall
             // 
             this.TabWall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.TabWall.Controls.Add(this.checkedListBox1);
             this.TabWall.Controls.Add(this.pictureBox1);
             this.TabWall.Controls.Add(this.pictureBoxLikesIcon);
             this.TabWall.Controls.Add(this.labelPostComments);
@@ -142,20 +149,12 @@
             this.TabWall.TabIndex = 0;
             this.TabWall.Text = "Wall";
             // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(377, 356);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(8, 4);
-            this.checkedListBox1.TabIndex = 66;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(366, 343);
+            this.pictureBox1.Location = new System.Drawing.Point(397, 398);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(39, 34);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -167,7 +166,7 @@
             this.pictureBoxLikesIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBoxLikesIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLikesIcon.Image")));
             this.pictureBoxLikesIcon.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxLikesIcon.InitialImage")));
-            this.pictureBoxLikesIcon.Location = new System.Drawing.Point(70, 345);
+            this.pictureBoxLikesIcon.Location = new System.Drawing.Point(64, 405);
             this.pictureBoxLikesIcon.Name = "pictureBoxLikesIcon";
             this.pictureBoxLikesIcon.Size = new System.Drawing.Size(27, 27);
             this.pictureBoxLikesIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -180,7 +179,7 @@
             this.labelPostComments.BackColor = System.Drawing.Color.Transparent;
             this.labelPostComments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labelPostComments.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelPostComments.Location = new System.Drawing.Point(404, 348);
+            this.labelPostComments.Location = new System.Drawing.Point(432, 412);
             this.labelPostComments.Name = "labelPostComments";
             this.labelPostComments.Size = new System.Drawing.Size(86, 20);
             this.labelPostComments.TabIndex = 63;
@@ -192,7 +191,7 @@
             this.labelPostLikes.BackColor = System.Drawing.Color.Transparent;
             this.labelPostLikes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labelPostLikes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelPostLikes.Location = new System.Drawing.Point(98, 348);
+            this.labelPostLikes.Location = new System.Drawing.Point(88, 412);
             this.labelPostLikes.Name = "labelPostLikes";
             this.labelPostLikes.Size = new System.Drawing.Size(46, 20);
             this.labelPostLikes.TabIndex = 62;
@@ -202,10 +201,10 @@
             // pictureBoxPostImg
             // 
             this.pictureBoxPostImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBoxPostImg.Location = new System.Drawing.Point(46, 95);
+            this.pictureBoxPostImg.Location = new System.Drawing.Point(173, 99);
             this.pictureBoxPostImg.Name = "pictureBoxPostImg";
-            this.pictureBoxPostImg.Size = new System.Drawing.Size(491, 199);
-            this.pictureBoxPostImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxPostImg.Size = new System.Drawing.Size(231, 293);
+            this.pictureBoxPostImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPostImg.TabIndex = 61;
             this.pictureBoxPostImg.TabStop = false;
             // 
@@ -244,24 +243,24 @@
             this.labelPosts.AutoSize = true;
             this.labelPosts.BackColor = System.Drawing.Color.Transparent;
             this.labelPosts.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.labelPosts.Location = new System.Drawing.Point(41, 31);
+            this.labelPosts.Location = new System.Drawing.Point(235, 56);
             this.labelPosts.MaximumSize = new System.Drawing.Size(500, 30);
             this.labelPosts.Name = "labelPosts";
-            this.labelPosts.Size = new System.Drawing.Size(496, 29);
+            this.labelPosts.Size = new System.Drawing.Size(96, 29);
             this.labelPosts.TabIndex = 0;
-            this.labelPosts.Text = "********************POSTS********************";
+            this.labelPosts.Text = "POSTS";
             this.labelPosts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TabLikedPages
             // 
             this.TabLikedPages.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
             this.TabLikedPages.Controls.Add(this.labelPageCategory);
-            this.TabLikedPages.Controls.Add(this.pictureBox2);
             this.TabLikedPages.Controls.Add(this.labelPageLikes);
             this.TabLikedPages.Controls.Add(this.buttonPrevPage);
             this.TabLikedPages.Controls.Add(this.buttonNextPage);
-            this.TabLikedPages.Controls.Add(this.pictureBoxPageLogo);
             this.TabLikedPages.Controls.Add(this.labelPageName);
+            this.TabLikedPages.Controls.Add(this.pictureBox2);
+            this.TabLikedPages.Controls.Add(this.pictureBoxPageLogo);
             this.TabLikedPages.Controls.Add(this.pictureBoxPageCover);
             this.TabLikedPages.Location = new System.Drawing.Point(4, 22);
             this.TabLikedPages.Name = "TabLikedPages";
@@ -281,18 +280,6 @@
             this.labelPageCategory.Size = new System.Drawing.Size(73, 20);
             this.labelPageCategory.TabIndex = 67;
             this.labelPageCategory.Text = "Category";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(192, 239);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(27, 27);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 66;
-            this.pictureBox2.TabStop = false;
             // 
             // labelPageLikes
             // 
@@ -338,15 +325,6 @@
             this.buttonNextPage.UseVisualStyleBackColor = false;
             this.buttonNextPage.Click += new System.EventHandler(this.buttonNextPage_Click);
             // 
-            // pictureBoxPageLogo
-            // 
-            this.pictureBoxPageLogo.Location = new System.Drawing.Point(32, 118);
-            this.pictureBoxPageLogo.Name = "pictureBoxPageLogo";
-            this.pictureBoxPageLogo.Size = new System.Drawing.Size(150, 150);
-            this.pictureBoxPageLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxPageLogo.TabIndex = 1;
-            this.pictureBoxPageLogo.TabStop = false;
-            // 
             // labelPageName
             // 
             this.labelPageName.AutoSize = true;
@@ -356,6 +334,27 @@
             this.labelPageName.Size = new System.Drawing.Size(141, 29);
             this.labelPageName.TabIndex = 0;
             this.labelPageName.Text = "Page Name";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
+            this.pictureBox2.Location = new System.Drawing.Point(192, 239);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 66;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBoxPageLogo
+            // 
+            this.pictureBoxPageLogo.Location = new System.Drawing.Point(32, 118);
+            this.pictureBoxPageLogo.Name = "pictureBoxPageLogo";
+            this.pictureBoxPageLogo.Size = new System.Drawing.Size(150, 150);
+            this.pictureBoxPageLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPageLogo.TabIndex = 1;
+            this.pictureBoxPageLogo.TabStop = false;
             // 
             // pictureBoxPageCover
             // 
@@ -369,12 +368,78 @@
             // TabGroups
             // 
             this.TabGroups.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.TabGroups.Controls.Add(this.labelGroupMembers);
+            this.TabGroups.Controls.Add(this.buttonNextGroup);
+            this.TabGroups.Controls.Add(this.buttonPrevGroup);
+            this.TabGroups.Controls.Add(this.LabelGroupName);
+            this.TabGroups.Controls.Add(this.pictureBoxGroup);
             this.TabGroups.Location = new System.Drawing.Point(4, 22);
             this.TabGroups.Name = "TabGroups";
             this.TabGroups.Padding = new System.Windows.Forms.Padding(3);
             this.TabGroups.Size = new System.Drawing.Size(576, 496);
             this.TabGroups.TabIndex = 2;
             this.TabGroups.Text = "Groups";
+            // 
+            // labelGroupMembers
+            // 
+            this.labelGroupMembers.AutoSize = true;
+            this.labelGroupMembers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGroupMembers.Location = new System.Drawing.Point(24, 355);
+            this.labelGroupMembers.Name = "labelGroupMembers";
+            this.labelGroupMembers.Size = new System.Drawing.Size(90, 24);
+            this.labelGroupMembers.TabIndex = 66;
+            this.labelGroupMembers.Text = "members";
+            // 
+            // buttonNextGroup
+            // 
+            this.buttonNextGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.buttonNextGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonNextGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNextGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonNextGroup.ForeColor = System.Drawing.Color.White;
+            this.buttonNextGroup.Location = new System.Drawing.Point(540, 459);
+            this.buttonNextGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonNextGroup.Name = "buttonNextGroup";
+            this.buttonNextGroup.Size = new System.Drawing.Size(30, 30);
+            this.buttonNextGroup.TabIndex = 65;
+            this.buttonNextGroup.Text = ">";
+            this.buttonNextGroup.UseVisualStyleBackColor = false;
+            this.buttonNextGroup.Click += new System.EventHandler(this.buttonNextGroup_Click);
+            // 
+            // buttonPrevGroup
+            // 
+            this.buttonPrevGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.buttonPrevGroup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonPrevGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrevGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonPrevGroup.ForeColor = System.Drawing.Color.White;
+            this.buttonPrevGroup.Location = new System.Drawing.Point(4, 459);
+            this.buttonPrevGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPrevGroup.Name = "buttonPrevGroup";
+            this.buttonPrevGroup.Size = new System.Drawing.Size(30, 30);
+            this.buttonPrevGroup.TabIndex = 63;
+            this.buttonPrevGroup.Text = "<";
+            this.buttonPrevGroup.UseVisualStyleBackColor = false;
+            this.buttonPrevGroup.Click += new System.EventHandler(this.buttonPrevGroup_Click);
+            // 
+            // LabelGroupName
+            // 
+            this.LabelGroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelGroupName.Location = new System.Drawing.Point(156, 99);
+            this.LabelGroupName.Name = "LabelGroupName";
+            this.LabelGroupName.Size = new System.Drawing.Size(268, 29);
+            this.LabelGroupName.TabIndex = 1;
+            this.LabelGroupName.Text = "GroupName";
+            this.LabelGroupName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBoxGroup
+            // 
+            this.pictureBoxGroup.Location = new System.Drawing.Point(210, 140);
+            this.pictureBoxGroup.Name = "pictureBoxGroup";
+            this.pictureBoxGroup.Size = new System.Drawing.Size(159, 174);
+            this.pictureBoxGroup.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxGroup.TabIndex = 0;
+            this.pictureBoxGroup.TabStop = false;
             // 
             // TabFriends
             // 
@@ -386,12 +451,36 @@
             this.TabFriends.TabIndex = 3;
             this.TabFriends.Text = "Friends";
             // 
+            // tabPageEvents
+            // 
+            this.tabPageEvents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.tabPageEvents.Location = new System.Drawing.Point(4, 22);
+            this.tabPageEvents.Name = "tabPageEvents";
+            this.tabPageEvents.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageEvents.Size = new System.Drawing.Size(576, 496);
+            this.tabPageEvents.TabIndex = 4;
+            this.tabPageEvents.Text = "Events";
+            // 
+            // tabPageTeams
+            // 
+            this.tabPageTeams.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.tabPageTeams.Controls.Add(this.pictureBoxTeam);
+            this.tabPageTeams.Controls.Add(this.labelTeamName);
+            this.tabPageTeams.Controls.Add(this.buttonNextTeam);
+            this.tabPageTeams.Controls.Add(this.buttonPrevTeam);
+            this.tabPageTeams.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTeams.Name = "tabPageTeams";
+            this.tabPageTeams.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTeams.Size = new System.Drawing.Size(576, 496);
+            this.tabPageTeams.TabIndex = 5;
+            this.tabPageTeams.Text = "Teams";
+            // 
             // checkBoxRememberMe
             // 
             this.checkBoxRememberMe.AutoSize = true;
             this.checkBoxRememberMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.checkBoxRememberMe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.checkBoxRememberMe.Location = new System.Drawing.Point(12, 178);
+            this.checkBoxRememberMe.Location = new System.Drawing.Point(28, 166);
             this.checkBoxRememberMe.Name = "checkBoxRememberMe";
             this.checkBoxRememberMe.Size = new System.Drawing.Size(119, 21);
             this.checkBoxRememberMe.TabIndex = 60;
@@ -404,12 +493,84 @@
             this.imageListPageUploadedPictures.ImageSize = new System.Drawing.Size(150, 150);
             this.imageListPageUploadedPictures.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // pictureBoxLogin
+            // 
+            this.pictureBoxLogin.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_PNG_Clipart;
+            this.pictureBoxLogin.Location = new System.Drawing.Point(-12, 4);
+            this.pictureBoxLogin.Name = "pictureBoxLogin";
+            this.pictureBoxLogin.Size = new System.Drawing.Size(187, 107);
+            this.pictureBoxLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogin.TabIndex = 61;
+            this.pictureBoxLogin.TabStop = false;
+            // 
+            // pictureBoxProfile
+            // 
+            this.pictureBoxProfile.Location = new System.Drawing.Point(12, 7);
+            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxProfile.Name = "pictureBoxProfile";
+            this.pictureBoxProfile.Size = new System.Drawing.Size(144, 125);
+            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxProfile.TabIndex = 53;
+            this.pictureBoxProfile.TabStop = false;
+            // 
+            // buttonPrevTeam
+            // 
+            this.buttonPrevTeam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.buttonPrevTeam.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonPrevTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrevTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonPrevTeam.ForeColor = System.Drawing.Color.White;
+            this.buttonPrevTeam.Location = new System.Drawing.Point(16, 448);
+            this.buttonPrevTeam.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPrevTeam.Name = "buttonPrevTeam";
+            this.buttonPrevTeam.Size = new System.Drawing.Size(30, 30);
+            this.buttonPrevTeam.TabIndex = 64;
+            this.buttonPrevTeam.Text = "<";
+            this.buttonPrevTeam.UseVisualStyleBackColor = false;
+            this.buttonPrevTeam.Click += new System.EventHandler(this.buttonPrevTeam_Click);
+            // 
+            // buttonNextTeam
+            // 
+            this.buttonNextTeam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.buttonNextTeam.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonNextTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNextTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonNextTeam.ForeColor = System.Drawing.Color.White;
+            this.buttonNextTeam.Location = new System.Drawing.Point(530, 448);
+            this.buttonNextTeam.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonNextTeam.Name = "buttonNextTeam";
+            this.buttonNextTeam.Size = new System.Drawing.Size(30, 30);
+            this.buttonNextTeam.TabIndex = 66;
+            this.buttonNextTeam.Text = ">";
+            this.buttonNextTeam.UseVisualStyleBackColor = false;
+            this.buttonNextTeam.Click += new System.EventHandler(this.buttonNextTeam_Click);
+            // 
+            // labelTeamName
+            // 
+            this.labelTeamName.AutoSize = true;
+            this.labelTeamName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTeamName.Location = new System.Drawing.Point(425, 37);
+            this.labelTeamName.Name = "labelTeamName";
+            this.labelTeamName.Size = new System.Drawing.Size(122, 25);
+            this.labelTeamName.TabIndex = 67;
+            this.labelTeamName.Text = "TeamName";
+            // 
+            // pictureBoxTeam
+            // 
+            this.pictureBoxTeam.Location = new System.Drawing.Point(373, 85);
+            this.pictureBoxTeam.Name = "pictureBoxTeam";
+            this.pictureBoxTeam.Size = new System.Drawing.Size(187, 196);
+            this.pictureBoxTeam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxTeam.TabIndex = 68;
+            this.pictureBoxTeam.TabStop = false;
+            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(754, 531);
+            this.Controls.Add(this.pictureBoxLogin);
             this.Controls.Add(this.checkBoxRememberMe);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.buttonLogin);
@@ -419,10 +580,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facebook";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.TabWall.ResumeLayout(false);
             this.TabWall.PerformLayout();
@@ -434,6 +596,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPageLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPageCover)).EndInit();
+            this.TabGroups.ResumeLayout(false);
+            this.TabGroups.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).EndInit();
+            this.tabPageTeams.ResumeLayout(false);
+            this.tabPageTeams.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTeam)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,7 +622,6 @@
         private System.Windows.Forms.Button buttonPrevPost;
         private System.Windows.Forms.Button buttonNextPost;
         private System.Windows.Forms.PictureBox pictureBoxPostImg;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBoxLikesIcon;
         private System.Windows.Forms.Label labelPostComments;
@@ -468,6 +637,18 @@
         private System.Windows.Forms.Label labelPageLikes;
         private System.Windows.Forms.Label labelPageCategory;
         private System.Windows.Forms.ImageList imageListPageUploadedPictures;
+        private System.Windows.Forms.Label LabelGroupName;
+        private System.Windows.Forms.PictureBox pictureBoxGroup;
+        private System.Windows.Forms.Button buttonPrevGroup;
+        private System.Windows.Forms.PictureBox pictureBoxLogin;
+        private System.Windows.Forms.Button buttonNextGroup;
+        private System.Windows.Forms.Label labelGroupMembers;
+        private System.Windows.Forms.TabPage tabPageEvents;
+        private System.Windows.Forms.TabPage tabPageTeams;
+        private System.Windows.Forms.Label labelTeamName;
+        private System.Windows.Forms.Button buttonNextTeam;
+        private System.Windows.Forms.Button buttonPrevTeam;
+        private System.Windows.Forms.PictureBox pictureBoxTeam;
     }
 }
 

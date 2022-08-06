@@ -17,6 +17,8 @@ namespace BasicFacebookFeatures
         public User LoggedInUser { get; set; } = null;
         public LoginResult LoginResult { get; set; }
         public int PostsIndex { get; set; } = 37;
+        public int GroupsIndex { get; set; } = 0;
+        public int TeamsIndex { get; set; } = 0;
         public int PageIndex { get; set; } = 0;
         public AppSettings LoggedInUserAppSettings { get; set; }
 
@@ -41,11 +43,13 @@ namespace BasicFacebookFeatures
                     "email",
                     "user_friends",
                     "public_profile",
+                    "groups_access_member_info",
                     "user_posts",
                     "user_photos",
                     "user_likes"
                     /// add any relevant permissions
                     );
+            pictureBoxLogin.Visible = false;
             InitInfoAfterLogin();
         }
 
@@ -77,8 +81,10 @@ namespace BasicFacebookFeatures
         {
             pictureBoxProfile.LoadAsync(LoggedInUser.PictureNormalURL);
             //labelPosts.Text = LoggedInUser.Posts[0].Message;
+            updateGroup();
             updatePost();
             updatePage();
+            updateTeam();
         }
 
         private void updatePost()
@@ -161,14 +167,15 @@ namespace BasicFacebookFeatures
                 imageListPageUploadedPictures.Images.Add(picture.ImageNormal);
             }
             */
-            foreach (Album album in page.Albums)
+
+/*            foreach (Album album in page.Albums)
             {
 
                 foreach (Photo picture in album.Photos)
                 {
                     imageListPageUploadedPictures.Images.Add(picture.ImageNormal);
                 }
-            }
+            }*/
         }
 
         private void buttonPrevPage_Click(object sender, EventArgs e)
@@ -212,6 +219,64 @@ namespace BasicFacebookFeatures
                 InitInfoAfterLogin();
             }
 
+        }
+
+        private void updateGroup()
+        {
+            LabelGroupName.Text = LoggedInUser.Groups[GroupsIndex].Name;
+            pictureBoxGroup.Image = LoggedInUser.Groups[GroupsIndex].ImageNormal;
+            labelGroupMembers.Text = string.Format("{0} members", LoggedInUser.Groups[GroupsIndex].Description);
+
+        }
+
+        private void buttonNextGroup_Click(object sender, EventArgs e)
+        {
+
+            GroupsIndex++;
+            if (GroupsIndex >= LoggedInUser.Groups.Count)
+            {
+                GroupsIndex = 0;
+            }
+            updateGroup();
+        }
+
+        private void buttonPrevGroup_Click(object sender, EventArgs e)
+        {
+            GroupsIndex--;
+            if (GroupsIndex < 0)
+            {
+                GroupsIndex = LoggedInUser.Groups.Count - 1;
+            }
+            updateGroup();
+        }
+
+        private void updateTeam()
+        {
+            labelTeamName.Text = LoggedInUser.FavofriteTeams[TeamsIndex].Name;
+            pictureBoxTeam.Image = LoggedInUser.FavofriteTeams[TeamsIndex].ImageNormal;
+            //labelGroupMembers.Text = string.Format("{0} members", LoggedInUser.Groups[GroupsIndex].Description);
+
+        }
+
+        private void buttonNextTeam_Click(object sender, EventArgs e)
+        {
+            TeamsIndex++;
+            if (TeamsIndex >= LoggedInUser.FavofriteTeams.Length)
+            {
+                TeamsIndex = 0;
+            }
+            updateGroup();
+        }
+
+        private void buttonPrevTeam_Click(object sender, EventArgs e)
+        {
+
+            TeamsIndex--;
+            if (TeamsIndex < 0)
+            {
+                TeamsIndex = LoggedInUser.FavofriteTeams.Length - 1;
+            }
+            updateGroup();
         }
     }
 }
