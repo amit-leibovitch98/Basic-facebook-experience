@@ -26,7 +26,7 @@ namespace BasicFacebookFeatures
 
         public void SaveToXmlFile()
         {
-            using (Stream stream = new FileStream(@"C:\Users\amit\Documents\C#\Desing_Patterns\C22 Ex01 Shachar 318974557 Amit 318659745\appsettings.xml",
+            using (Stream stream = new FileStream(@"C:\Users\Shachar Levy\Documents\appsettings.xml",
                 FileMode.Truncate))
             {
                 XmlSerializer serializer = new XmlSerializer(this.GetType());
@@ -38,7 +38,7 @@ namespace BasicFacebookFeatures
         {
             AppSettings appSettings = null;
 
-            using (Stream stream = new FileStream(@"C:\Users\amit\Documents\C#\Desing_Patterns\C22 Ex01 Shachar 318974557 Amit 318659745\appsettings.xml",
+            using (Stream stream = new FileStream(@"C:\Users\Shachar Levy\Documents\appsettings.xml",
                 FileMode.Open))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
