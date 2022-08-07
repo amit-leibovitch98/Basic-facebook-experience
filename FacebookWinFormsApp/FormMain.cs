@@ -23,6 +23,8 @@ namespace BasicFacebookFeatures
         public int TeamsIndex { get; set; } = 0;
         public int PageIndex { get; set; } = 0;
         public int PostsIndex { get; set; } = 37;
+
+        public int AlbumIndex { get; set; } = 0;
         private QuotesLoader m_quotesLoader;
         private InfoLogic m_infoLogic;
         public AppSettings m_AppSettings;
@@ -49,8 +51,6 @@ namespace BasicFacebookFeatures
             {
                 switchToLoginMode();
             }
-            
-
             //
             m_quotesLoader = new QuotesLoader();
             m_infoLogic = new InfoLogic();
@@ -140,14 +140,15 @@ namespace BasicFacebookFeatures
         {
             pictureBoxProfile.LoadAsync(LoggedInUser.PictureNormalURL);
             //labelPosts.Text = LoggedInUser.Posts[0].Message;
-            updateGroup();
-            updatePost();
-            updatePage();
-            updateTeam();
+            fetchGroup();
+            fetchPost();
+            fetchPage();
+            fetchFavoriteTeams();
+            fetchEvents();
             AlbumsInit();
         }
 
-        private void updatePost()
+        private void fetchPost()
         {
             string postText, imgURL;
             Post post = LoggedInUser.Posts[PostsIndex];
@@ -197,7 +198,7 @@ namespace BasicFacebookFeatures
             {
                 PostsIndex = 0;
             }
-            updatePost();
+            fetchPost();
         }
 
         private void buttonPrevPost_Click(object sender, EventArgs e)
@@ -207,7 +208,7 @@ namespace BasicFacebookFeatures
             {
                 PostsIndex = LoggedInUser.Posts.Count - 1;
             }
-            updatePost();
+            fetchPost();
         }
 
         private void labelLikes_Click(object sender, EventArgs e)
@@ -223,7 +224,7 @@ namespace BasicFacebookFeatures
             InitInfoAfterLogin();
         }
 
-        private void updatePage()
+        private void fetchPage()
         {
             Page page = LoggedInUser.LikedPages[PageIndex];
             pictureBoxPageLogo.LoadAsync(page.PictureSqaureURL);
@@ -258,7 +259,7 @@ namespace BasicFacebookFeatures
             {
                 PageIndex = 0;
             }
-            updatePage();
+            fetchPage();
         }
 
         private void buttonNextPage_Click(object sender, EventArgs e)
@@ -268,10 +269,10 @@ namespace BasicFacebookFeatures
             {
                 PageIndex = LoggedInUser.LikedPages.Count - 1;
             }
-            updatePage();
+            fetchPage();
         }
 
-        private void updateGroup()
+        private void fetchGroup()
         {
             LabelGroupName.Text = LoggedInUser.Groups[GroupsIndex].Name;
             pictureBoxGroup.Image = LoggedInUser.Groups[GroupsIndex].ImageNormal;
@@ -287,7 +288,7 @@ namespace BasicFacebookFeatures
             {
                 GroupsIndex = 0;
             }
-            updateGroup();
+            fetchGroup();
         }
 
         private void buttonPrevGroup_Click(object sender, EventArgs e)
@@ -297,15 +298,20 @@ namespace BasicFacebookFeatures
             {
                 GroupsIndex = LoggedInUser.Groups.Count - 1;
             }
-            updateGroup();
+            fetchGroup();
         }
 
-        private void updateTeam()
+        private void fetchFavoriteTeams()
         {
-            //labelTeamName.Text = LoggedInUser.FavofriteTeams[TeamsIndex].Name;
-            //pictureBoxTeam.Image = LoggedInUser.FavofriteTeams[TeamsIndex].ImageNormal;
-            //labelGroupMembers.Text = string.Format("{0} members", LoggedInUser.Groups[GroupsIndex].Description);
-
+            if (LoggedInUser.FavofriteTeams != null)
+            {
+                labelFavoriteTeamName.Text = LoggedInUser.FavofriteTeams[TeamsIndex].Name;
+                pictureBoxTeam.Image = LoggedInUser.FavofriteTeams[TeamsIndex].ImageNormal;
+            }
+            else
+            {
+                labelFavoriteTeamName.Text = "There are no teams to show";
+            }
         }
 
         private void AlbumsInit()
@@ -331,7 +337,7 @@ namespace BasicFacebookFeatures
                 {
                     TeamsIndex = 0;
                 }
-                updateGroup();
+                fetchGroup();
             }
 
         }
@@ -345,8 +351,22 @@ namespace BasicFacebookFeatures
                 {
                     TeamsIndex = LoggedInUser.FavofriteTeams.Length - 1;
                 }
-                updateGroup();
+                fetchGroup();
             }
+        }
+
+        private void fetchEvents()
+        {
+            foreach (Event userEvent in LoggedInUser.Events)
+            {
+                comboBoxEvents.Items.Add(userEvent.Name);
+            }
+
+            if (LoggedInUser.Events.Count != 0)
+            {
+                comboBoxEvents.SelectedIndex = 0;
+            }
+     
         }
 
         private void comboBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
@@ -359,6 +379,14 @@ namespace BasicFacebookFeatures
             string artistName = "Lady_Gaga";
             FormArtistWiki currentArtists = new FormArtistWiki(artistName);
             currentArtists.ShowDialog();
+        private void comboBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pictureBoxEvent.Image = LoggedInUser.Events[comboBoxEvents.SelectedIndex].ImageNormal;
+        }
+
+        private void pictureBoxAlbum_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

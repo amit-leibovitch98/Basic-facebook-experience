@@ -60,16 +60,15 @@
             this.TabFriends = new System.Windows.Forms.TabPage();
             this.tabPageEvents = new System.Windows.Forms.TabPage();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.comboBoxEvents = new System.Windows.Forms.ComboBox();
+            this.labelEvents = new System.Windows.Forms.Label();
+            this.pictureBoxEvent = new System.Windows.Forms.PictureBox();
             this.tabPageTeams = new System.Windows.Forms.TabPage();
             this.pictureBoxTeam = new System.Windows.Forms.PictureBox();
-            this.labelTeamName = new System.Windows.Forms.Label();
+            this.labelFavoriteTeamName = new System.Windows.Forms.Label();
             this.buttonNextTeam = new System.Windows.Forms.Button();
             this.buttonPrevTeam = new System.Windows.Forms.Button();
             this.tabPageAlbums = new System.Windows.Forms.TabPage();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.labelAlbumLikes = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBoxAlbum = new System.Windows.Forms.PictureBox();
@@ -89,6 +88,7 @@
             this.pictureBoxArtistsBandsLikesIcon = new System.Windows.Forms.PictureBox();
             this.pictureBoxArtistsBandsPicture = new System.Windows.Forms.PictureBox();
             this.buttonWikiSerach = new System.Windows.Forms.Button();
+
             this.tabControl.SuspendLayout();
             this.TabWall.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -102,13 +102,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).BeginInit();
             this.tabPageEvents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEvent)).BeginInit();
             this.tabPageTeams.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTeam)).BeginInit();
             this.tabPageAlbums.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
@@ -116,6 +113,7 @@
             this.tabPageArtists.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsBandsLikesIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsBandsPicture)).BeginInit();
+            
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -491,7 +489,9 @@
             // tabPageEvents
             // 
             this.tabPageEvents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.tabPageEvents.Controls.Add(this.pictureBox8);
+            this.tabPageEvents.Controls.Add(this.comboBoxEvents);
+            this.tabPageEvents.Controls.Add(this.labelEvents);
+            this.tabPageEvents.Controls.Add(this.pictureBoxEvent);
             this.tabPageEvents.Location = new System.Drawing.Point(4, 22);
             this.tabPageEvents.Name = "tabPageEvents";
             this.tabPageEvents.Padding = new System.Windows.Forms.Padding(3);
@@ -506,12 +506,38 @@
             this.pictureBox8.Size = new System.Drawing.Size(183, 198);
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
+            // comboBoxEvents
+            // 
+            this.comboBoxEvents.FormattingEnabled = true;
+            this.comboBoxEvents.Location = new System.Drawing.Point(247, 103);
+            this.comboBoxEvents.Name = "comboBoxEvents";
+            this.comboBoxEvents.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxEvents.TabIndex = 2;
+            this.comboBoxEvents.SelectedIndexChanged += new System.EventHandler(this.comboBoxEvents_SelectedIndexChanged);
+            // 
+            // labelEvents
+            // 
+            this.labelEvents.AutoSize = true;
+            this.labelEvents.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEvents.Location = new System.Drawing.Point(181, 103);
+            this.labelEvents.Name = "labelEvents";
+            this.labelEvents.Size = new System.Drawing.Size(60, 20);
+            this.labelEvents.TabIndex = 1;
+            this.labelEvents.Text = "Event:";
+            // 
+            // pictureBoxEvent
+            // 
+            this.pictureBoxEvent.Location = new System.Drawing.Point(185, 167);
+            this.pictureBoxEvent.Name = "pictureBoxEvent";
+            this.pictureBoxEvent.Size = new System.Drawing.Size(183, 198);
+            this.pictureBoxEvent.TabIndex = 0;
+            this.pictureBoxEvent.TabStop = false;
             // 
             // tabPageTeams
             // 
             this.tabPageTeams.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
             this.tabPageTeams.Controls.Add(this.pictureBoxTeam);
-            this.tabPageTeams.Controls.Add(this.labelTeamName);
+            this.tabPageTeams.Controls.Add(this.labelFavoriteTeamName);
             this.tabPageTeams.Controls.Add(this.buttonNextTeam);
             this.tabPageTeams.Controls.Add(this.buttonPrevTeam);
             this.tabPageTeams.Location = new System.Drawing.Point(4, 22);
@@ -523,24 +549,24 @@
             // 
             // pictureBoxTeam
             // 
-            this.pictureBoxTeam.Location = new System.Drawing.Point(187, 107);
+            this.pictureBoxTeam.Location = new System.Drawing.Point(177, 107);
             this.pictureBoxTeam.Name = "pictureBoxTeam";
             this.pictureBoxTeam.Size = new System.Drawing.Size(187, 196);
             this.pictureBoxTeam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxTeam.TabIndex = 68;
             this.pictureBoxTeam.TabStop = false;
             // 
-            // labelTeamName
+            // labelFavoriteTeamName
             // 
-            this.labelTeamName.AutoSize = true;
-            this.labelTeamName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTeamName.Location = new System.Drawing.Point(212, 63);
-            this.labelTeamName.MaximumSize = new System.Drawing.Size(550, 50);
-            this.labelTeamName.Name = "labelTeamName";
-            this.labelTeamName.Size = new System.Drawing.Size(122, 25);
-            this.labelTeamName.TabIndex = 67;
-            this.labelTeamName.Text = "TeamName";
-            this.labelTeamName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelFavoriteTeamName.AutoSize = true;
+            this.labelFavoriteTeamName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFavoriteTeamName.Location = new System.Drawing.Point(214, 63);
+            this.labelFavoriteTeamName.MaximumSize = new System.Drawing.Size(250, 50);
+            this.labelFavoriteTeamName.Name = "labelFavoriteTeamName";
+            this.labelFavoriteTeamName.Size = new System.Drawing.Size(130, 25);
+            this.labelFavoriteTeamName.TabIndex = 67;
+            this.labelFavoriteTeamName.Text = "TeamName";
+            this.labelFavoriteTeamName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonNextTeam
             // 
@@ -577,10 +603,6 @@
             // tabPageAlbums
             // 
             this.tabPageAlbums.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.tabPageAlbums.Controls.Add(this.pictureBox7);
-            this.tabPageAlbums.Controls.Add(this.pictureBox6);
-            this.tabPageAlbums.Controls.Add(this.pictureBox5);
-            this.tabPageAlbums.Controls.Add(this.pictureBox3);
             this.tabPageAlbums.Controls.Add(this.labelAlbumLikes);
             this.tabPageAlbums.Controls.Add(this.pictureBox4);
             this.tabPageAlbums.Controls.Add(this.pictureBoxAlbum);
@@ -592,42 +614,6 @@
             this.tabPageAlbums.Size = new System.Drawing.Size(576, 496);
             this.tabPageAlbums.TabIndex = 6;
             this.tabPageAlbums.Text = "Albums";
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Location = new System.Drawing.Point(407, 164);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(119, 128);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 70;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Location = new System.Drawing.Point(247, 164);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(119, 128);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 69;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Location = new System.Drawing.Point(407, 15);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(119, 128);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 68;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(247, 15);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(119, 128);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 67;
-            this.pictureBox3.TabStop = false;
             // 
             // labelAlbumLikes
             // 
@@ -655,27 +641,28 @@
             // 
             // pictureBoxAlbum
             // 
-            this.pictureBoxAlbum.Location = new System.Drawing.Point(13, 58);
+            this.pictureBoxAlbum.Location = new System.Drawing.Point(189, 146);
             this.pictureBoxAlbum.Name = "pictureBoxAlbum";
             this.pictureBoxAlbum.Size = new System.Drawing.Size(198, 218);
             this.pictureBoxAlbum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxAlbum.TabIndex = 2;
             this.pictureBoxAlbum.TabStop = false;
+            this.pictureBoxAlbum.Click += new System.EventHandler(this.pictureBoxAlbum_Click);
             // 
             // labelAlbumName
             // 
             this.labelAlbumName.AutoSize = true;
-            this.labelAlbumName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAlbumName.Location = new System.Drawing.Point(14, 15);
+            this.labelAlbumName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAlbumName.Location = new System.Drawing.Point(185, 105);
             this.labelAlbumName.Name = "labelAlbumName";
-            this.labelAlbumName.Size = new System.Drawing.Size(70, 24);
+            this.labelAlbumName.Size = new System.Drawing.Size(76, 24);
             this.labelAlbumName.TabIndex = 1;
             this.labelAlbumName.Text = "Album:";
             // 
             // comboBoxAlbums
             // 
             this.comboBoxAlbums.FormattingEnabled = true;
-            this.comboBoxAlbums.Location = new System.Drawing.Point(90, 18);
+            this.comboBoxAlbums.Location = new System.Drawing.Point(266, 110);
             this.comboBoxAlbums.Name = "comboBoxAlbums";
             this.comboBoxAlbums.Size = new System.Drawing.Size(121, 21);
             this.comboBoxAlbums.TabIndex = 0;
@@ -702,7 +689,7 @@
             // pictureBoxLogin
             // 
             this.pictureBoxLogin.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_PNG_Clipart;
-            this.pictureBoxLogin.Location = new System.Drawing.Point(8, 32);
+            this.pictureBoxLogin.Location = new System.Drawing.Point(5, 32);
             this.pictureBoxLogin.Name = "pictureBoxLogin";
             this.pictureBoxLogin.Size = new System.Drawing.Size(153, 82);
             this.pictureBoxLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -884,15 +871,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).EndInit();
             this.tabPageEvents.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+=======
+            this.tabPageEvents.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEvent)).EndInit();
             this.tabPageTeams.ResumeLayout(false);
             this.tabPageTeams.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTeam)).EndInit();
             this.tabPageAlbums.ResumeLayout(false);
             this.tabPageAlbums.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
@@ -901,6 +887,7 @@
             this.tabPageArtists.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsBandsLikesIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsBandsPicture)).EndInit();
+=======
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -942,7 +929,7 @@
         private System.Windows.Forms.Label labelGroupMembers;
         private System.Windows.Forms.TabPage tabPageEvents;
         private System.Windows.Forms.TabPage tabPageTeams;
-        private System.Windows.Forms.Label labelTeamName;
+        private System.Windows.Forms.Label labelFavoriteTeamName;
         private System.Windows.Forms.Button buttonNextTeam;
         private System.Windows.Forms.Button buttonPrevTeam;
         private System.Windows.Forms.PictureBox pictureBoxTeam;
@@ -952,10 +939,6 @@
         private System.Windows.Forms.PictureBox pictureBoxAlbum;
         private System.Windows.Forms.Label labelAlbumName;
         private System.Windows.Forms.ComboBox comboBoxAlbums;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label labelInsperetionalQuote;
         private System.Windows.Forms.Label labelUserName;
         private System.Windows.Forms.PictureBox pictureBox8;
@@ -967,6 +950,9 @@
         private System.Windows.Forms.Label labelArtistsBandsName;
         private System.Windows.Forms.PictureBox pictureBoxArtistsBandsLikesIcon;
         private System.Windows.Forms.PictureBox pictureBoxArtistsBandsPicture;
+        private System.Windows.Forms.PictureBox pictureBoxEvent;
+        private System.Windows.Forms.ComboBox comboBoxEvents;
+        private System.Windows.Forms.Label labelEvents;
     }
 }
 
