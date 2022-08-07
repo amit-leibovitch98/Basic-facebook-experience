@@ -68,6 +68,16 @@
             this.buttonNextTeam = new System.Windows.Forms.Button();
             this.labelTeamName = new System.Windows.Forms.Label();
             this.pictureBoxTeam = new System.Windows.Forms.PictureBox();
+            this.tabPageAlbums = new System.Windows.Forms.TabPage();
+            this.comboBoxAlbums = new System.Windows.Forms.ComboBox();
+            this.labelAlbumName = new System.Windows.Forms.Label();
+            this.pictureBoxAlbum = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.labelAlbumLikes = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
             this.TabWall.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -83,6 +93,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTeam)).BeginInit();
+            this.tabPageAlbums.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -124,7 +141,8 @@
             this.tabControl.Controls.Add(this.TabFriends);
             this.tabControl.Controls.Add(this.tabPageEvents);
             this.tabControl.Controls.Add(this.tabPageTeams);
-            this.tabControl.Location = new System.Drawing.Point(167, 4);
+            this.tabControl.Controls.Add(this.tabPageAlbums);
+            this.tabControl.Location = new System.Drawing.Point(163, 4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(584, 522);
@@ -564,6 +582,113 @@
             this.pictureBoxTeam.TabIndex = 68;
             this.pictureBoxTeam.TabStop = false;
             // 
+            // tabPageAlbums
+            // 
+            this.tabPageAlbums.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.tabPageAlbums.Controls.Add(this.pictureBox7);
+            this.tabPageAlbums.Controls.Add(this.pictureBox6);
+            this.tabPageAlbums.Controls.Add(this.pictureBox5);
+            this.tabPageAlbums.Controls.Add(this.pictureBox3);
+            this.tabPageAlbums.Controls.Add(this.labelAlbumLikes);
+            this.tabPageAlbums.Controls.Add(this.pictureBox4);
+            this.tabPageAlbums.Controls.Add(this.pictureBoxAlbum);
+            this.tabPageAlbums.Controls.Add(this.labelAlbumName);
+            this.tabPageAlbums.Controls.Add(this.comboBoxAlbums);
+            this.tabPageAlbums.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAlbums.Name = "tabPageAlbums";
+            this.tabPageAlbums.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAlbums.Size = new System.Drawing.Size(576, 496);
+            this.tabPageAlbums.TabIndex = 6;
+            this.tabPageAlbums.Text = "Albums";
+            // 
+            // comboBoxAlbums
+            // 
+            this.comboBoxAlbums.FormattingEnabled = true;
+            this.comboBoxAlbums.Location = new System.Drawing.Point(90, 18);
+            this.comboBoxAlbums.Name = "comboBoxAlbums";
+            this.comboBoxAlbums.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxAlbums.TabIndex = 0;
+            this.comboBoxAlbums.SelectedIndexChanged += new System.EventHandler(this.comboBoxAlbums_SelectedIndexChanged);
+            // 
+            // labelAlbumName
+            // 
+            this.labelAlbumName.AutoSize = true;
+            this.labelAlbumName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAlbumName.Location = new System.Drawing.Point(14, 15);
+            this.labelAlbumName.Name = "labelAlbumName";
+            this.labelAlbumName.Size = new System.Drawing.Size(70, 24);
+            this.labelAlbumName.TabIndex = 1;
+            this.labelAlbumName.Text = "Album:";
+            // 
+            // pictureBoxAlbum
+            // 
+            this.pictureBoxAlbum.Location = new System.Drawing.Point(13, 58);
+            this.pictureBoxAlbum.Name = "pictureBoxAlbum";
+            this.pictureBoxAlbum.Size = new System.Drawing.Size(198, 218);
+            this.pictureBoxAlbum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxAlbum.TabIndex = 2;
+            this.pictureBoxAlbum.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
+            this.pictureBox4.Location = new System.Drawing.Point(110, 391);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 65;
+            this.pictureBox4.TabStop = false;
+            // 
+            // labelAlbumLikes
+            // 
+            this.labelAlbumLikes.AutoSize = true;
+            this.labelAlbumLikes.BackColor = System.Drawing.Color.Transparent;
+            this.labelAlbumLikes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labelAlbumLikes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelAlbumLikes.Location = new System.Drawing.Point(133, 398);
+            this.labelAlbumLikes.Name = "labelAlbumLikes";
+            this.labelAlbumLikes.Size = new System.Drawing.Size(46, 20);
+            this.labelAlbumLikes.TabIndex = 66;
+            this.labelAlbumLikes.Text = "Likes";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(247, 15);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(119, 128);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 67;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Location = new System.Drawing.Point(407, 15);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(119, 128);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 68;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Location = new System.Drawing.Point(247, 164);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(119, 128);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 69;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Location = new System.Drawing.Point(407, 164);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(119, 128);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 70;
+            this.pictureBox7.TabStop = false;
+            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -604,6 +729,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTeam)).EndInit();
+            this.tabPageAlbums.ResumeLayout(false);
+            this.tabPageAlbums.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -649,6 +782,16 @@
         private System.Windows.Forms.Button buttonNextTeam;
         private System.Windows.Forms.Button buttonPrevTeam;
         private System.Windows.Forms.PictureBox pictureBoxTeam;
+        private System.Windows.Forms.TabPage tabPageAlbums;
+        private System.Windows.Forms.Label labelAlbumLikes;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBoxAlbum;
+        private System.Windows.Forms.Label labelAlbumName;
+        private System.Windows.Forms.ComboBox comboBoxAlbums;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

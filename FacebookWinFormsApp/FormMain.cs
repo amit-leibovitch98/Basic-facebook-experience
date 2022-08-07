@@ -85,6 +85,7 @@ namespace BasicFacebookFeatures
             updatePost();
             updatePage();
             updateTeam();
+            AlbumsInit();
         }
 
         private void updatePost()
@@ -252,10 +253,24 @@ namespace BasicFacebookFeatures
 
         private void updateTeam()
         {
-            labelTeamName.Text = LoggedInUser.FavofriteTeams[TeamsIndex].Name;
-            pictureBoxTeam.Image = LoggedInUser.FavofriteTeams[TeamsIndex].ImageNormal;
+            //labelTeamName.Text = LoggedInUser.FavofriteTeams[TeamsIndex].Name;
+            //pictureBoxTeam.Image = LoggedInUser.FavofriteTeams[TeamsIndex].ImageNormal;
             //labelGroupMembers.Text = string.Format("{0} members", LoggedInUser.Groups[GroupsIndex].Description);
 
+        }
+
+        private void AlbumsInit()
+        {
+            foreach(Album album in LoggedInUser.Albums)
+            {
+                comboBoxAlbums.Items.Add(album.Name);
+            }
+            if (LoggedInUser.Albums.Count != 0)
+            {
+                comboBoxAlbums.SelectedIndex = 0;
+
+            }
+            pictureBoxAlbum.Image = LoggedInUser.Albums[0].CoverPhoto.ImageNormal;
         }
 
         private void buttonNextTeam_Click(object sender, EventArgs e)
@@ -277,6 +292,11 @@ namespace BasicFacebookFeatures
                 TeamsIndex = LoggedInUser.FavofriteTeams.Length - 1;
             }
             updateGroup();
+        }
+
+        private void comboBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pictureBoxAlbum.Image = LoggedInUser.Albums[comboBoxAlbums.SelectedIndex].CoverPhoto.ImageNormal;
         }
     }
 }
