@@ -28,5 +28,19 @@ namespace FacebookApplicationLogic
                 o_imgURL = i_post.PictureURL;
             }
         }
+
+        public List<Page> GetArtistsList(List<Page> i_likedPages)
+        {
+            List<Page> artistsList = new List<Page>();
+            foreach(Page page in i_likedPages)
+            {
+                if(page.Category == "Musician/band")
+                {
+                    artistsList.Add(page);
+                }
+            }
+
+            return artistsList;
+        }
     }
 }
