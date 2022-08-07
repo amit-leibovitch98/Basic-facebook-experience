@@ -108,7 +108,7 @@
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.buttonLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonLogin.Location = new System.Drawing.Point(12, 141);
+            this.buttonLogin.Location = new System.Drawing.Point(12, 152);
             this.buttonLogin.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(144, 28);
@@ -123,7 +123,7 @@
             this.buttonLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.buttonLogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonLogout.Location = new System.Drawing.Point(12, 177);
+            this.buttonLogout.Location = new System.Drawing.Point(12, 188);
             this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(144, 28);
@@ -403,6 +403,7 @@
             this.labelGroupMembers.AutoSize = true;
             this.labelGroupMembers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGroupMembers.Location = new System.Drawing.Point(24, 355);
+            this.labelGroupMembers.MaximumSize = new System.Drawing.Size(550, 50);
             this.labelGroupMembers.Name = "labelGroupMembers";
             this.labelGroupMembers.Size = new System.Drawing.Size(90, 24);
             this.labelGroupMembers.TabIndex = 66;
@@ -444,6 +445,7 @@
             // 
             this.LabelGroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelGroupName.Location = new System.Drawing.Point(156, 99);
+            this.LabelGroupName.MaximumSize = new System.Drawing.Size(550, 50);
             this.LabelGroupName.Name = "LabelGroupName";
             this.LabelGroupName.Size = new System.Drawing.Size(268, 29);
             this.LabelGroupName.TabIndex = 1;
@@ -493,59 +495,26 @@
             this.tabPageTeams.TabIndex = 5;
             this.tabPageTeams.Text = "Teams";
             // 
-            // checkBoxRememberMe
+            // pictureBoxTeam
             // 
-            this.checkBoxRememberMe.AutoSize = true;
-            this.checkBoxRememberMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.checkBoxRememberMe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.checkBoxRememberMe.Location = new System.Drawing.Point(28, 166);
-            this.checkBoxRememberMe.Name = "checkBoxRememberMe";
-            this.checkBoxRememberMe.Size = new System.Drawing.Size(119, 21);
-            this.checkBoxRememberMe.TabIndex = 60;
-            this.checkBoxRememberMe.Text = "Remember Me";
-            this.checkBoxRememberMe.UseVisualStyleBackColor = true;
+            this.pictureBoxTeam.Location = new System.Drawing.Point(187, 107);
+            this.pictureBoxTeam.Name = "pictureBoxTeam";
+            this.pictureBoxTeam.Size = new System.Drawing.Size(187, 196);
+            this.pictureBoxTeam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxTeam.TabIndex = 68;
+            this.pictureBoxTeam.TabStop = false;
             // 
-            // imageListPageUploadedPictures
+            // labelTeamName
             // 
-            this.imageListPageUploadedPictures.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            this.imageListPageUploadedPictures.ImageSize = new System.Drawing.Size(150, 150);
-            this.imageListPageUploadedPictures.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // pictureBoxLogin
-            // 
-            this.pictureBoxLogin.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_PNG_Clipart;
-            this.pictureBoxLogin.Location = new System.Drawing.Point(-12, 4);
-            this.pictureBoxLogin.Name = "pictureBoxLogin";
-            this.pictureBoxLogin.Size = new System.Drawing.Size(187, 107);
-            this.pictureBoxLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxLogin.TabIndex = 61;
-            this.pictureBoxLogin.TabStop = false;
-            // 
-            // pictureBoxProfile
-            // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(12, 7);
-            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(144, 125);
-            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxProfile.TabIndex = 53;
-            this.pictureBoxProfile.TabStop = false;
-            // 
-            // buttonPrevTeam
-            // 
-            this.buttonPrevTeam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.buttonPrevTeam.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonPrevTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPrevTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonPrevTeam.ForeColor = System.Drawing.Color.White;
-            this.buttonPrevTeam.Location = new System.Drawing.Point(16, 448);
-            this.buttonPrevTeam.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonPrevTeam.Name = "buttonPrevTeam";
-            this.buttonPrevTeam.Size = new System.Drawing.Size(30, 30);
-            this.buttonPrevTeam.TabIndex = 64;
-            this.buttonPrevTeam.Text = "<";
-            this.buttonPrevTeam.UseVisualStyleBackColor = false;
-            this.buttonPrevTeam.Click += new System.EventHandler(this.buttonPrevTeam_Click);
+            this.labelTeamName.AutoSize = true;
+            this.labelTeamName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTeamName.Location = new System.Drawing.Point(212, 63);
+            this.labelTeamName.MaximumSize = new System.Drawing.Size(550, 50);
+            this.labelTeamName.Name = "labelTeamName";
+            this.labelTeamName.Size = new System.Drawing.Size(122, 25);
+            this.labelTeamName.TabIndex = 67;
+            this.labelTeamName.Text = "TeamName";
+            this.labelTeamName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonNextTeam
             // 
@@ -563,24 +532,71 @@
             this.buttonNextTeam.UseVisualStyleBackColor = false;
             this.buttonNextTeam.Click += new System.EventHandler(this.buttonNextTeam_Click);
             // 
-            // labelTeamName
+            // buttonPrevTeam
             // 
-            this.labelTeamName.AutoSize = true;
-            this.labelTeamName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTeamName.Location = new System.Drawing.Point(425, 37);
-            this.labelTeamName.Name = "labelTeamName";
-            this.labelTeamName.Size = new System.Drawing.Size(122, 25);
-            this.labelTeamName.TabIndex = 67;
-            this.labelTeamName.Text = "TeamName";
+            this.buttonPrevTeam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.buttonPrevTeam.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonPrevTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrevTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonPrevTeam.ForeColor = System.Drawing.Color.White;
+            this.buttonPrevTeam.Location = new System.Drawing.Point(16, 448);
+            this.buttonPrevTeam.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPrevTeam.Name = "buttonPrevTeam";
+            this.buttonPrevTeam.Size = new System.Drawing.Size(30, 30);
+            this.buttonPrevTeam.TabIndex = 64;
+            this.buttonPrevTeam.Text = "<";
+            this.buttonPrevTeam.UseVisualStyleBackColor = false;
+            this.buttonPrevTeam.Click += new System.EventHandler(this.buttonPrevTeam_Click);
             // 
-            // pictureBoxTeam
+            // checkBoxRememberMe
             // 
-            this.pictureBoxTeam.Location = new System.Drawing.Point(373, 85);
-            this.pictureBoxTeam.Name = "pictureBoxTeam";
-            this.pictureBoxTeam.Size = new System.Drawing.Size(187, 196);
-            this.pictureBoxTeam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxTeam.TabIndex = 68;
-            this.pictureBoxTeam.TabStop = false;
+            this.checkBoxRememberMe.AutoSize = true;
+            this.checkBoxRememberMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.checkBoxRememberMe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.checkBoxRememberMe.Location = new System.Drawing.Point(23, 193);
+            this.checkBoxRememberMe.Name = "checkBoxRememberMe";
+            this.checkBoxRememberMe.Size = new System.Drawing.Size(119, 21);
+            this.checkBoxRememberMe.TabIndex = 60;
+            this.checkBoxRememberMe.Text = "Remember Me";
+            this.checkBoxRememberMe.UseVisualStyleBackColor = true;
+            // 
+            // imageListPageUploadedPictures
+            // 
+            this.imageListPageUploadedPictures.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPageUploadedPictures.ImageStream")));
+            this.imageListPageUploadedPictures.TransparentColor = System.Drawing.Color.DimGray;
+            this.imageListPageUploadedPictures.Images.SetKeyName(0, "39446caa52f53369b92bc97253d2b2f1.png");
+            // 
+            // pictureBoxLogin
+            // 
+            this.pictureBoxLogin.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_PNG_Clipart;
+            this.pictureBoxLogin.Location = new System.Drawing.Point(8, 32);
+            this.pictureBoxLogin.Name = "pictureBoxLogin";
+            this.pictureBoxLogin.Size = new System.Drawing.Size(153, 82);
+            this.pictureBoxLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxLogin.TabIndex = 61;
+            this.pictureBoxLogin.TabStop = false;
+            // 
+            // pictureBoxProfile
+            // 
+            this.pictureBoxProfile.Location = new System.Drawing.Point(16, 7);
+            this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxProfile.Name = "pictureBoxProfile";
+            this.pictureBoxProfile.Size = new System.Drawing.Size(135, 135);
+            this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxProfile.TabIndex = 53;
+            this.pictureBoxProfile.TabStop = false;
+            // 
+            // labelInsperetionalQuote
+            // 
+            this.labelInsperetionalQuote.AutoSize = true;
+            this.labelInsperetionalQuote.Location = new System.Drawing.Point(9, 228);
+            this.labelInsperetionalQuote.MaximumSize = new System.Drawing.Size(144, 500);
+            this.labelInsperetionalQuote.Name = "labelInsperetionalQuote";
+            this.labelInsperetionalQuote.Size = new System.Drawing.Size(42, 13);
+            this.labelInsperetionalQuote.TabIndex = 62;
+            this.labelInsperetionalQuote.Text = "*quote*";
+            this.labelInsperetionalQuote.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.labelInsperetionalQuote.Visible = false;
             // 
             // tabPageAlbums
             // 
@@ -695,6 +711,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(754, 531);
+            this.Controls.Add(this.labelInsperetionalQuote);
             this.Controls.Add(this.pictureBoxLogin);
             this.Controls.Add(this.checkBoxRememberMe);
             this.Controls.Add(this.tabControl);
@@ -792,6 +809,7 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label labelInsperetionalQuote;
     }
 }
 

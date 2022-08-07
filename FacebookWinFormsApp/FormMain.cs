@@ -5,9 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
+using Newtonsoft.Json;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
+using FacebookApplicationLogic;
 
 namespace BasicFacebookFeatures
 {
@@ -16,10 +19,12 @@ namespace BasicFacebookFeatures
         private string m_AccessToken;
         public User LoggedInUser { get; set; } = null;
         public LoginResult LoginResult { get; set; }
-        public int PostsIndex { get; set; } = 37;
         public int GroupsIndex { get; set; } = 0;
         public int TeamsIndex { get; set; } = 0;
         public int PageIndex { get; set; } = 0;
+        public int PostsIndex { get; set; } = 37;
+        private QuotesLoader m_quotesLoader;
+        private InfoLogic m_infoLogic;
         public AppSettings LoggedInUserAppSettings { get; set; }
 
 
@@ -30,6 +35,8 @@ namespace BasicFacebookFeatures
             Size = new Size(30, 150);
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             LoggedInUserAppSettings = new AppSettings();
+            m_quotesLoader = new QuotesLoader();
+            m_infoLogic = new InfoLogic();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -46,7 +53,9 @@ namespace BasicFacebookFeatures
                     "groups_access_member_info",
                     "user_posts",
                     "user_photos",
-                    "user_likes"
+                    "user_likes",
+                    "pages_read_user_content",
+                    "pages_read_engagement"
                     /// add any relevant permissions
                     );
             pictureBoxLogin.Visible = false;
@@ -66,10 +75,12 @@ namespace BasicFacebookFeatures
                 {
                     LoggedInUserAppSettings.RememberMe = true;
                 }
+                Size = new Size(770, 570);
                 tabControl.Visible = true;
                 buttonLogout.Visible = true;
                 checkBoxRememberMe.Visible = false;
-                Size = new Size(770, 570);
+                labelInsperetionalQuote.Visible = true;
+                labelInsperetionalQuote.Text = m_quotesLoader.getRandomQuote();
             }
             else
             {
@@ -90,27 +101,12 @@ namespace BasicFacebookFeatures
 
         private void updatePost()
         {
-            string postMassege = string.Empty;
-            Post originalPost = LoggedInUser.Posts[PostsIndex];
-            if (originalPost.Message != null)
-            {
-                postMassege = originalPost.Message;
-            }
-            else if (originalPost.Caption != null)
-            {
-                postMassege = originalPost.Caption;
-            }
-
-            if (originalPost.Type == Post.eType.photo)
-            {
-                pictureBoxPostImg.LoadAsync(originalPost.PictureURL);
-            }
-            else
-            {
-                pictureBoxPostImg.Image = null;
-            }
-            labelPosts.Text = postMassege;
-            labelPostComments.Text = string.Format("({0}) Comments", originalPost.Comments.Count);
+            string postText, imgURL;
+            Post post = LoggedInUser.Posts[PostsIndex];
+            m_infoLogic.GetPostTextAndPicture(post, out postText, out imgURL);
+            labelPosts.Text = postText;
+            labelPostComments.Text = string.Format("({0}) Comments", post.Comments.Count);
+            pictureBoxPostImg.LoadAsync(imgURL);
             //labelLikes.Text = string.Format("({0}) Likes", originalPost.LikedBy.Count);
         }
 
@@ -162,21 +158,25 @@ namespace BasicFacebookFeatures
             //pictureBoxPageCover.LoadAsync(page.Cover.SourceURL);
             labelPageName.Text = page.Name;
             labelPageCategory.Text = page.Category;
+            labelPageLikes.Text = string.Format("({0}) Likes", page.LikesCount);
             /*
+            
+            DOESN"T WORK :(
+              
             foreach (Photo picture in page.Pictures)
             {
                 imageListPageUploadedPictures.Images.Add(picture.ImageNormal);
             }
-            */
-
-/*            foreach (Album album in page.Albums)
+            
+            foreach (Album album in page.Albums)
             {
 
                 foreach (Photo picture in album.Photos)
                 {
                     imageListPageUploadedPictures.Images.Add(picture.ImageNormal);
                 }
-            }*/
+            }
+            */
         }
 
         private void buttonPrevPage_Click(object sender, EventArgs e)

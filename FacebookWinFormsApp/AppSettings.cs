@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 using System.Xml.Serialization;
+using System.IO;
 using System.Drawing;
 
 namespace BasicFacebookFeatures
@@ -26,7 +26,7 @@ namespace BasicFacebookFeatures
 
         public void SaveToFile()
         {
-            using (Stream stream = new FileStream(@"C:\Users\amit\Documents\C#\Desing_Patterns\C22 Ex01 Shachar 318974557 Amit 318659745\AppSettings.xml",
+            using (Stream stream = new FileStream(@"C:\Users\amit\Documents\C#\Desing_Patterns\C22 Ex01 Shachar 318974557 Amit 318659745\Quotes.json",
                 FileMode.Truncate))
             {
                 XmlSerializer serializer = new XmlSerializer(GetType());
