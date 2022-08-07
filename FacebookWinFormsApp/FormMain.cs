@@ -353,5 +353,12 @@ namespace BasicFacebookFeatures
         {
             pictureBoxAlbum.Image = LoggedInUser.Albums[comboBoxAlbums.SelectedIndex].CoverPhoto.ImageNormal;
         }
+
+        private void buttonWikiSerach_Click(object sender, EventArgs e)
+        {
+            string artistName = "Lady_Gaga";
+            FormArtistWiki currentArtists = new FormArtistWiki(artistName);
+            currentArtists.ShowDialog();
+        }
     }
 }

@@ -93,6 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="FormArtistWiki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormArtistWiki.Designer.cs">
+      <DependentUpon>FormArtistWiki.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLikes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormArtistWiki.resx">
+      <DependentUpon>FormArtistWiki.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLikes.resx">
       <DependentUpon>FormLikes.cs</DependentUpon>
     </EmbeddedResource>
