@@ -25,18 +25,67 @@ namespace BasicFacebookFeatures
         public int PostsIndex { get; set; } = 37;
         private QuotesLoader m_quotesLoader;
         private InfoLogic m_infoLogic;
-        public AppSettings LoggedInUserAppSettings { get; set; }
+        public AppSettings m_AppSettings;
 
 
         public FormMain()
         {
             InitializeComponent();
-            //Shown += new Eve
-            Size = new Size(30, 150);
+            
+            Size = new Size(180, 280);
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
-            LoggedInUserAppSettings = new AppSettings();
+            //
+            m_AppSettings = AppSettings.LoadFromXmlFile();
+
+            if (m_AppSettings.RememberMe)
+            {
+                this.StartPosition = FormStartPosition.Manual;
+                this.Size = m_AppSettings.WindowSize;
+                this.Location = m_AppSettings.WindowLocation;
+                this.checkBoxRememberMe.Checked = m_AppSettings.RememberMe;
+            
+            }
+            else
+            {
+                switchToLoginMode();
+            }
+            
+
+            //
             m_quotesLoader = new QuotesLoader();
             m_infoLogic = new InfoLogic();
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+
+            if (m_AppSettings.RememberMe && !string.IsNullOrEmpty(m_AppSettings.AccessToken))
+            {
+                LoginResult = FacebookService.Connect(m_AppSettings.AccessToken);
+                InitInfoAfterLogin();
+                pictureBoxLogin.Visible = false;
+            }
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            m_AppSettings.WindowSize = Size;
+            m_AppSettings.WindowLocation = Location;
+            //m_AppSettings.RememberMe = this.checkBoxRememberMe.Checked;
+
+            if (m_AppSettings.RememberMe)
+            {
+                m_AppSettings.AccessToken = m_AccessToken;
+            }
+            else
+            {
+                m_AppSettings.AccessToken = string.Empty;
+            }
+
+            m_AppSettings.SaveToXmlFile();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -53,9 +102,7 @@ namespace BasicFacebookFeatures
                     "groups_access_member_info",
                     "user_posts",
                     "user_photos",
-                    "user_likes",
-                    "pages_read_user_content",
-                    "pages_read_engagement"
+                    "user_likes"
                     /// add any relevant permissions
                     );
             pictureBoxLogin.Visible = false;
@@ -69,11 +116,12 @@ namespace BasicFacebookFeatures
                 LoggedInUser = LoginResult.LoggedInUser;
                 m_AccessToken = LoginResult.AccessToken;
                 fetchUserInfo();
-                buttonLogin.Text = string.Format("{0} {1}", LoggedInUser.Name, LoggedInUser.LastName);
-                buttonLogin.Enabled = false;
+                labelUserName.Text = string.Format("{0} {1}", LoggedInUser.Name, LoggedInUser.LastName);
+                labelUserName.Visible = true;
+                buttonLogin.Visible = false;
                 if (checkBoxRememberMe.Checked == true)
                 {
-                    LoggedInUserAppSettings.RememberMe = true;
+                    m_AppSettings.RememberMe = true;
                 }
                 Size = new Size(770, 570);
                 tabControl.Visible = true;
@@ -106,16 +154,40 @@ namespace BasicFacebookFeatures
             m_infoLogic.GetPostTextAndPicture(post, out postText, out imgURL);
             labelPosts.Text = postText;
             labelPostComments.Text = string.Format("({0}) Comments", post.Comments.Count);
-            pictureBoxPostImg.LoadAsync(imgURL);
+            if (imgURL != "")
+            {
+                pictureBoxPostImg.LoadAsync(imgURL);
+            }
+            else
+            {
+                pictureBoxPostImg.Image = null;
+            }
             //labelLikes.Text = string.Format("({0}) Likes", originalPost.LikedBy.Count);
         }
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-            FacebookService.LogoutWithUI();
+            //FacebookService.LogoutWithUI();
             pictureBoxProfile.Image = null;
             buttonLogin.Text = "Login";
             LoginResult = null;
+            switchToLoginMode();
+            m_AppSettings.RememberMe = false;
+            m_AppSettings.AccessToken = string.Empty;
+            m_AppSettings.SaveToXmlFile();
+        }
+
+        private void switchToLoginMode()
+        {
+            this.Size = new Size(180, 280);
+            this.pictureBoxLogin.Visible = false;
+            this.pictureBoxLogin.Visible = true;
+            this.buttonLogin.Visible = true;
+            this.labelUserName.Visible = false;
+            this.buttonLogout.Visible = false;
+            this.labelInsperetionalQuote.Visible = false;
+            this.checkBoxRememberMe.Visible = true;
+            this.checkBoxRememberMe.Checked = false;
         }
 
         private void buttonNextPost_Click(object sender, EventArgs e)
@@ -147,7 +219,7 @@ namespace BasicFacebookFeatures
         private void mainForm_Shown(object sender, EventArgs e)
         {
 
-            LoginResult = FacebookService.Connect(LoggedInUserAppSettings.AccessToken);
+            LoginResult = FacebookService.Connect(m_AppSettings.AccessToken);
             InitInfoAfterLogin();
         }
 
@@ -197,29 +269,6 @@ namespace BasicFacebookFeatures
                 PageIndex = LoggedInUser.LikedPages.Count - 1;
             }
             updatePage();
-        }
-
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            base.OnFormClosing(e);
-
-            LoggedInUserAppSettings.WindowSize = Size;
-            LoggedInUserAppSettings.WindowLocation = Location;
-            LoggedInUserAppSettings.AccessToken = m_AccessToken;
-
-            LoggedInUserAppSettings.SaveToFile();
-        }
-
-        protected override void OnShown(EventArgs e)
-        {
-            base.OnShown(e);
-
-            if (LoggedInUserAppSettings.RememberMe && !string.IsNullOrEmpty(LoggedInUserAppSettings.AccessToken))
-            {
-                LoginResult = FacebookService.Connect(LoggedInUserAppSettings.AccessToken);
-                InitInfoAfterLogin();
-            }
-
         }
 
         private void updateGroup()
@@ -275,23 +324,29 @@ namespace BasicFacebookFeatures
 
         private void buttonNextTeam_Click(object sender, EventArgs e)
         {
-            TeamsIndex++;
-            if (TeamsIndex >= LoggedInUser.FavofriteTeams.Length)
+            if (LoggedInUser.FavofriteTeams != null)
             {
-                TeamsIndex = 0;
+                TeamsIndex++;
+                if (TeamsIndex >= LoggedInUser.FavofriteTeams.Length)
+                {
+                    TeamsIndex = 0;
+                }
+                updateGroup();
             }
-            updateGroup();
+
         }
 
         private void buttonPrevTeam_Click(object sender, EventArgs e)
         {
-
-            TeamsIndex--;
-            if (TeamsIndex < 0)
+            if (LoggedInUser.FavofriteTeams != null)
             {
-                TeamsIndex = LoggedInUser.FavofriteTeams.Length - 1;
+                TeamsIndex--;
+                if (TeamsIndex < 0)
+                {
+                    TeamsIndex = LoggedInUser.FavofriteTeams.Length - 1;
+                }
+                updateGroup();
             }
-            updateGroup();
         }
 
         private void comboBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)

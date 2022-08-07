@@ -24,24 +24,28 @@ namespace BasicFacebookFeatures
             RememberMe = false;
         }
 
-        public void SaveToFile()
+        public void SaveToXmlFile()
         {
-            using (Stream stream = new FileStream(@"C:\Users\amit\Documents\C#\Desing_Patterns\C22 Ex01 Shachar 318974557 Amit 318659745\Quotes.json",
+            using (Stream stream = new FileStream(@"C:\Users\Shachar Levy\Documents\appsettings.xml",
                 FileMode.Truncate))
             {
-                XmlSerializer serializer = new XmlSerializer(GetType());
+                XmlSerializer serializer = new XmlSerializer(this.GetType());
                 serializer.Serialize(stream, this);
             }
         }
 
-        public void LoadFromFile()
+        public static AppSettings LoadFromXmlFile()
         {
-            using (Stream stream = new FileStream(@"C:\Users\amit\Documents\C#\Desing_Patterns\C22 Ex01 Shachar 318974557 Amit 318659745",
+            AppSettings appSettings = null;
+
+            using (Stream stream = new FileStream(@"C:\Users\Shachar Levy\Documents\appsettings.xml",
                 FileMode.Open))
             {
-                XmlSerializer serializer = new XmlSerializer(GetType());
-                AppSettings appSettings = serializer.Deserialize(stream) as AppSettings;
+                XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
+                appSettings = serializer.Deserialize(stream) as AppSettings;
             }
+
+            return appSettings;
         }
     }
 }
