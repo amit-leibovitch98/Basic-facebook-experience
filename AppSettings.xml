@@ -2,7 +2,7 @@
 <AppSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <WindowSize>
     <Width>770</Width>
-    <Height>570</Height>
+    <Height>565</Height>
   </WindowSize>
   <WindowLocation>
     <X>575</X>

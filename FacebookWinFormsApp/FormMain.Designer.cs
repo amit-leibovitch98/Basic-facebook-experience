@@ -59,7 +59,6 @@
             this.pictureBoxGroup = new System.Windows.Forms.PictureBox();
             this.TabFriends = new System.Windows.Forms.TabPage();
             this.tabPageEvents = new System.Windows.Forms.TabPage();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.comboBoxEvents = new System.Windows.Forms.ComboBox();
             this.labelEvents = new System.Windows.Forms.Label();
             this.pictureBoxEvent = new System.Windows.Forms.PictureBox();
@@ -80,15 +79,6 @@
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.labelInsperetionalQuote = new System.Windows.Forms.Label();
             this.labelUserName = new System.Windows.Forms.Label();
-            this.tabPageArtists = new System.Windows.Forms.TabPage();
-            this.labelArtistsBandsLikes = new System.Windows.Forms.Label();
-            this.buttonArtistsBandsPrev = new System.Windows.Forms.Button();
-            this.buttonArtistsBandsNext = new System.Windows.Forms.Button();
-            this.labelArtistsBandsName = new System.Windows.Forms.Label();
-            this.pictureBoxArtistsBandsLikesIcon = new System.Windows.Forms.PictureBox();
-            this.pictureBoxArtistsBandsPicture = new System.Windows.Forms.PictureBox();
-            this.buttonWikiSerach = new System.Windows.Forms.Button();
-
             this.tabControl.SuspendLayout();
             this.TabWall.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -101,7 +91,6 @@
             this.TabGroups.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).BeginInit();
             this.tabPageEvents.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEvent)).BeginInit();
             this.tabPageTeams.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTeam)).BeginInit();
@@ -110,10 +99,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
-            this.tabPageArtists.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsBandsLikesIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsBandsPicture)).BeginInit();
-            
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -156,7 +141,6 @@
             this.tabControl.Controls.Add(this.tabPageEvents);
             this.tabControl.Controls.Add(this.tabPageTeams);
             this.tabControl.Controls.Add(this.tabPageAlbums);
-            this.tabControl.Controls.Add(this.tabPageArtists);
             this.tabControl.Location = new System.Drawing.Point(163, 4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -499,13 +483,6 @@
             this.tabPageEvents.TabIndex = 4;
             this.tabPageEvents.Text = "Events";
             // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Location = new System.Drawing.Point(197, 107);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(183, 198);
-            this.pictureBox8.TabIndex = 0;
-            this.pictureBox8.TabStop = false;
             // comboBoxEvents
             // 
             this.comboBoxEvents.FormattingEnabled = true;
@@ -730,109 +707,6 @@
             this.labelUserName.Text = "UserName";
             this.labelUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tabPageArtists
-            // 
-            this.tabPageArtists.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.tabPageArtists.Controls.Add(this.buttonWikiSerach);
-            this.tabPageArtists.Controls.Add(this.labelArtistsBandsLikes);
-            this.tabPageArtists.Controls.Add(this.buttonArtistsBandsPrev);
-            this.tabPageArtists.Controls.Add(this.buttonArtistsBandsNext);
-            this.tabPageArtists.Controls.Add(this.labelArtistsBandsName);
-            this.tabPageArtists.Controls.Add(this.pictureBoxArtistsBandsLikesIcon);
-            this.tabPageArtists.Controls.Add(this.pictureBoxArtistsBandsPicture);
-            this.tabPageArtists.Location = new System.Drawing.Point(4, 22);
-            this.tabPageArtists.Name = "tabPageArtists";
-            this.tabPageArtists.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageArtists.Size = new System.Drawing.Size(576, 496);
-            this.tabPageArtists.TabIndex = 7;
-            this.tabPageArtists.Text = "Artists/Bands";
-            // 
-            // labelArtistsBandsLikes
-            // 
-            this.labelArtistsBandsLikes.AutoSize = true;
-            this.labelArtistsBandsLikes.BackColor = System.Drawing.Color.Transparent;
-            this.labelArtistsBandsLikes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.labelArtistsBandsLikes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelArtistsBandsLikes.Location = new System.Drawing.Point(221, 188);
-            this.labelArtistsBandsLikes.Name = "labelArtistsBandsLikes";
-            this.labelArtistsBandsLikes.Size = new System.Drawing.Size(46, 20);
-            this.labelArtistsBandsLikes.TabIndex = 71;
-            this.labelArtistsBandsLikes.Text = "Likes";
-            // 
-            // buttonArtistsBandsPrev
-            // 
-            this.buttonArtistsBandsPrev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.buttonArtistsBandsPrev.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonArtistsBandsPrev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonArtistsBandsPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonArtistsBandsPrev.ForeColor = System.Drawing.Color.White;
-            this.buttonArtistsBandsPrev.Location = new System.Drawing.Point(5, 403);
-            this.buttonArtistsBandsPrev.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonArtistsBandsPrev.Name = "buttonArtistsBandsPrev";
-            this.buttonArtistsBandsPrev.Size = new System.Drawing.Size(30, 30);
-            this.buttonArtistsBandsPrev.TabIndex = 70;
-            this.buttonArtistsBandsPrev.Text = "<";
-            this.buttonArtistsBandsPrev.UseVisualStyleBackColor = false;
-            // 
-            // buttonArtistsBandsNext
-            // 
-            this.buttonArtistsBandsNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.buttonArtistsBandsNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonArtistsBandsNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonArtistsBandsNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonArtistsBandsNext.ForeColor = System.Drawing.Color.White;
-            this.buttonArtistsBandsNext.Location = new System.Drawing.Point(542, 403);
-            this.buttonArtistsBandsNext.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonArtistsBandsNext.Name = "buttonArtistsBandsNext";
-            this.buttonArtistsBandsNext.Size = new System.Drawing.Size(30, 30);
-            this.buttonArtistsBandsNext.TabIndex = 69;
-            this.buttonArtistsBandsNext.Text = ">";
-            this.buttonArtistsBandsNext.UseVisualStyleBackColor = false;
-            // 
-            // labelArtistsBandsName
-            // 
-            this.labelArtistsBandsName.AutoSize = true;
-            this.labelArtistsBandsName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.labelArtistsBandsName.Location = new System.Drawing.Point(189, 148);
-            this.labelArtistsBandsName.Name = "labelArtistsBandsName";
-            this.labelArtistsBandsName.Size = new System.Drawing.Size(141, 29);
-            this.labelArtistsBandsName.TabIndex = 67;
-            this.labelArtistsBandsName.Text = "Page Name";
-            // 
-            // pictureBoxArtistsBandsLikesIcon
-            // 
-            this.pictureBoxArtistsBandsLikesIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxArtistsBandsLikesIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxArtistsBandsLikesIcon.Image")));
-            this.pictureBoxArtistsBandsLikesIcon.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxArtistsBandsLikesIcon.InitialImage")));
-            this.pictureBoxArtistsBandsLikesIcon.Location = new System.Drawing.Point(193, 185);
-            this.pictureBoxArtistsBandsLikesIcon.Name = "pictureBoxArtistsBandsLikesIcon";
-            this.pictureBoxArtistsBandsLikesIcon.Size = new System.Drawing.Size(27, 27);
-            this.pictureBoxArtistsBandsLikesIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxArtistsBandsLikesIcon.TabIndex = 72;
-            this.pictureBoxArtistsBandsLikesIcon.TabStop = false;
-            // 
-            // pictureBoxArtistsBandsPicture
-            // 
-            this.pictureBoxArtistsBandsPicture.Location = new System.Drawing.Point(33, 64);
-            this.pictureBoxArtistsBandsPicture.Name = "pictureBoxArtistsBandsPicture";
-            this.pictureBoxArtistsBandsPicture.Size = new System.Drawing.Size(150, 150);
-            this.pictureBoxArtistsBandsPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxArtistsBandsPicture.TabIndex = 68;
-            this.pictureBoxArtistsBandsPicture.TabStop = false;
-            // 
-            // buttonWikiSerach
-            // 
-            this.buttonWikiSerach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(106)))), ((int)(((byte)(178)))));
-            this.buttonWikiSerach.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.buttonWikiSerach.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonWikiSerach.Location = new System.Drawing.Point(255, 291);
-            this.buttonWikiSerach.Name = "buttonWikiSerach";
-            this.buttonWikiSerach.Size = new System.Drawing.Size(134, 118);
-            this.buttonWikiSerach.TabIndex = 73;
-            this.buttonWikiSerach.Text = "Search Me On Wikipedia!";
-            this.buttonWikiSerach.UseVisualStyleBackColor = false;
-            this.buttonWikiSerach.Click += new System.EventHandler(this.buttonWikiSerach_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -870,8 +744,6 @@
             this.TabGroups.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).EndInit();
             this.tabPageEvents.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-=======
             this.tabPageEvents.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEvent)).EndInit();
             this.tabPageTeams.ResumeLayout(false);
@@ -883,11 +755,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
-            this.tabPageArtists.ResumeLayout(false);
-            this.tabPageArtists.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsBandsLikesIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsBandsPicture)).EndInit();
-=======
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -941,15 +808,6 @@
         private System.Windows.Forms.ComboBox comboBoxAlbums;
         private System.Windows.Forms.Label labelInsperetionalQuote;
         private System.Windows.Forms.Label labelUserName;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.TabPage tabPageArtists;
-        private System.Windows.Forms.Button buttonWikiSerach;
-        private System.Windows.Forms.Label labelArtistsBandsLikes;
-        private System.Windows.Forms.Button buttonArtistsBandsPrev;
-        private System.Windows.Forms.Button buttonArtistsBandsNext;
-        private System.Windows.Forms.Label labelArtistsBandsName;
-        private System.Windows.Forms.PictureBox pictureBoxArtistsBandsLikesIcon;
-        private System.Windows.Forms.PictureBox pictureBoxArtistsBandsPicture;
         private System.Windows.Forms.PictureBox pictureBoxEvent;
         private System.Windows.Forms.ComboBox comboBoxEvents;
         private System.Windows.Forms.Label labelEvents;
