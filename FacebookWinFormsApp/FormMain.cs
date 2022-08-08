@@ -22,8 +22,7 @@ namespace BasicFacebookFeatures
         public int GroupsIndex { get; set; } = 0;
         public int TeamsIndex { get; set; } = 0;
         public int PageIndex { get; set; } = 0;
-        public int PostsIndex { get; set; } = 37;
-
+        public int PostsIndex { get; set; } = 0;
         public int AlbumIndex { get; set; } = 0;
         private QuotesLoader m_quotesLoader;
         private InfoLogic m_infoLogic;
@@ -145,7 +144,7 @@ namespace BasicFacebookFeatures
             fetchPage();
             fetchFavoriteTeams();
             fetchEvents();
-            AlbumsInit();
+            fetchAlbums();
         }
 
         private void fetchPost()
@@ -314,7 +313,7 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void AlbumsInit()
+        private void fetchAlbums()
         {
             foreach(Album album in LoggedInUser.Albums)
             {
@@ -372,6 +371,7 @@ namespace BasicFacebookFeatures
         private void comboBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
         {
             pictureBoxAlbum.Image = LoggedInUser.Albums[comboBoxAlbums.SelectedIndex].CoverPhoto.ImageNormal;
+            AlbumIndex = 0;
         }
 
         private void comboBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
@@ -381,7 +381,7 @@ namespace BasicFacebookFeatures
 
         private void pictureBoxAlbum_Click(object sender, EventArgs e)
         {
-
+           
         }
     }
 }
