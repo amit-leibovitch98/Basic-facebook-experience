@@ -24,22 +24,38 @@ namespace BasicFacebookFeatures
             RememberMe = false;
         }
 
-        public void SaveToXmlFile()
+        public void SaveToXmlFile(string filePath)
         {
-            using (Stream stream = new FileStream(@"C:\Users\amit\Documents\C#\Desing_Patterns\C22 Ex01 Shachar 318974557 Amit 318659745\appsettings.xml",
-                FileMode.Truncate))
+            /*using (Stream stream = new FileStream(@"C:\Users\amit\Documents\C#\Desing_Patterns\C22 Ex01 Shachar 318974557 Amit 318659745\appsettings.xml",
+                FileMode.Truncate))*/
+            //shachar
+            FileMode fileMode;
+            if (File.Exists(filePath))
+            {
+                fileMode = FileMode.Truncate;
+            }
+            else
+            {
+                fileMode = FileMode.CreateNew;
+            }
+            
+            using (Stream stream = new FileStream(filePath, fileMode))
+            //
             {
                 XmlSerializer serializer = new XmlSerializer(this.GetType());
                 serializer.Serialize(stream, this);
             }
         }
 
-        public static AppSettings LoadFromXmlFile()
+        public static AppSettings LoadFromXmlFile(string filePath)
         {
             AppSettings appSettings = null;
 
-            using (Stream stream = new FileStream(@"C:\Users\amit\Documents\C#\Desing_Patterns\C22 Ex01 Shachar 318974557 Amit 318659745\appsettings.xml",
-                FileMode.Open))
+            /* using (Stream stream = new FileStream(@"C:\Users\amit\Documents\C#\Desing_Patterns\C22 Ex01 Shachar 318974557 Amit 318659745\appsettings.xml",
+                 FileMode.Open))*/
+            //shachar
+            using (Stream stream = new FileStream(filePath, FileMode.Open))
+            //
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
                 appSettings = serializer.Deserialize(stream) as AppSettings;

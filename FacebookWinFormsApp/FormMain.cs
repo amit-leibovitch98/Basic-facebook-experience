@@ -30,6 +30,7 @@ namespace BasicFacebookFeatures
         private QuotesLoader m_quotesLoader;
         private InfoLogic m_infoLogic;
         private List<Page> m_artistsList;
+        private string m_FilePath;
 
 
         public FormMain()
@@ -38,8 +39,19 @@ namespace BasicFacebookFeatures
             
             Size = new Size(180, 280);
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
-            //
-            m_AppSettings = AppSettings.LoadFromXmlFile();
+            //shachar
+            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string file = Path.Combine(currentDirectory, @"AppSettings.xml");
+            m_FilePath = Path.GetFullPath(file);
+
+            if (File.Exists(m_FilePath) && File.ReadAllText(m_FilePath) != "")
+            {
+                m_AppSettings = AppSettings.LoadFromXmlFile(m_FilePath);
+            }
+            else
+            {
+                m_AppSettings = new AppSettings();
+            }
 
             if (m_AppSettings.RememberMe)
             {
@@ -87,7 +99,7 @@ namespace BasicFacebookFeatures
                 m_AppSettings.AccessToken = string.Empty;
             }
 
-            m_AppSettings.SaveToXmlFile();
+            m_AppSettings.SaveToXmlFile(m_FilePath);
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -131,7 +143,7 @@ namespace BasicFacebookFeatures
                 checkBoxRememberMe.Visible = false;
                 labelInsperetionalQuote.Visible = true;
                 labelInsperetionalQuote.Text = m_quotesLoader.getRandomQuote();
-                m_artistsList = m_infoLogic.GetArtistsList(LoggedInUser.LikedPages.ToList());
+                //m_artistsList = m_infoLogic.GetArtistsList(LoggedInUser.LikedPages.ToList());
             }
             else
             {
@@ -178,7 +190,7 @@ namespace BasicFacebookFeatures
             switchToLoginMode();
             m_AppSettings.RememberMe = false;
             m_AppSettings.AccessToken = string.Empty;
-            m_AppSettings.SaveToXmlFile();
+            m_AppSettings.SaveToXmlFile(m_FilePath);
         }
 
         private void switchToLoginMode()
