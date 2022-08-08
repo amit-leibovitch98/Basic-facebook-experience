@@ -20,13 +20,16 @@ namespace BasicFacebookFeatures
         public User LoggedInUser { get; set; } = null;
         public LoginResult LoginResult { get; set; }
         public int GroupsIndex { get; set; } = 0;
+        public int LikedArtistsIndex { get; set; } = 0;
+
         public int TeamsIndex { get; set; } = 0;
         public int PageIndex { get; set; } = 0;
         public int PostsIndex { get; set; } = 0;
         public int AlbumIndex { get; set; } = 0;
+        public AppSettings m_AppSettings;
         private QuotesLoader m_quotesLoader;
         private InfoLogic m_infoLogic;
-        public AppSettings m_AppSettings;
+        private List<Page> m_artistsList;
 
 
         public FormMain()
@@ -128,6 +131,7 @@ namespace BasicFacebookFeatures
                 checkBoxRememberMe.Visible = false;
                 labelInsperetionalQuote.Visible = true;
                 labelInsperetionalQuote.Text = m_quotesLoader.getRandomQuote();
+                m_artistsList = m_infoLogic.GetArtistsList(LoggedInUser.LikedPages.ToList());
             }
             else
             {
@@ -382,6 +386,43 @@ namespace BasicFacebookFeatures
         private void pictureBoxAlbum_Click(object sender, EventArgs e)
         {
            
+        }
+
+        private void buttonSerarchMeOnWiki_Click(object sender, EventArgs e)
+        {
+            string artistsName = m_artistsList[LikedArtistsIndex].Name;
+            if(artistsName.Contains(" "))
+            {
+                artistsName.Replace(" ", "_");
+            }
+            FormWikiBrowser wiki = new FormWikiBrowser(artistsName);
+            wiki.ShowDialog();
+        }
+
+        private void buttonArtistsPrev_Click(object sender, EventArgs e)
+        {
+            if (m_artistsList != null)
+            {
+                LikedArtistsIndex--;
+                if (LikedArtistsIndex < 0)
+                {
+                    LikedArtistsIndex = m_artistsList.Count - 1;
+                }
+                fetchGroup();
+            }
+        }
+
+        private void buttonArtistsNext_Click(object sender, EventArgs e)
+        {
+        if (m_artistsList != null)
+            {
+                LikedArtistsIndex++;
+                if (LikedArtistsIndex >= m_artistsList.Count)
+                {
+                    LikedArtistsIndex = 0;
+                }
+                fetchGroup();
+            }
         }
     }
 }

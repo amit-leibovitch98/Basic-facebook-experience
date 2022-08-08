@@ -79,6 +79,14 @@
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.labelInsperetionalQuote = new System.Windows.Forms.Label();
             this.labelUserName = new System.Windows.Forms.Label();
+            this.tabPageArtists = new System.Windows.Forms.TabPage();
+            this.labelArtistsLikes = new System.Windows.Forms.Label();
+            this.buttonArtistsPrev = new System.Windows.Forms.Button();
+            this.buttonArtistsNext = new System.Windows.Forms.Button();
+            this.labelArtistsName = new System.Windows.Forms.Label();
+            this.pictureBoxArtistsLikesIcon = new System.Windows.Forms.PictureBox();
+            this.pictureBoxArtistsPicture = new System.Windows.Forms.PictureBox();
+            this.buttonSerarchMeOnWiki = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.TabWall.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -99,6 +107,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            this.tabPageArtists.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsLikesIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -141,6 +152,7 @@
             this.tabControl.Controls.Add(this.tabPageEvents);
             this.tabControl.Controls.Add(this.tabPageTeams);
             this.tabControl.Controls.Add(this.tabPageAlbums);
+            this.tabControl.Controls.Add(this.tabPageArtists);
             this.tabControl.Location = new System.Drawing.Point(163, 4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -707,6 +719,111 @@
             this.labelUserName.Text = "UserName";
             this.labelUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tabPageArtists
+            // 
+            this.tabPageArtists.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.tabPageArtists.Controls.Add(this.buttonSerarchMeOnWiki);
+            this.tabPageArtists.Controls.Add(this.labelArtistsLikes);
+            this.tabPageArtists.Controls.Add(this.buttonArtistsPrev);
+            this.tabPageArtists.Controls.Add(this.buttonArtistsNext);
+            this.tabPageArtists.Controls.Add(this.labelArtistsName);
+            this.tabPageArtists.Controls.Add(this.pictureBoxArtistsLikesIcon);
+            this.tabPageArtists.Controls.Add(this.pictureBoxArtistsPicture);
+            this.tabPageArtists.Location = new System.Drawing.Point(4, 22);
+            this.tabPageArtists.Name = "tabPageArtists";
+            this.tabPageArtists.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageArtists.Size = new System.Drawing.Size(576, 496);
+            this.tabPageArtists.TabIndex = 7;
+            this.tabPageArtists.Text = "Artists";
+            // 
+            // labelArtistsLikes
+            // 
+            this.labelArtistsLikes.AutoSize = true;
+            this.labelArtistsLikes.BackColor = System.Drawing.Color.Transparent;
+            this.labelArtistsLikes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labelArtistsLikes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelArtistsLikes.Location = new System.Drawing.Point(221, 188);
+            this.labelArtistsLikes.Name = "labelArtistsLikes";
+            this.labelArtistsLikes.Size = new System.Drawing.Size(46, 20);
+            this.labelArtistsLikes.TabIndex = 71;
+            this.labelArtistsLikes.Text = "Likes";
+            // 
+            // buttonArtistsPrev
+            // 
+            this.buttonArtistsPrev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.buttonArtistsPrev.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonArtistsPrev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonArtistsPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonArtistsPrev.ForeColor = System.Drawing.Color.White;
+            this.buttonArtistsPrev.Location = new System.Drawing.Point(5, 403);
+            this.buttonArtistsPrev.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonArtistsPrev.Name = "buttonArtistsPrev";
+            this.buttonArtistsPrev.Size = new System.Drawing.Size(30, 30);
+            this.buttonArtistsPrev.TabIndex = 70;
+            this.buttonArtistsPrev.Text = "<";
+            this.buttonArtistsPrev.UseVisualStyleBackColor = false;
+            this.buttonArtistsPrev.Click += new System.EventHandler(this.buttonArtistsPrev_Click);
+            // 
+            // buttonArtistsNext
+            // 
+            this.buttonArtistsNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.buttonArtistsNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonArtistsNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonArtistsNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonArtistsNext.ForeColor = System.Drawing.Color.White;
+            this.buttonArtistsNext.Location = new System.Drawing.Point(542, 403);
+            this.buttonArtistsNext.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonArtistsNext.Name = "buttonArtistsNext";
+            this.buttonArtistsNext.Size = new System.Drawing.Size(30, 30);
+            this.buttonArtistsNext.TabIndex = 69;
+            this.buttonArtistsNext.Text = ">";
+            this.buttonArtistsNext.UseVisualStyleBackColor = false;
+            this.buttonArtistsNext.Click += new System.EventHandler(this.buttonArtistsNext_Click);
+            // 
+            // labelArtistsName
+            // 
+            this.labelArtistsName.AutoSize = true;
+            this.labelArtistsName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.labelArtistsName.Location = new System.Drawing.Point(189, 148);
+            this.labelArtistsName.Name = "labelArtistsName";
+            this.labelArtistsName.Size = new System.Drawing.Size(141, 29);
+            this.labelArtistsName.TabIndex = 67;
+            this.labelArtistsName.Text = "Page Name";
+            // 
+            // pictureBoxArtistsLikesIcon
+            // 
+            this.pictureBoxArtistsLikesIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxArtistsLikesIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxArtistsLikesIcon.Image")));
+            this.pictureBoxArtistsLikesIcon.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxArtistsLikesIcon.InitialImage")));
+            this.pictureBoxArtistsLikesIcon.Location = new System.Drawing.Point(193, 185);
+            this.pictureBoxArtistsLikesIcon.Name = "pictureBoxArtistsLikesIcon";
+            this.pictureBoxArtistsLikesIcon.Size = new System.Drawing.Size(27, 27);
+            this.pictureBoxArtistsLikesIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxArtistsLikesIcon.TabIndex = 72;
+            this.pictureBoxArtistsLikesIcon.TabStop = false;
+            // 
+            // pictureBoxArtistsPicture
+            // 
+            this.pictureBoxArtistsPicture.Location = new System.Drawing.Point(33, 64);
+            this.pictureBoxArtistsPicture.Name = "pictureBoxArtistsPicture";
+            this.pictureBoxArtistsPicture.Size = new System.Drawing.Size(150, 150);
+            this.pictureBoxArtistsPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxArtistsPicture.TabIndex = 68;
+            this.pictureBoxArtistsPicture.TabStop = false;
+            // 
+            // buttonSerarchMeOnWiki
+            // 
+            this.buttonSerarchMeOnWiki.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.buttonSerarchMeOnWiki.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.buttonSerarchMeOnWiki.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonSerarchMeOnWiki.Location = new System.Drawing.Point(127, 284);
+            this.buttonSerarchMeOnWiki.Name = "buttonSerarchMeOnWiki";
+            this.buttonSerarchMeOnWiki.Size = new System.Drawing.Size(314, 53);
+            this.buttonSerarchMeOnWiki.TabIndex = 73;
+            this.buttonSerarchMeOnWiki.Text = "Search Me On Wikipedia!";
+            this.buttonSerarchMeOnWiki.UseVisualStyleBackColor = false;
+            this.buttonSerarchMeOnWiki.Click += new System.EventHandler(this.buttonSerarchMeOnWiki_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -755,6 +872,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
+            this.tabPageArtists.ResumeLayout(false);
+            this.tabPageArtists.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsLikesIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -811,6 +932,14 @@
         private System.Windows.Forms.PictureBox pictureBoxEvent;
         private System.Windows.Forms.ComboBox comboBoxEvents;
         private System.Windows.Forms.Label labelEvents;
+        private System.Windows.Forms.TabPage tabPageArtists;
+        private System.Windows.Forms.Label labelArtistsLikes;
+        private System.Windows.Forms.Button buttonArtistsPrev;
+        private System.Windows.Forms.Button buttonArtistsNext;
+        private System.Windows.Forms.Label labelArtistsName;
+        private System.Windows.Forms.PictureBox pictureBoxArtistsLikesIcon;
+        private System.Windows.Forms.PictureBox pictureBoxArtistsPicture;
+        private System.Windows.Forms.Button buttonSerarchMeOnWiki;
     }
 }
 
