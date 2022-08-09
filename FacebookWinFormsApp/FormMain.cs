@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.IO;
-using Newtonsoft.Json;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
@@ -16,22 +15,7 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
-        private string m_AccessToken;
-        public User LoggedInUser { get; set; } = null;
-        public LoginResult LoginResult { get; set; }
-        public int GroupsIndex { get; set; } = 0;
-        public int LikedArtistsIndex { get; set; } = 0;
-
-        public int TeamsIndex { get; set; } = 0;
-        public int PageIndex { get; set; } = 0;
-        public int PostsIndex { get; set; } = 0;
-        public int AlbumIndex { get; set; } = 0;
-        public AppSettings m_AppSettings;
-        private QuotesLoader m_quotesLoader;
-        private InfoLogic m_infoLogic;
-        private List<Page> m_artistsList;
-        private string m_FilePath;
-
+        private FacebookLogicService m_facebookLogicService;
 
         public FormMain()
         {
@@ -40,43 +24,29 @@ namespace BasicFacebookFeatures
             Size = new Size(180, 280);
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             //shachar
-            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string file = Path.Combine(currentDirectory, @"AppSettings.xml");
-            m_FilePath = Path.GetFullPath(file);
+            m_facebookLogicService.InitPath();
+            m_facebookLogicService.SetAppSettings();
 
-            if (File.Exists(m_FilePath) && File.ReadAllText(m_FilePath) != "")
-            {
-                m_AppSettings = AppSettings.LoadFromXmlFile(m_FilePath);
-            }
-            else
-            {
-                m_AppSettings = new AppSettings();
-            }
-
-            if (m_AppSettings.RememberMe)
+            if (m_facebookLogicService.AppSettings.RememberMe)
             {
                 this.StartPosition = FormStartPosition.Manual;
-                this.Size = m_AppSettings.WindowSize;
-                this.Location = m_AppSettings.WindowLocation;
-                this.checkBoxRememberMe.Checked = m_AppSettings.RememberMe;
-            
+                this.Size = m_facebookLogicService.AppSettings.WindowSize;
+                this.Location = m_facebookLogicService.AppSettings.WindowLocation;
+                this.checkBoxRememberMe.Checked = m_facebookLogicService.AppSettings.RememberMe;
             }
             else
             {
                 switchToLoginMode();
             }
-            //
-            m_quotesLoader = new QuotesLoader();
-            m_infoLogic = new InfoLogic();
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
 
-            if (m_AppSettings.RememberMe && !string.IsNullOrEmpty(m_AppSettings.AccessToken))
+            if (m_facebookLogicService.AppSettings.RememberMe && !string.IsNullOrEmpty(m_facebookLogicService.AppSettings.AccessToken))
             {
-                LoginResult = FacebookService.Connect(m_AppSettings.AccessToken);
+                m_facebookLogicService.LoginResult = FacebookService.Connect(m_facebookLogicService.AppSettings.AccessToken);
                 InitInfoAfterLogin();
                 pictureBoxLogin.Visible = false;
             }
@@ -86,8 +56,8 @@ namespace BasicFacebookFeatures
         {
             base.OnFormClosing(e);
 
-            m_AppSettings.WindowSize = Size;
-            m_AppSettings.WindowLocation = Location;
+            m_facebookLogicService.AppSettings.WindowSize = Size;
+            m_facebookLogicService.AppSettings.WindowLocation = Location;
             //m_AppSettings.RememberMe = this.checkBoxRememberMe.Checked;
 
             if (m_AppSettings.RememberMe)
@@ -143,7 +113,7 @@ namespace BasicFacebookFeatures
                 checkBoxRememberMe.Visible = false;
                 labelInsperetionalQuote.Visible = true;
                 labelInsperetionalQuote.Text = m_quotesLoader.getRandomQuote();
-                //m_artistsList = m_infoLogic.GetArtistsList(LoggedInUser.LikedPages.ToList());
+                m_artistsList = m_infoLogic.GetArtistsList(LoggedInUser.LikedPages.ToList());
             }
             else
             {
@@ -184,6 +154,7 @@ namespace BasicFacebookFeatures
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             //FacebookService.LogoutWithUI();
+            LoginResult = null;
             pictureBoxProfile.Image = null;
             buttonLogin.Text = "Login";
             LoginResult = null;
@@ -401,10 +372,15 @@ namespace BasicFacebookFeatures
 
         private void buttonSerarchMeOnWiki_Click(object sender, EventArgs e)
         {
-            string artistsName = m_artistsList[LikedArtistsIndex].Name;
-            if(artistsName.Contains(" "))
+            //Original input that doesn't work
+            //string artistsName = m_artistsList[LikedArtistsIndex].Name;
+
+            //Fake input
+            string artistsName = "Lady Gaga";
+
+            if (artistsName.Contains(" "))
             {
-                artistsName.Replace(" ", "_");
+                artistsName = artistsName.Replace(" ", "_");
             }
             FormWikiBrowser wiki = new FormWikiBrowser(artistsName);
             wiki.ShowDialog();

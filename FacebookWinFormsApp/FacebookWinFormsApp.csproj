@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettings.cs" />
+    <Compile Include="FacebookLogicService.cs" />
     <Compile Include="FormLikes.cs">
       <SubType>Form</SubType>
     </Compile>
