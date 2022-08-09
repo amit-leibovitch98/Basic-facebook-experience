@@ -15,7 +15,6 @@ namespace BasicFacebookFeatures
 {
     public class FacebookLogicService
     {
-        private InfoLogic m_logic;
         private QuotesLoader m_quotesLoader;
         private InfoLogic m_infoLogic;
         private List<Page> m_artistsList;
@@ -55,6 +54,21 @@ namespace BasicFacebookFeatures
             }
         }
        
+        public bool LogIn()
+        {
+            LoginResult = FacebookService.Login(
+                "329595859268386",
+                /// requested permissions:
+                "email",
+                "user_friends",
+                "public_profile",
+                "groups_access_member_info",
+                "user_posts",
+                "user_photos",
+                "user_likes"
+                );
 
+            return !string.IsNullOrEmpty(LoginResult.AccessToken);
+        }
     }
 }

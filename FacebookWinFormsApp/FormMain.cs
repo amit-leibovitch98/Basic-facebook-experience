@@ -16,6 +16,8 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
+        private FacebookLogicService m_FacebookLogicService;
+
         private string m_AccessToken;
         public User LoggedInUser { get; set; } = null;
         public LoginResult LoginResult { get; set; }
@@ -36,7 +38,10 @@ namespace BasicFacebookFeatures
         public FormMain()
         {
             InitializeComponent();
-            
+
+            m_FacebookLogicService = new FacebookLogicService();
+
+
             Size = new Size(180, 280);
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
             //shachar
@@ -104,23 +109,17 @@ namespace BasicFacebookFeatures
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
-
-            LoginResult = FacebookService.Login(
-                    /// (This is Desig Patter's App ID. replace it with your own)
-                    "329595859268386",
-                    /// requested permissions:
-                    "email",
-                    "user_friends",
-                    "public_profile",
-                    "groups_access_member_info",
-                    "user_posts",
-                    "user_photos",
-                    "user_likes"
-                    /// add any relevant permissions
-                    );
-            pictureBoxLogin.Visible = false;
-            InitInfoAfterLogin();
+            bool success = m_FacebookLogicService.LogIn();
+            if (success)
+            {
+                pictureBoxLogin.Visible = false;
+                LoginResult = m_FacebookLogicService.LoginResult; // TODO Delete this!
+                InitInfoAfterLogin();
+            }
+            else
+            {
+                MessageBox.Show(LoginResult.ErrorMessage, "Login Failed");
+            }
         }
 
         private void InitInfoAfterLogin()
