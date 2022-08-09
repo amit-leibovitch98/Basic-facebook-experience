@@ -34,7 +34,7 @@ namespace FacebookApplicationLogic
             List<Page> artistsList = new List<Page>();
             foreach(Page page in i_likedPages)
             {
-                if(page.Category == "Musician/band")
+                if(page.Category == "Musician/band" || page.Category == "מוזיקאי/להקה")
                 {
                     artistsList.Add(page);
                 }

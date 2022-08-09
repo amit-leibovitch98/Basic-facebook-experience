@@ -143,7 +143,7 @@ namespace BasicFacebookFeatures
                 checkBoxRememberMe.Visible = false;
                 labelInsperetionalQuote.Visible = true;
                 labelInsperetionalQuote.Text = m_quotesLoader.getRandomQuote();
-                //m_artistsList = m_infoLogic.GetArtistsList(LoggedInUser.LikedPages.ToList());
+                m_artistsList = m_infoLogic.GetArtistsList(LoggedInUser.LikedPages.ToList());
             }
             else
             {
