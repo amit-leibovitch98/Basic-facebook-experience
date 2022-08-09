@@ -22,12 +22,19 @@ namespace FacebookApplicationLogic
 
         public List<string> LoadJson()
         {
-            return new List<string>() { "Quotes Not Loaded!" };
-            /*using (StreamReader r = new StreamReader("Quotes.json"))
+            string json = null;
+            using (StreamReader r = new StreamReader("Quotes.json"))
             {
-                string json = r.ReadToEnd();
-                return JsonConvert.DeserializeObject<List<string>>(json);
-            }*/
+                json = r.ReadToEnd();
+            }
+
+            if (json == null)
+            {
+                throw new FileLoadException("Fail to load quotes!");
+            }
+
+            return JsonConvert.DeserializeObject<List<string>>(json);
+
         }
 
         public string getRandomQuote()
