@@ -121,6 +121,30 @@ namespace BasicFacebookFeatures
             return GetPost();
         }
 
-        
-}
+        public Page GetPage()
+        {
+            return LoginResult.LoggedInUser.LikedPages[PageIndex];
+        }
+
+        public Page GetNextPage()
+        {
+            PageIndex++;
+            if (PageIndex >= LoginResult.LoggedInUser.LikedPages.Count)
+            {
+                PageIndex = 0;
+            }
+            return GetPage();
+        }
+
+        public Page GetPreviousPage()
+        {
+            PageIndex--;
+            if (PageIndex < 0)
+            {
+                PageIndex = LoggedInUser.LikedPages.Count - 1;
+            }
+            return GetPage();
+        }
+
+    }
 }

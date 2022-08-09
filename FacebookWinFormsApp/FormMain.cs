@@ -24,7 +24,6 @@ namespace BasicFacebookFeatures
         public int LikedArtistsIndex { get; set; } = 0;
 
         public int TeamsIndex { get; set; } = 0;
-        public int PageIndex { get; set; } = 0;
         public int AlbumIndex { get; set; } = 0;
         public AppSettings m_AppSettings;
         private QuotesLoader m_quotesLoader;
@@ -236,7 +235,12 @@ namespace BasicFacebookFeatures
 
         private void fetchPage()
         {
-            Page page = LoggedInUser.LikedPages[PageIndex];
+            Page page = m_FacebookLogicService.GetPage();
+            displayPage(page);
+        }
+
+        private void displayPage(Page page)
+        {
             pictureBoxPageLogo.LoadAsync(page.PictureSqaureURL);
             //pictureBoxPageCover.LoadAsync(page.Cover.SourceURL);
             labelPageName.Text = page.Name;
@@ -264,22 +268,14 @@ namespace BasicFacebookFeatures
 
         private void buttonPrevPage_Click(object sender, EventArgs e)
         {
-            PageIndex++;
-            if (PageIndex >= LoggedInUser.LikedPages.Count)
-            {
-                PageIndex = 0;
-            }
-            fetchPage();
+            Page page = m_FacebookLogicService.GetPreviousPage();
+            displayPage(page);
         }
 
         private void buttonNextPage_Click(object sender, EventArgs e)
         {
-            PageIndex--;
-            if (PageIndex < 0)
-            {
-                PageIndex = LoggedInUser.LikedPages.Count - 1;
-            }
-            fetchPage();
+            Page page = m_FacebookLogicService.GetNextPage();
+            displayPage(page);
         }
 
         private void fetchGroup()
