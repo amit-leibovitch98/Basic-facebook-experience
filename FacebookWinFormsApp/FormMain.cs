@@ -24,7 +24,6 @@ namespace BasicFacebookFeatures
         public int LikedArtistsIndex { get; set; } = 0;
 
         public int TeamsIndex { get; set; } = 0;
-        public int AlbumIndex { get; set; } = 0;
         public AppSettings m_AppSettings;
         private QuotesLoader m_quotesLoader;
         private InfoLogic m_infoLogic;
@@ -266,15 +265,15 @@ namespace BasicFacebookFeatures
             */
         }
 
-        private void buttonPrevPage_Click(object sender, EventArgs e)
-        {
-            Page page = m_FacebookLogicService.GetPreviousPage();
-            displayPage(page);
-        }
-
         private void buttonNextPage_Click(object sender, EventArgs e)
         {
             Page page = m_FacebookLogicService.GetNextPage();
+            displayPage(page);
+        }
+
+        private void buttonPrevPage_Click(object sender, EventArgs e)
+        {
+            Page page = m_FacebookLogicService.GetPreviousPage();
             displayPage(page);
         }
 
@@ -318,16 +317,18 @@ namespace BasicFacebookFeatures
 
         private void fetchAlbums()
         {
-            foreach(Album album in LoggedInUser.Albums)
+            Album album;
+            List<string> albumNames = m_FacebookLogicService.GetAlbumNames();
+            foreach (string albumName in albumNames)
             {
-                comboBoxAlbums.Items.Add(album.Name);
+                comboBoxAlbums.Items.Add(albumName);
             }
-            if (LoggedInUser.Albums.Count != 0)
+            if (albumNames.Count > 0)
             {
                 comboBoxAlbums.SelectedIndex = 0;
-
+                album = m_FacebookLogicService.GetAlbumByName(albumNames[0]);
+                pictureBoxAlbum.Image = album.CoverPhoto.ImageNormal;
             }
-            pictureBoxAlbum.Image = LoggedInUser.Albums[0].CoverPhoto.ImageNormal;
         }
 
         private void buttonNextTeam_Click(object sender, EventArgs e)
@@ -373,8 +374,15 @@ namespace BasicFacebookFeatures
 
         private void comboBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
         {
-            pictureBoxAlbum.Image = LoggedInUser.Albums[comboBoxAlbums.SelectedIndex].CoverPhoto.ImageNormal;
-            AlbumIndex = 0;
+            Album album = m_FacebookLogicService.GetAlbumByName((string)comboBoxAlbums.SelectedItem);
+            if (album != null)
+            {
+                pictureBoxAlbum.Image = album.CoverPhoto.ImageNormal;
+            }
+            else
+            {
+                pictureBoxAlbum.Image = null;
+            }
         }
 
         private void comboBoxEvents_SelectedIndexChanged(object sender, EventArgs e)

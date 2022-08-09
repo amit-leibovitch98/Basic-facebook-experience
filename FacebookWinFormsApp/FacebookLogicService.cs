@@ -146,5 +146,28 @@ namespace BasicFacebookFeatures
             return GetPage();
         }
 
+        public List<string> GetAlbumNames()
+        {
+            List<string> albumNames = new List<string>();
+
+            foreach (Album album in LoginResult.LoggedInUser.Albums)
+            {
+                albumNames.Add(album.Name);
+            }
+            return albumNames;
+        }
+
+        public Album GetAlbumByName(string albumName)
+        {
+            Album returnedAlbum = null;
+            foreach (Album album in LoginResult.LoggedInUser.Albums)
+            {
+                if (album.Name == albumName)
+                {
+                    returnedAlbum = album;
+                }
+            }
+            return returnedAlbum;
+        }
     }
 }
