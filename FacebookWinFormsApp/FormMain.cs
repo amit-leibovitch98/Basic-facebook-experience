@@ -21,12 +21,10 @@ namespace BasicFacebookFeatures
         private string m_AccessToken;
         public User LoggedInUser { get; set; } = null;
         public LoginResult LoginResult { get; set; }
-        public int GroupsIndex { get; set; } = 0;
         public int LikedArtistsIndex { get; set; } = 0;
 
         public int TeamsIndex { get; set; } = 0;
         public int PageIndex { get; set; } = 0;
-        public int PostsIndex { get; set; } = 0;
         public int AlbumIndex { get; set; } = 0;
         public AppSettings m_AppSettings;
         private QuotesLoader m_quotesLoader;
@@ -164,8 +162,13 @@ namespace BasicFacebookFeatures
 
         private void fetchPost()
         {
+            Post post = m_FacebookLogicService.GetPost();
+            displayPost(post);
+        }
+
+        private void displayPost(Post post)
+        {
             string postText, imgURL;
-            Post post = LoggedInUser.Posts[PostsIndex];
             m_infoLogic.GetPostTextAndPicture(post, out postText, out imgURL);
             labelPosts.Text = postText;
             labelPostComments.Text = string.Format("({0}) Comments", post.Comments.Count);
@@ -207,27 +210,20 @@ namespace BasicFacebookFeatures
 
         private void buttonNextPost_Click(object sender, EventArgs e)
         {
-            PostsIndex++;
-            if (PostsIndex >= LoggedInUser.Posts.Count)
-            {
-                PostsIndex = 0;
-            }
-            fetchPost();
+            Post post = m_FacebookLogicService.GetNextPost();
+            displayPost(post);
         }
 
         private void buttonPrevPost_Click(object sender, EventArgs e)
         {
-            PostsIndex--;
-            if (PostsIndex < 0)
-            {
-                PostsIndex = LoggedInUser.Posts.Count - 1;
-            }
-            fetchPost();
+            Post post = m_FacebookLogicService.GetPreviousPost();
+            displayPost(post);
         }
 
         private void labelLikes_Click(object sender, EventArgs e)
         {
-            FormLikes formLikes = new FormLikes(LoggedInUser.Posts[PostsIndex]);
+            Post post = m_FacebookLogicService.GetPost();
+            FormLikes formLikes = new FormLikes(post);
             formLikes.ShowDialog();
         }
 

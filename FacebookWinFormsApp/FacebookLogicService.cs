@@ -79,7 +79,7 @@ namespace BasicFacebookFeatures
         public Group GetNextGroup()
         {
             GroupsIndex++;
-            if (GroupsIndex >= LoggedInUser.Groups.Count)
+            if (GroupsIndex >= LoginResult.LoggedInUser.Groups.Count)
             {
                 GroupsIndex = 0;
             }
@@ -91,9 +91,36 @@ namespace BasicFacebookFeatures
             GroupsIndex--;
             if (GroupsIndex < 0)
             {
-                GroupsIndex = LoggedInUser.Groups.Count - 1;
+                GroupsIndex = LoginResult.LoggedInUser.Groups.Count - 1;
             }
             return GetGroup();
         }
-    }
+
+        public Post GetPost()
+        {
+            return LoginResult.LoggedInUser.Posts[PostsIndex];
+        }
+
+        public Post GetNextPost()
+        {
+            PostsIndex++;
+            if (PostsIndex >= LoginResult.LoggedInUser.Posts.Count)
+            {
+                PostsIndex = 0;
+            }
+            return GetPost();
+        }
+
+        public Post GetPreviousPost()
+        {
+            PostsIndex--;
+            if (PostsIndex < 0)
+            {
+                PostsIndex = LoginResult.LoggedInUser.Posts.Count - 1;
+            }
+            return GetPost();
+        }
+
+        
+}
 }
