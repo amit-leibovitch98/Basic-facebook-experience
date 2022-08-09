@@ -44,7 +44,7 @@
             this.buttonNextPage = new System.Windows.Forms.Button();
             this.labelPageName = new System.Windows.Forms.Label();
             this.TabGroups = new System.Windows.Forms.TabPage();
-            this.labelGroupMembers = new System.Windows.Forms.Label();
+            this.labelGroupDescription = new System.Windows.Forms.Label();
             this.buttonNextGroup = new System.Windows.Forms.Button();
             this.buttonPrevGroup = new System.Windows.Forms.Button();
             this.LabelGroupName = new System.Windows.Forms.Label();
@@ -306,7 +306,7 @@
             // TabGroups
             // 
             this.TabGroups.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.TabGroups.Controls.Add(this.labelGroupMembers);
+            this.TabGroups.Controls.Add(this.labelGroupDescription);
             this.TabGroups.Controls.Add(this.buttonNextGroup);
             this.TabGroups.Controls.Add(this.buttonPrevGroup);
             this.TabGroups.Controls.Add(this.LabelGroupName);
@@ -318,16 +318,17 @@
             this.TabGroups.TabIndex = 2;
             this.TabGroups.Text = "Groups";
             // 
-            // labelGroupMembers
+            // labelGroupDescription
             // 
-            this.labelGroupMembers.AutoSize = true;
-            this.labelGroupMembers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGroupMembers.Location = new System.Drawing.Point(24, 355);
-            this.labelGroupMembers.MaximumSize = new System.Drawing.Size(550, 50);
-            this.labelGroupMembers.Name = "labelGroupMembers";
-            this.labelGroupMembers.Size = new System.Drawing.Size(90, 24);
-            this.labelGroupMembers.TabIndex = 66;
-            this.labelGroupMembers.Text = "members";
+            this.labelGroupDescription.AutoSize = true;
+            this.labelGroupDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGroupDescription.Location = new System.Drawing.Point(24, 355);
+            this.labelGroupDescription.MaximumSize = new System.Drawing.Size(550, 50);
+            this.labelGroupDescription.Name = "labelGroupDescription";
+            this.labelGroupDescription.Size = new System.Drawing.Size(104, 24);
+            this.labelGroupDescription.TabIndex = 66;
+            this.labelGroupDescription.Text = "Description";
+            this.labelGroupDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonNextGroup
             // 
@@ -921,7 +922,7 @@
         private System.Windows.Forms.Button buttonPrevGroup;
         private System.Windows.Forms.PictureBox pictureBoxLogin;
         private System.Windows.Forms.Button buttonNextGroup;
-        private System.Windows.Forms.Label labelGroupMembers;
+        private System.Windows.Forms.Label labelGroupDescription;
         private System.Windows.Forms.TabPage tabPageEvents;
         private System.Windows.Forms.TabPage tabPageTeams;
         private System.Windows.Forms.Label labelFavoriteTeamName;

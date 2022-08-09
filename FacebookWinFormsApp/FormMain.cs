@@ -291,8 +291,7 @@ namespace BasicFacebookFeatures
         {
             LabelGroupName.Text = LoggedInUser.Groups[GroupsIndex].Name;
             pictureBoxGroup.Image = LoggedInUser.Groups[GroupsIndex].ImageNormal;
-            labelGroupMembers.Text = string.Format("{0} members", LoggedInUser.Groups[GroupsIndex].Description);
-
+            labelGroupDescription.Text = LoggedInUser.Groups[GroupsIndex].Description;
         }
 
         private void buttonNextGroup_Click(object sender, EventArgs e)
