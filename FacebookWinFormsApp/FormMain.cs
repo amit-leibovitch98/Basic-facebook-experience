@@ -129,7 +129,7 @@ namespace BasicFacebookFeatures
                 LoggedInUser = LoginResult.LoggedInUser;
                 m_AccessToken = LoginResult.AccessToken;
                 fetchUserInfo();
-                labelUserName.Text = string.Format("{0} {1}", LoggedInUser.Name, LoggedInUser.LastName);
+                labelUserName.Text = string.Format("{0}", LoggedInUser.Name);
                 labelUserName.Visible = true;
                 buttonLogin.Visible = false;
                 if (checkBoxRememberMe.Checked == true)
@@ -288,30 +288,27 @@ namespace BasicFacebookFeatures
 
         private void fetchGroup()
         {
-            LabelGroupName.Text = LoggedInUser.Groups[GroupsIndex].Name;
-            pictureBoxGroup.Image = LoggedInUser.Groups[GroupsIndex].ImageNormal;
-            labelGroupDescription.Text = LoggedInUser.Groups[GroupsIndex].Description;
+            Group group = m_FacebookLogicService.GetGroup();
+            displayGroup(group);
+        }
+
+        private void displayGroup(Group group)
+        {
+            LabelGroupName.Text = group.Name;
+            pictureBoxGroup.Image = group.ImageNormal;
+            labelGroupDescription.Text = group.Description;
         }
 
         private void buttonNextGroup_Click(object sender, EventArgs e)
         {
-
-            GroupsIndex++;
-            if (GroupsIndex >= LoggedInUser.Groups.Count)
-            {
-                GroupsIndex = 0;
-            }
-            fetchGroup();
+            Group group = m_FacebookLogicService.GetNextGroup();
+            displayGroup(group);
         }
 
         private void buttonPrevGroup_Click(object sender, EventArgs e)
         {
-            GroupsIndex--;
-            if (GroupsIndex < 0)
-            {
-                GroupsIndex = LoggedInUser.Groups.Count - 1;
-            }
-            fetchGroup();
+            Group group = m_FacebookLogicService.GetPreviousGroup();
+            displayGroup(group);
         }
 
         private void fetchFavoriteTeams()

@@ -70,5 +70,30 @@ namespace BasicFacebookFeatures
 
             return !string.IsNullOrEmpty(LoginResult.AccessToken);
         }
+
+        public Group GetGroup()
+        {
+            return LoginResult.LoggedInUser.Groups[GroupsIndex];
+        }
+
+        public Group GetNextGroup()
+        {
+            GroupsIndex++;
+            if (GroupsIndex >= LoggedInUser.Groups.Count)
+            {
+                GroupsIndex = 0;
+            }
+            return GetGroup();
+        }
+
+        public Group GetPreviousGroup()
+        {
+            GroupsIndex--;
+            if (GroupsIndex < 0)
+            {
+                GroupsIndex = LoggedInUser.Groups.Count - 1;
+            }
+            return GetGroup();
+        }
     }
 }
