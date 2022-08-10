@@ -23,7 +23,6 @@ namespace BasicFacebookFeatures
         public LoginResult LoginResult { get; set; }
         public int LikedArtistsIndex { get; set; } = 0;
 
-        public int TeamsIndex { get; set; } = 0;
         public AppSettings m_AppSettings;
         private QuotesLoader m_quotesLoader;
         private InfoLogic m_infoLogic;
@@ -352,12 +351,13 @@ namespace BasicFacebookFeatures
 
         private void fetchEvents()
         {
-            foreach (Event userEvent in LoggedInUser.Events)
+            List<string> eventNames = m_FacebookLogicService.GetEventNames();
+            foreach (string eventName in eventNames)
             {
-                comboBoxEvents.Items.Add(userEvent.Name);
+                comboBoxEvents.Items.Add(eventName);
             }
 
-            if (LoggedInUser.Events.Count != 0)
+            if (eventNames.Count > 0)
             {
                 comboBoxEvents.SelectedIndex = 0;
             }
@@ -379,7 +379,8 @@ namespace BasicFacebookFeatures
 
         private void comboBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
         {
-            pictureBoxEvent.Image = LoggedInUser.Events[comboBoxEvents.SelectedIndex].ImageNormal;
+            Event userEvent = m_FacebookLogicService.GetEventByName((string)comboBoxEvents.SelectedItem);
+            pictureBoxEvent.Image = userEvent.ImageNormal;
         }
 
         private void pictureBoxAlbum_Click(object sender, EventArgs e)

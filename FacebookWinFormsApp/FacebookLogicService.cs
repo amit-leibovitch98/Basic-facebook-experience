@@ -211,5 +211,28 @@ namespace BasicFacebookFeatures
             page = GetFavoriteTeam();
             return page;
         }
+
+        public List<string> GetEventNames()
+        {
+            List<string> eventNames = new List<string>();
+            foreach (Event userEvent in LoginResult.LoggedInUser.Events)
+            {
+                eventNames.Add(userEvent.Name);
+            }
+            return eventNames;
+        }
+
+        public Event GetEventByName(string eventName)
+        {
+            Event returnedEvent = null;
+            foreach (Event userEvent in LoginResult.LoggedInUser.Events)
+            {
+                if (userEvent.Name == eventName)
+                {
+                    returnedEvent = userEvent;
+                }
+            }
+            return returnedEvent;
+        }
     }
 }
