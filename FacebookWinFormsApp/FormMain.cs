@@ -19,7 +19,6 @@ namespace BasicFacebookFeatures
         private FacebookLogicService m_FacebookLogicService;
         public int LikedArtistsIndex { get; set; } = 0;
 
-        private InfoLogic m_infoLogic;
         private List<Page> m_artistsList;
 
 
@@ -46,8 +45,6 @@ namespace BasicFacebookFeatures
             {
                 switchToLoginMode();
             }
-            
-            m_infoLogic = new InfoLogic();
         }
 
         protected override void OnShown(EventArgs e)
@@ -110,7 +107,7 @@ namespace BasicFacebookFeatures
             {
                 labelInsperetionalQuote.Text = e.Message;
             }
-            m_artistsList = m_infoLogic.GetArtistsList(m_FacebookLogicService.GetLikedPages());
+            m_artistsList = m_FacebookLogicService.GetArtistsList(m_FacebookLogicService.GetLikedPages());
         }
 
         private void fetchUserInfo()
@@ -135,7 +132,7 @@ namespace BasicFacebookFeatures
         private void displayPost(Post post)
         {
             string postText, imgURL;
-            m_infoLogic.GetPostTextAndPicture(post, out postText, out imgURL);
+            m_FacebookLogicService.GetPostTextAndPicture(post, out postText, out imgURL);
             labelPosts.Text = postText;
             labelPostComments.Text = string.Format("({0}) Comments", post.Comments.Count);
             if (imgURL != "")

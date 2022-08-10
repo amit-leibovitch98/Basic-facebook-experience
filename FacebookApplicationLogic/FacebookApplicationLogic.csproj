@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArtistPage.cs" />
-    <Compile Include="InfoLogic.cs" />
     <Compile Include="QuotesLoader.cs" />
   </ItemGroup>
   <ItemGroup>

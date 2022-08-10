@@ -291,5 +291,38 @@ namespace BasicFacebookFeatures
         {
             return LoginResult.LoggedInUser.LikedPages.ToList();
         }
+        public void GetPostTextAndPicture(Post i_post, out string o_text, out string o_imgURL)
+        {
+            o_text = string.Empty;
+            o_imgURL = string.Empty;
+            if (i_post.Message != null)
+            {
+                o_text = i_post.Message;
+            }
+            else if (i_post.Caption != null)
+            {
+                o_text = i_post.Caption;
+            }
+
+            if (i_post.Type == Post.eType.photo)
+            {
+                o_imgURL = i_post.PictureURL;
+            }
+        }
+
+        public List<Page> GetArtistsList(List<Page> i_likedPages)
+        {
+            List<Page> artistsList = new List<Page>();
+            foreach (Page page in i_likedPages)
+            {
+                if (page.Category == "Musician/band" || page.Category == "מוזיקאי/להקה" || page.Category == "Artist")
+                {
+                    artistsList.Add(page);
+                }
+            }
+
+            return artistsList;
+        }
+
     }
 }
