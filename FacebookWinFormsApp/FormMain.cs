@@ -17,9 +17,6 @@ namespace BasicFacebookFeatures
     public partial class FormMain : Form
     {
         private FacebookLogicService m_FacebookLogicService;
-        public int LikedArtistsIndex { get; set; } = 0;
-
-        private List<Page> m_artistsList;
 
 
         public FormMain()
@@ -107,7 +104,6 @@ namespace BasicFacebookFeatures
             {
                 labelInsperetionalQuote.Text = e.Message;
             }
-            m_artistsList = m_FacebookLogicService.GetArtistsList(m_FacebookLogicService.GetLikedPages());
         }
 
         private void fetchUserInfo()
@@ -344,7 +340,7 @@ namespace BasicFacebookFeatures
 
         private void buttonSerarchMeOnWiki_Click(object sender, EventArgs e)
         {
-            string artistsName = m_artistsList[LikedArtistsIndex].Name;
+            string artistsName = "TODO"; // m_artistsList[LikedArtistsIndex].Name;
             if(artistsName.Contains(" "))
             {
                 artistsName.Replace(" ", "_");
@@ -355,28 +351,12 @@ namespace BasicFacebookFeatures
 
         private void buttonArtistsPrev_Click(object sender, EventArgs e)
         {
-            if (m_artistsList != null)
-            {
-                LikedArtistsIndex--;
-                if (LikedArtistsIndex < 0)
-                {
-                    LikedArtistsIndex = m_artistsList.Count - 1;
-                }
-                fetchGroup();
-            }
+            Page artist = m_FacebookLogicService.GetNextArtistPage();
         }
 
         private void buttonArtistsNext_Click(object sender, EventArgs e)
         {
-        if (m_artistsList != null)
-            {
-                LikedArtistsIndex++;
-                if (LikedArtistsIndex >= m_artistsList.Count)
-                {
-                    LikedArtistsIndex = 0;
-                }
-                fetchGroup();
-            }
+            Page artist = m_FacebookLogicService.GetPreviousArtistPage();
         }
     }
 }

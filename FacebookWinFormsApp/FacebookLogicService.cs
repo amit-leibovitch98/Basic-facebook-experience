@@ -16,7 +16,6 @@ namespace BasicFacebookFeatures
     public class FacebookLogicService
     {
         private QuotesLoader m_quotesLoader;
-        private InfoLogic m_infoLogic;
         private List<Page> m_artistsList;
         private string m_filePath;
         public User LoggedInUser { get; set; } = null;
@@ -28,11 +27,11 @@ namespace BasicFacebookFeatures
         public int PageIndex { get; set; } = 0;
         public int PostsIndex { get; set; } = 0;
         public int AlbumIndex { get; set; } = 0;
+        public int ArtistIndex { get; set; } = 0;
 
         public FacebookLogicService()
         {
             m_quotesLoader = new QuotesLoader();
-            m_infoLogic = new InfoLogic();
             initXmlPath();
         }
         private void initXmlPath()
@@ -103,6 +102,7 @@ namespace BasicFacebookFeatures
         {
             LoggedInUser = null;
             LoginResult = null;
+            m_artistsList = null;
             AppSettings.RememberMe = false;
             AppSettings.AccessToken = string.Empty;
             AppSettings.SaveToXmlFile(m_filePath);
@@ -287,10 +287,6 @@ namespace BasicFacebookFeatures
             return m_quotesLoader.getRandomQuote();
         }
 
-        public List<Page> GetLikedPages()
-        {
-            return LoginResult.LoggedInUser.LikedPages.ToList();
-        }
         public void GetPostTextAndPicture(Post i_post, out string o_text, out string o_imgURL)
         {
             o_text = string.Empty;
@@ -324,5 +320,70 @@ namespace BasicFacebookFeatures
             return artistsList;
         }
 
+        private List<Page> getArtistsList()
+        {
+            List<Page> artistsList = new List<Page>();
+            foreach (Page page in LoginResult.LoggedInUser.LikedPages)
+            {
+                if (page.Category == "Musician/band" || page.Category == "מוזיקאי/להקה" || page.Category == "Artist")
+                {
+                    artistsList.Add(page);
+                }
+            }
+
+            return artistsList;
+        }
+
+        public Page GetArtistPage()
+        {
+            Page artistPage = null;
+            if (m_artistsList == null)
+            {
+                m_artistsList = getArtistsList();
+            }
+            if (m_artistsList.Count > 0)
+            {
+                artistPage = m_artistsList[ArtistIndex];
+            }
+            return artistPage;
+        }
+
+        public Page GetNextArtistPage()
+        {
+            Page artistPage = null;
+            if (m_artistsList == null)
+            {
+                m_artistsList = getArtistsList();
+            }
+            if (m_artistsList.Count > 0)
+            {
+                ArtistIndex++;
+                if (ArtistIndex >= m_artistsList.Count)
+                {
+                    ArtistIndex = 0;
+                }
+                artistPage = m_artistsList[ArtistIndex];
+            }
+            return artistPage;
+        }
+
+        public Page GetPreviousArtistPage()
+        {
+            Page artistPage = null;
+            if (m_artistsList == null)
+            {
+                m_artistsList = getArtistsList();
+            }
+            if (m_artistsList.Count > 0)
+            {
+                ArtistIndex--;
+                if (ArtistIndex < 0)
+                {
+                    ArtistIndex = m_artistsList.Count - 1;
+                }
+                artistPage = m_artistsList[ArtistIndex];
+            }
+            return artistPage;
+        }
     }
 }

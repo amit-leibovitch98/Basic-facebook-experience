@@ -11,6 +11,5 @@ namespace FacebookApplicationLogic
         public string Name;
         public string Category;
         public string PictureUrl;
-
     }
 }
