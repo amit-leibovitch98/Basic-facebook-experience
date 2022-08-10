@@ -23,11 +23,9 @@ namespace BasicFacebookFeatures
         public LoginResult LoginResult { get; set; }
         public int LikedArtistsIndex { get; set; } = 0;
 
-        public AppSettings m_AppSettings;
-        private QuotesLoader m_quotesLoader;
+        //public AppSettings m_AppSettings;
         private InfoLogic m_infoLogic;
         private List<Page> m_artistsList;
-        private string m_FilePath;
 
 
         public FormMain()
@@ -39,26 +37,14 @@ namespace BasicFacebookFeatures
 
             Size = new Size(180, 280);
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
-            //shachar
-            string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string file = Path.Combine(currentDirectory, @"AppSettings.xml");
-            m_FilePath = Path.GetFullPath(file);
+            m_FacebookLogicService.LoadAppSettings();
 
-            if (File.Exists(m_FilePath) && File.ReadAllText(m_FilePath) != "")
-            {
-                m_AppSettings = AppSettings.LoadFromXmlFile(m_FilePath);
-            }
-            else
-            {
-                m_AppSettings = new AppSettings();
-            }
-
-            if (m_AppSettings.RememberMe)
+            if (m_FacebookLogicService.AppSettings.RememberMe)
             {
                 this.StartPosition = FormStartPosition.Manual;
-                this.Size = m_AppSettings.WindowSize;
-                this.Location = m_AppSettings.WindowLocation;
-                this.checkBoxRememberMe.Checked = m_AppSettings.RememberMe;
+                this.Size = m_FacebookLogicService.AppSettings.WindowSize;
+                this.Location = m_FacebookLogicService.AppSettings.WindowLocation;
+                this.checkBoxRememberMe.Checked = m_FacebookLogicService.AppSettings.RememberMe;
             
             }
             else
@@ -66,7 +52,6 @@ namespace BasicFacebookFeatures
                 switchToLoginMode();
             }
             //
-            m_quotesLoader = new QuotesLoader();
             m_infoLogic = new InfoLogic();
         }
 
@@ -74,9 +59,10 @@ namespace BasicFacebookFeatures
         {
             base.OnShown(e);
 
-            if (m_AppSettings.RememberMe && !string.IsNullOrEmpty(m_AppSettings.AccessToken))
+            if (m_FacebookLogicService.AppSettings.RememberMe && !string.IsNullOrEmpty(m_FacebookLogicService.AppSettings.AccessToken))
             {
-                LoginResult = FacebookService.Connect(m_AppSettings.AccessToken);
+                m_FacebookLogicService.Connect();
+                LoginResult = m_FacebookLogicService.LoginResult; //FacebookService.Connect(m_FacebookLogicService.AppSettings.AccessToken);
                 InitInfoAfterLogin();
                 pictureBoxLogin.Visible = false;
             }
@@ -86,11 +72,12 @@ namespace BasicFacebookFeatures
         {
             base.OnFormClosing(e);
 
-            m_AppSettings.WindowSize = Size;
-            m_AppSettings.WindowLocation = Location;
-            //m_AppSettings.RememberMe = this.checkBoxRememberMe.Checked;
+            m_FacebookLogicService.SaveSettings(Size, Location);
 
-            if (m_AppSettings.RememberMe)
+            /*m_AppSettings.WindowSize = Size;
+            m_AppSettings.WindowLocation = Location;*/
+
+            /*if (m_AppSettings.RememberMe)
             {
                 m_AppSettings.AccessToken = m_AccessToken;
             }
@@ -99,12 +86,12 @@ namespace BasicFacebookFeatures
                 m_AppSettings.AccessToken = string.Empty;
             }
 
-            m_AppSettings.SaveToXmlFile(m_FilePath);
+            m_AppSettings.SaveToXmlFile(m_FilePath);*/
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            bool success = m_FacebookLogicService.LogIn();
+            bool success = m_FacebookLogicService.Login();
             if (success)
             {
                 pictureBoxLogin.Visible = false;
@@ -124,19 +111,19 @@ namespace BasicFacebookFeatures
                 LoggedInUser = LoginResult.LoggedInUser;
                 m_AccessToken = LoginResult.AccessToken;
                 fetchUserInfo();
-                labelUserName.Text = string.Format("{0}", LoggedInUser.Name);
+                labelUserName.Text = LoggedInUser.Name;
                 labelUserName.Visible = true;
                 buttonLogin.Visible = false;
                 if (checkBoxRememberMe.Checked == true)
                 {
-                    m_AppSettings.RememberMe = true;
+                    m_FacebookLogicService.AppSettings.RememberMe = true;
                 }
                 Size = new Size(770, 570);
                 tabControl.Visible = true;
                 buttonLogout.Visible = true;
                 checkBoxRememberMe.Visible = false;
                 labelInsperetionalQuote.Visible = true;
-                labelInsperetionalQuote.Text = m_quotesLoader.getRandomQuote();
+                labelInsperetionalQuote.Text = m_FacebookLogicService.GetRandomQuote();
                 m_artistsList = m_infoLogic.GetArtistsList(LoggedInUser.LikedPages.ToList());
             }
             else
@@ -182,15 +169,10 @@ namespace BasicFacebookFeatures
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-            //FacebookService.LogoutWithUI();
-            LoggedInUser = null;
+            m_FacebookLogicService.Logout();
             pictureBoxProfile.Image = null;
             buttonLogin.Text = "Login";
-            LoginResult = null;
             switchToLoginMode();
-            m_AppSettings.RememberMe = false;
-            m_AppSettings.AccessToken = string.Empty;
-            m_AppSettings.SaveToXmlFile(m_FilePath);
         }
 
         private void switchToLoginMode()
@@ -225,12 +207,12 @@ namespace BasicFacebookFeatures
             formLikes.ShowDialog();
         }
 
-        private void mainForm_Shown(object sender, EventArgs e)
+        /*private void mainForm_Shown(object sender, EventArgs e)
         {
 
-            LoginResult = FacebookService.Connect(m_AppSettings.AccessToken);
+            LoginResult = FacebookService.Connect(m_FacebookLogicService.AppSettings.AccessToken);
             InitInfoAfterLogin();
-        }
+        }*/
 
         private void fetchPage()
         {

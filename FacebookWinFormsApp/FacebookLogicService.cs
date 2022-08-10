@@ -28,33 +28,55 @@ namespace BasicFacebookFeatures
         public int PageIndex { get; set; } = 0;
         public int PostsIndex { get; set; } = 0;
         public int AlbumIndex { get; set; } = 0;
-        public string FilePath { get; }
 
         public FacebookLogicService()
         {
             m_quotesLoader = new QuotesLoader();
             m_infoLogic = new InfoLogic();
+            initXmlPath();
         }
-        public void InitPath()
+        private void initXmlPath()
         {
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string file = Path.Combine(currentDirectory, @"AppSettings.xml");
             m_filePath = Path.GetFullPath(file);
         }
 
-        public void SetAppSettings()
+        public void LoadAppSettings()
         {
-            if (File.Exists(FilePath) && File.ReadAllText(FilePath) != "")
+            if (File.Exists(m_filePath) && File.ReadAllText(m_filePath) != "")
             {
-                AppSettings = AppSettings.LoadFromXmlFile(FilePath);
+                AppSettings = AppSettings.LoadFromXmlFile(m_filePath);
             }
             else
             {
                 AppSettings = new AppSettings();
             }
         }
+
+        public void SaveSettings(Size size, Point location)
+        {
+            AppSettings.WindowSize = size;
+            AppSettings.WindowLocation = location;
+
+            if (AppSettings.RememberMe)
+            {
+                AppSettings.AccessToken = LoginResult.AccessToken;
+            }
+            else
+            {
+                AppSettings.AccessToken = string.Empty;
+            }
+
+            AppSettings.SaveToXmlFile(m_filePath);
+        }
+
+        /*public void SaveAppSettings()
+        {
+            m_AppSettings.SaveToXmlFile(m_FilePath);
+        }*/
        
-        public bool LogIn()
+        public bool Login()
         {
             LoginResult = FacebookService.Login(
                 "329595859268386",
@@ -69,6 +91,20 @@ namespace BasicFacebookFeatures
                 );
 
             return !string.IsNullOrEmpty(LoginResult.AccessToken);
+        }
+
+        public void Connect()
+        {
+            LoginResult = FacebookService.Connect(AppSettings.AccessToken);
+        }
+
+        public void Logout()
+        {
+            LoggedInUser = null;
+            LoginResult = null;
+            AppSettings.RememberMe = false;
+            AppSettings.AccessToken = string.Empty;
+            AppSettings.SaveToXmlFile(m_filePath);
         }
 
         public Group GetGroup()
@@ -233,6 +269,11 @@ namespace BasicFacebookFeatures
                 }
             }
             return returnedEvent;
+        }
+
+        public string GetRandomQuote()
+        {
+            return m_quotesLoader.getRandomQuote();
         }
     }
 }
