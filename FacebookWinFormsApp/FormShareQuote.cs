@@ -25,7 +25,7 @@ namespace BasicFacebookFeatures
         {
             try
             {
-                m_FacebookLogicService.LoggedInUser.PostStatus(textBoxToPost.Text);
+                m_FacebookLogicService.PostStatus(textBoxToPost.Text);
             }
             catch(Facebook.FacebookOAuthException)
             {

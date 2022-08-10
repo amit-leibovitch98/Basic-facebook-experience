@@ -18,7 +18,6 @@ namespace BasicFacebookFeatures
         private QuotesLoader m_quotesLoader;
         private List<Page> m_artistsList;
         private string m_filePath;
-        public User LoggedInUser { get; set; } = null;
         public LoginResult LoginResult { get; set; }
         public int GroupsIndex { get; set; } = 0;
         public int LikedArtistsIndex { get; set; } = 0;
@@ -94,7 +93,6 @@ namespace BasicFacebookFeatures
             if (AppSettings.RememberMe && !string.IsNullOrEmpty(AppSettings.AccessToken))
             {
                 LoginResult = FacebookService.Connect(AppSettings.AccessToken);
-                LoggedInUser = LoginResult.LoggedInUser;
                 success = true;
             }
             return success;
@@ -102,7 +100,6 @@ namespace BasicFacebookFeatures
 
         public void Logout()
         {
-            LoggedInUser = null;
             LoginResult = null;
             m_artistsList = null;
             AppSettings.RememberMe = false;
@@ -127,13 +124,13 @@ namespace BasicFacebookFeatures
 
         public Group GetNextGroup()
         {
-            GroupsIndex = getNextIndex(GroupsIndex, LoggedInUser.Groups.Count);
+            GroupsIndex = getNextIndex(GroupsIndex, LoginResult.LoggedInUser.Groups.Count);
             return GetGroup();
         }
 
         public Group GetPreviousGroup()
         {
-            GroupsIndex = getPrevIndex(GroupsIndex, LoggedInUser.Groups.Count);
+            GroupsIndex = getPrevIndex(GroupsIndex, LoginResult.LoggedInUser.Groups.Count);
             return GetGroup();
         }
 
@@ -144,13 +141,13 @@ namespace BasicFacebookFeatures
 
         public Post GetNextPost()
         {
-            PostsIndex = getNextIndex(PostsIndex, LoggedInUser.Posts.Count);
+            PostsIndex = getNextIndex(PostsIndex, LoginResult.LoggedInUser.Posts.Count);
             return GetPost();
         }
 
         public Post GetPreviousPost()
         {
-            PostsIndex = getPrevIndex(PostsIndex, LoggedInUser.Posts.Count);
+            PostsIndex = getPrevIndex(PostsIndex, LoginResult.LoggedInUser.Posts.Count);
             return GetPost();
         }
 
@@ -161,13 +158,13 @@ namespace BasicFacebookFeatures
 
         public Page GetNextPage()
         {
-            PageIndex = getNextIndex(PageIndex, LoggedInUser.LikedPages.Count);
+            PageIndex = getNextIndex(PageIndex, LoginResult.LoggedInUser.LikedPages.Count);
             return GetPage();
         }
 
         public Page GetPreviousPage()
         {
-            PageIndex = getPrevIndex(PageIndex, LoggedInUser.LikedPages.Count);
+            PageIndex = getPrevIndex(PageIndex, LoginResult.LoggedInUser.LikedPages.Count);
             return GetPage();
         }
 
@@ -211,8 +208,8 @@ namespace BasicFacebookFeatures
 
             if (LoginResult.LoggedInUser.FavofriteTeams != null)
             {
-                TeamsIndex = getNextIndex(TeamsIndex, LoggedInUser.FavofriteTeams.Length);
-                page = LoggedInUser.FavofriteTeams[TeamsIndex];
+                TeamsIndex = getNextIndex(TeamsIndex, LoginResult.LoggedInUser.FavofriteTeams.Length);
+                page = LoginResult.LoggedInUser.FavofriteTeams[TeamsIndex];
             }
             page = GetFavoriteTeam();
             return page;
@@ -226,8 +223,8 @@ namespace BasicFacebookFeatures
             {
                 if (TeamsIndex < 0)
                 {
-                    TeamsIndex = getPrevIndex(TeamsIndex, LoggedInUser.FavofriteTeams.Length);
-                    page = LoggedInUser.FavofriteTeams[TeamsIndex];
+                    TeamsIndex = getPrevIndex(TeamsIndex, LoginResult.LoggedInUser.FavofriteTeams.Length);
+                    page = LoginResult.LoggedInUser.FavofriteTeams[TeamsIndex];
                 }
             }
             page = GetFavoriteTeam();
@@ -365,7 +362,7 @@ namespace BasicFacebookFeatures
             string numberOfFriends;
             try
             {
-                numberOfFriends = LoggedInUser.FriendLists.Count.ToString();
+                numberOfFriends = LoginResult.LoggedInUser.FriendLists.Count.ToString();
             }
             catch(Facebook.FacebookOAuthException)
             {
@@ -377,7 +374,7 @@ namespace BasicFacebookFeatures
         /*
         public string GetNextPicInAlbum(int i_AlbumIndex)
         {
-            string pictureUrl = LoggedInUser.Albums[i_AlbumIndex].Photos[AlbumIndex].PictureNormalURL;
+            string pictureUrl = LoginResult.LoggedInUser.Albums[i_AlbumIndex].Photos[AlbumIndex].PictureNormalURL;
             AlbumIndex++;
 
             return pictureUrl;
@@ -386,7 +383,7 @@ namespace BasicFacebookFeatures
 
         public int getPostLikes(Post i_post)
         {
-            return LoggedInUser.Posts[PostsIndex].LikedBy.Count;
+            return LoginResult.LoggedInUser.Posts[PostsIndex].LikedBy.Count;
         }
 
         private int getNextIndex(int i_currentIndex, int i_listCount)
@@ -407,6 +404,11 @@ namespace BasicFacebookFeatures
                 i_currentIndex = i_listCount;
             }
             return i_currentIndex;
+        }
+
+        public void PostStatus(string i_Status)
+        {
+            LoginResult.LoggedInUser.PostStatus(i_Status);
         }
     }
 }
