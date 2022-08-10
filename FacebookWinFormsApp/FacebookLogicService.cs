@@ -70,13 +70,8 @@ namespace BasicFacebookFeatures
 
             AppSettings.SaveToXmlFile(m_filePath);
         }
-
-        /*public void SaveAppSettings()
-        {
-            m_AppSettings.SaveToXmlFile(m_FilePath);
-        }*/
        
-        public bool Login()
+        public bool Login(out string o_LoginFailedErrorMessage)
         {
             LoginResult = FacebookService.Login(
                 "329595859268386",
@@ -89,13 +84,19 @@ namespace BasicFacebookFeatures
                 "user_photos",
                 "user_likes"
                 );
-
+            o_LoginFailedErrorMessage = LoginResult.ErrorMessage;
             return !string.IsNullOrEmpty(LoginResult.AccessToken);
         }
 
-        public void Connect()
+        public bool Connect()
         {
-            LoginResult = FacebookService.Connect(AppSettings.AccessToken);
+            bool success = false;
+            if (AppSettings.RememberMe && !string.IsNullOrEmpty(AppSettings.AccessToken))
+            {
+                LoginResult = FacebookService.Connect(AppSettings.AccessToken);
+                success = true;
+            }
+            return success;
         }
 
         public void Logout()
@@ -105,6 +106,16 @@ namespace BasicFacebookFeatures
             AppSettings.RememberMe = false;
             AppSettings.AccessToken = string.Empty;
             AppSettings.SaveToXmlFile(m_filePath);
+        }
+
+        public string GetProfilePictureUrl()
+        {
+            return LoginResult.LoggedInUser.PictureNormalURL;
+        }
+
+        public string GetName()
+        {
+            return LoginResult.LoggedInUser.Name;
         }
 
         public Group GetGroup()
@@ -274,6 +285,11 @@ namespace BasicFacebookFeatures
         public string GetRandomQuote()
         {
             return m_quotesLoader.getRandomQuote();
+        }
+
+        public List<Page> GetLikedPages()
+        {
+            return LoginResult.LoggedInUser.LikedPages.ToList();
         }
     }
 }

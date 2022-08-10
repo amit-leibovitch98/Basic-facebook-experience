@@ -17,13 +17,8 @@ namespace BasicFacebookFeatures
     public partial class FormMain : Form
     {
         private FacebookLogicService m_FacebookLogicService;
-
-        private string m_AccessToken;
-        public User LoggedInUser { get; set; } = null;
-        public LoginResult LoginResult { get; set; }
         public int LikedArtistsIndex { get; set; } = 0;
 
-        //public AppSettings m_AppSettings;
         private InfoLogic m_infoLogic;
         private List<Page> m_artistsList;
 
@@ -51,18 +46,20 @@ namespace BasicFacebookFeatures
             {
                 switchToLoginMode();
             }
-            //
+            
             m_infoLogic = new InfoLogic();
         }
 
         protected override void OnShown(EventArgs e)
         {
+            bool connectionSuccessful = false;
+
             base.OnShown(e);
 
-            if (m_FacebookLogicService.AppSettings.RememberMe && !string.IsNullOrEmpty(m_FacebookLogicService.AppSettings.AccessToken))
+            connectionSuccessful = m_FacebookLogicService.Connect();
+
+            if (connectionSuccessful)
             {
-                m_FacebookLogicService.Connect();
-                LoginResult = m_FacebookLogicService.LoginResult; //FacebookService.Connect(m_FacebookLogicService.AppSettings.AccessToken);
                 InitInfoAfterLogin();
                 pictureBoxLogin.Visible = false;
             }
@@ -73,68 +70,46 @@ namespace BasicFacebookFeatures
             base.OnFormClosing(e);
 
             m_FacebookLogicService.SaveSettings(Size, Location);
-
-            /*m_AppSettings.WindowSize = Size;
-            m_AppSettings.WindowLocation = Location;*/
-
-            /*if (m_AppSettings.RememberMe)
-            {
-                m_AppSettings.AccessToken = m_AccessToken;
-            }
-            else
-            {
-                m_AppSettings.AccessToken = string.Empty;
-            }
-
-            m_AppSettings.SaveToXmlFile(m_FilePath);*/
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            bool success = m_FacebookLogicService.Login();
+            string loginFailedErrorMessage;
+            bool success = m_FacebookLogicService.Login(out loginFailedErrorMessage);
             if (success)
             {
                 pictureBoxLogin.Visible = false;
-                LoginResult = m_FacebookLogicService.LoginResult; // TODO Delete this!
                 InitInfoAfterLogin();
             }
             else
             {
-                MessageBox.Show(LoginResult.ErrorMessage, "Login Failed");
+                MessageBox.Show(loginFailedErrorMessage, "Login Failed");
             }
         }
 
         private void InitInfoAfterLogin()
         {
-            if (!string.IsNullOrEmpty(LoginResult.AccessToken))
+            fetchUserInfo();
+            labelUserName.Text = m_FacebookLogicService.GetName();
+            labelUserName.Visible = true;
+            buttonLogin.Visible = false;
+            if (checkBoxRememberMe.Checked == true)
             {
-                LoggedInUser = LoginResult.LoggedInUser;
-                m_AccessToken = LoginResult.AccessToken;
-                fetchUserInfo();
-                labelUserName.Text = LoggedInUser.Name;
-                labelUserName.Visible = true;
-                buttonLogin.Visible = false;
-                if (checkBoxRememberMe.Checked == true)
-                {
-                    m_FacebookLogicService.AppSettings.RememberMe = true;
-                }
-                Size = new Size(770, 570);
-                tabControl.Visible = true;
-                buttonLogout.Visible = true;
-                checkBoxRememberMe.Visible = false;
-                labelInsperetionalQuote.Visible = true;
-                labelInsperetionalQuote.Text = m_FacebookLogicService.GetRandomQuote();
-                m_artistsList = m_infoLogic.GetArtistsList(LoggedInUser.LikedPages.ToList());
+                m_FacebookLogicService.AppSettings.RememberMe = true;
             }
-            else
-            {
-                MessageBox.Show(LoginResult.ErrorMessage, "Login Failed");
-            }
+            Size = new Size(770, 570);
+            tabControl.Visible = true;
+            buttonLogout.Visible = true;
+            checkBoxRememberMe.Visible = false;
+            labelInsperetionalQuote.Visible = true;
+            labelInsperetionalQuote.Text = m_FacebookLogicService.GetRandomQuote();
+            m_artistsList = m_infoLogic.GetArtistsList(m_FacebookLogicService.GetLikedPages());
         }
 
         private void fetchUserInfo()
         {
-            pictureBoxProfile.LoadAsync(LoggedInUser.PictureNormalURL);
+            string profilePictureUrl = m_FacebookLogicService.GetProfilePictureUrl();
+            pictureBoxProfile.LoadAsync(profilePictureUrl);
             //labelPosts.Text = LoggedInUser.Posts[0].Message;
             fetchGroup();
             fetchPost();
@@ -206,13 +181,6 @@ namespace BasicFacebookFeatures
             FormLikes formLikes = new FormLikes(post);
             formLikes.ShowDialog();
         }
-
-        /*private void mainForm_Shown(object sender, EventArgs e)
-        {
-
-            LoginResult = FacebookService.Connect(m_FacebookLogicService.AppSettings.AccessToken);
-            InitInfoAfterLogin();
-        }*/
 
         private void fetchPage()
         {
