@@ -184,6 +184,7 @@ namespace BasicFacebookFeatures
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             //FacebookService.LogoutWithUI();
+            LoggedInUser = null;
             pictureBoxProfile.Image = null;
             buttonLogin.Text = "Login";
             LoginResult = null;
@@ -304,10 +305,16 @@ namespace BasicFacebookFeatures
 
         private void fetchFavoriteTeams()
         {
-            if (LoggedInUser.FavofriteTeams != null)
+            Page team = m_FacebookLogicService.GetFavoriteTeam();
+            displayTeam(team);
+        }
+
+        private void displayTeam(Page team)
+        {
+            if (team != null)
             {
-                labelFavoriteTeamName.Text = LoggedInUser.FavofriteTeams[TeamsIndex].Name;
-                pictureBoxTeam.Image = LoggedInUser.FavofriteTeams[TeamsIndex].ImageNormal;
+                labelFavoriteTeamName.Text = team.Name;
+                pictureBoxTeam.Image = team.ImageNormal;
             }
             else
             {
@@ -333,29 +340,14 @@ namespace BasicFacebookFeatures
 
         private void buttonNextTeam_Click(object sender, EventArgs e)
         {
-            if (LoggedInUser.FavofriteTeams != null)
-            {
-                TeamsIndex++;
-                if (TeamsIndex >= LoggedInUser.FavofriteTeams.Length)
-                {
-                    TeamsIndex = 0;
-                }
-                fetchGroup();
-            }
-
+            Page team = m_FacebookLogicService.GetNextFavoriteTeam();
+            displayTeam(team);
         }
 
         private void buttonPrevTeam_Click(object sender, EventArgs e)
         {
-            if (LoggedInUser.FavofriteTeams != null)
-            {
-                TeamsIndex--;
-                if (TeamsIndex < 0)
-                {
-                    TeamsIndex = LoggedInUser.FavofriteTeams.Length - 1;
-                }
-                fetchGroup();
-            }
+            Page team = m_FacebookLogicService.GetPreviousFavoriteTeam();
+            displayTeam(team);
         }
 
         private void fetchEvents()

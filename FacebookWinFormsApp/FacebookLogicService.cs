@@ -169,5 +169,47 @@ namespace BasicFacebookFeatures
             }
             return returnedAlbum;
         }
+
+        public Page GetFavoriteTeam()
+        {
+            Page page = null;
+            if (LoginResult.LoggedInUser.FavofriteTeams != null)
+            {
+                page = LoginResult.LoggedInUser.FavofriteTeams[TeamsIndex];
+            }
+            return page;
+        }
+
+        public Page GetNextFavoriteTeam()
+        {
+            Page page = null;
+
+            if (LoginResult.LoggedInUser.FavofriteTeams != null)
+            {
+                TeamsIndex++;
+                if (TeamsIndex >= LoginResult.LoggedInUser.FavofriteTeams.Length)
+                {
+                    TeamsIndex = 0;
+                }
+            }
+            page = GetFavoriteTeam();
+            return page;
+        }
+
+        public Page GetPreviousFavoriteTeam()
+        {
+            Page page = null;
+
+            if (LoginResult.LoggedInUser.FavofriteTeams != null)
+            {
+                TeamsIndex--;
+                if (TeamsIndex < 0)
+                {
+                    TeamsIndex = LoginResult.LoggedInUser.FavofriteTeams.Length - 1;
+                }
+            }
+            page = GetFavoriteTeam();
+            return page;
+        }
     }
 }
