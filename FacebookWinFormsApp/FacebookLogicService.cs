@@ -28,6 +28,7 @@ namespace BasicFacebookFeatures
         public int PostsIndex { get; set; } = 0;
         public int AlbumIndex { get; set; } = 0;
         public int ArtistIndex { get; set; } = 0;
+        public string Quote { get; set;  }
 
         public FacebookLogicService()
         {
@@ -93,6 +94,7 @@ namespace BasicFacebookFeatures
             if (AppSettings.RememberMe && !string.IsNullOrEmpty(AppSettings.AccessToken))
             {
                 LoginResult = FacebookService.Connect(AppSettings.AccessToken);
+                LoggedInUser = LoginResult.LoggedInUser;
                 success = true;
             }
             return success;
@@ -125,21 +127,13 @@ namespace BasicFacebookFeatures
 
         public Group GetNextGroup()
         {
-            GroupsIndex++;
-            if (GroupsIndex >= LoginResult.LoggedInUser.Groups.Count)
-            {
-                GroupsIndex = 0;
-            }
+            GroupsIndex = getNextIndex(GroupsIndex, LoggedInUser.Groups.Count);
             return GetGroup();
         }
 
         public Group GetPreviousGroup()
         {
-            GroupsIndex--;
-            if (GroupsIndex < 0)
-            {
-                GroupsIndex = LoginResult.LoggedInUser.Groups.Count - 1;
-            }
+            GroupsIndex = getPrevIndex(GroupsIndex, LoggedInUser.Groups.Count);
             return GetGroup();
         }
 
@@ -150,21 +144,13 @@ namespace BasicFacebookFeatures
 
         public Post GetNextPost()
         {
-            PostsIndex++;
-            if (PostsIndex >= LoginResult.LoggedInUser.Posts.Count)
-            {
-                PostsIndex = 0;
-            }
+            PostsIndex = getNextIndex(PostsIndex, LoggedInUser.Posts.Count);
             return GetPost();
         }
 
         public Post GetPreviousPost()
         {
-            PostsIndex--;
-            if (PostsIndex < 0)
-            {
-                PostsIndex = LoginResult.LoggedInUser.Posts.Count - 1;
-            }
+            PostsIndex = getPrevIndex(PostsIndex, LoggedInUser.Posts.Count);
             return GetPost();
         }
 
@@ -175,21 +161,13 @@ namespace BasicFacebookFeatures
 
         public Page GetNextPage()
         {
-            PageIndex++;
-            if (PageIndex >= LoginResult.LoggedInUser.LikedPages.Count)
-            {
-                PageIndex = 0;
-            }
+            PageIndex = getNextIndex(PageIndex, LoggedInUser.LikedPages.Count);
             return GetPage();
         }
 
         public Page GetPreviousPage()
         {
-            PageIndex--;
-            if (PageIndex < 0)
-            {
-                PageIndex = LoggedInUser.LikedPages.Count - 1;
-            }
+            PageIndex = getPrevIndex(PageIndex, LoggedInUser.LikedPages.Count);
             return GetPage();
         }
 
@@ -233,11 +211,8 @@ namespace BasicFacebookFeatures
 
             if (LoginResult.LoggedInUser.FavofriteTeams != null)
             {
-                TeamsIndex++;
-                if (TeamsIndex >= LoginResult.LoggedInUser.FavofriteTeams.Length)
-                {
-                    TeamsIndex = 0;
-                }
+                TeamsIndex = getNextIndex(TeamsIndex, LoggedInUser.FavofriteTeams.Length);
+                page = LoggedInUser.FavofriteTeams[TeamsIndex];
             }
             page = GetFavoriteTeam();
             return page;
@@ -249,10 +224,10 @@ namespace BasicFacebookFeatures
 
             if (LoginResult.LoggedInUser.FavofriteTeams != null)
             {
-                TeamsIndex--;
                 if (TeamsIndex < 0)
                 {
-                    TeamsIndex = LoginResult.LoggedInUser.FavofriteTeams.Length - 1;
+                    TeamsIndex = getPrevIndex(TeamsIndex, LoggedInUser.FavofriteTeams.Length);
+                    page = LoggedInUser.FavofriteTeams[TeamsIndex];
                 }
             }
             page = GetFavoriteTeam();
@@ -284,7 +259,9 @@ namespace BasicFacebookFeatures
 
         public string GetRandomQuote()
         {
-            return m_quotesLoader.getRandomQuote();
+            string quote = m_quotesLoader.getRandomQuote();
+            Quote = quote;
+            return quote;
         }
 
         public void GetPostTextAndPicture(Post i_post, out string o_text, out string o_imgURL)
@@ -298,6 +275,10 @@ namespace BasicFacebookFeatures
             else if (i_post.Caption != null)
             {
                 o_text = i_post.Caption;
+            }
+            else
+            {
+                o_text = "-no text to show-";
             }
 
             if (i_post.Type == Post.eType.photo)
@@ -357,11 +338,7 @@ namespace BasicFacebookFeatures
             }
             if (m_artistsList.Count > 0)
             {
-                ArtistIndex++;
-                if (ArtistIndex >= m_artistsList.Count)
-                {
-                    ArtistIndex = 0;
-                }
+                ArtistIndex = getNextIndex(ArtistIndex, m_artistsList.Count);
                 artistPage = m_artistsList[ArtistIndex];
             }
             return artistPage;
@@ -376,14 +353,60 @@ namespace BasicFacebookFeatures
             }
             if (m_artistsList.Count > 0)
             {
-                ArtistIndex--;
-                if (ArtistIndex < 0)
-                {
-                    ArtistIndex = m_artistsList.Count - 1;
-                }
+                ArtistIndex = getPrevIndex(ArtistIndex, m_artistsList.Count);
                 artistPage = m_artistsList[ArtistIndex];
             }
+
             return artistPage;
+        }
+
+        public string GetFriendsNumber()
+        {
+            string numberOfFriends;
+            try
+            {
+                numberOfFriends = LoggedInUser.FriendLists.Count.ToString();
+            }
+            catch(Facebook.FacebookOAuthException)
+            {
+                numberOfFriends = "";
+            }
+
+            return numberOfFriends;
+        }
+        /*
+        public string GetNextPicInAlbum(int i_AlbumIndex)
+        {
+            string pictureUrl = LoggedInUser.Albums[i_AlbumIndex].Photos[AlbumIndex].PictureNormalURL;
+            AlbumIndex++;
+
+            return pictureUrl;
+        }
+        */
+
+        public int getPostLikes(Post i_post)
+        {
+            return LoggedInUser.Posts[PostsIndex].LikedBy.Count;
+        }
+
+        private int getNextIndex(int i_currentIndex, int i_listCount)
+        {
+            i_currentIndex++;
+            if (i_currentIndex >= i_listCount)
+            {
+                i_currentIndex = 0;
+            }
+            return i_currentIndex;
+        }
+
+        private int getPrevIndex(int i_currentIndex, int i_listCount)
+        {
+            i_currentIndex--;
+            if (i_currentIndex < 0)
+            {
+                i_currentIndex = i_listCount;
+            }
+            return i_currentIndex;
         }
     }
 }

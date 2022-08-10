@@ -18,13 +18,11 @@ namespace BasicFacebookFeatures
     {
         private FacebookLogicService m_FacebookLogicService;
 
-
         public FormMain()
         {
             InitializeComponent();
 
             m_FacebookLogicService = new FacebookLogicService();
-
 
             Size = new Size(180, 280);
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
@@ -62,7 +60,6 @@ namespace BasicFacebookFeatures
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-
             m_FacebookLogicService.SaveSettings(Size, Location);
         }
 
@@ -87,15 +84,21 @@ namespace BasicFacebookFeatures
             labelUserName.Text = m_FacebookLogicService.GetName();
             labelUserName.Visible = true;
             buttonLogin.Visible = false;
+            pictureBoxBulb.Visible = false;
             if (checkBoxRememberMe.Checked == true)
             {
                 m_FacebookLogicService.AppSettings.RememberMe = true;
             }
+
             Size = new Size(770, 570);
             tabControl.Visible = true;
             buttonLogout.Visible = true;
             checkBoxRememberMe.Visible = false;
+            pictureBoxBulb.Visible = true;
             labelInsperetionalQuote.Visible = true;
+            buttonShareQuote.Visible = true;
+            labelFirendsNumber.Visible = true;
+            labelFirendsNumber.Text = string.Format("({0}) Friends", m_FacebookLogicService.GetFriendsNumber());
             try
             {
                 labelInsperetionalQuote.Text = m_FacebookLogicService.GetRandomQuote();
@@ -160,7 +163,10 @@ namespace BasicFacebookFeatures
             this.buttonLogout.Visible = false;
             this.labelInsperetionalQuote.Visible = false;
             this.checkBoxRememberMe.Visible = true;
+            this.pictureBoxBulb.Visible = false;
             this.checkBoxRememberMe.Checked = false;
+            this.buttonShareQuote.Visible = false;
+            this.labelFirendsNumber.Visible = false;
         }
 
         private void buttonNextPost_Click(object sender, EventArgs e)
@@ -310,8 +316,7 @@ namespace BasicFacebookFeatures
             if (eventNames.Count > 0)
             {
                 comboBoxEvents.SelectedIndex = 0;
-            }
-     
+            }  
         }
 
         private void comboBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
@@ -320,6 +325,7 @@ namespace BasicFacebookFeatures
             if (album != null)
             {
                 pictureBoxAlbum.Image = album.CoverPhoto.ImageNormal;
+                m_FacebookLogicService.AlbumIndex = 0;
             }
             else
             {
@@ -335,12 +341,12 @@ namespace BasicFacebookFeatures
 
         private void pictureBoxAlbum_Click(object sender, EventArgs e)
         {
-           
+            //pictureBoxAlbum.LoadAsync(m_FacebookLogicService.GetNextPicInAlbum(comboBoxAlbums.SelectedIndex));
         }
 
         private void buttonSerarchMeOnWiki_Click(object sender, EventArgs e)
         {
-            string artistsName = "TODO"; // m_artistsList[LikedArtistsIndex].Name;
+            string artistsName = "Lady Gaga"; // m_artistsList[LikedArtistsIndex].Name;
             if(artistsName.Contains(" "))
             {
                 artistsName.Replace(" ", "_");
@@ -357,6 +363,12 @@ namespace BasicFacebookFeatures
         private void buttonArtistsNext_Click(object sender, EventArgs e)
         {
             Page artist = m_FacebookLogicService.GetPreviousArtistPage();
+        }
+
+        private void buttonShareQuote_Click(object sender, EventArgs e)
+        {
+            FormShareQuote formShareQuote = new FormShareQuote(m_FacebookLogicService);
+            formShareQuote.ShowDialog();
         }
     }
 }

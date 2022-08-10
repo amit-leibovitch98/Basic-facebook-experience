@@ -19,7 +19,7 @@ namespace BasicFacebookFeatures.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -76,6 +76,26 @@ namespace BasicFacebookFeatures.Properties {
         internal static System.Drawing.Bitmap Facebook_PNG_Clipart {
             get {
                 object obj = ResourceManager.GetObject("Facebook-PNG-Clipart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Illustration_of_light_bulb_icon_on_transparent_background_PNG {
+            get {
+                object obj = ResourceManager.GetObject("Illustration-of-light-bulb-icon-on-transparent-background-PNG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Illustration_of_light_bulb_icon_on_transparent_background_PNG1 {
+            get {
+                object obj = ResourceManager.GetObject("Illustration-of-light-bulb-icon-on-transparent-background-PNG1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +196,16 @@ namespace BasicFacebookFeatures.Properties {
         internal static System.Drawing.Bitmap pictureLogin2 {
             get {
                 object obj = ResourceManager.GetObject("pictureLogin2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Untitled_1 {
+            get {
+                object obj = ResourceManager.GetObject("Untitled-1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
