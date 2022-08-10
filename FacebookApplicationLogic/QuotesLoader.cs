@@ -10,27 +10,28 @@ namespace FacebookApplicationLogic
 {
     public class QuotesLoader
     {
-        private int m_quoteNumber;
         private List<string> m_quotes;
 
         public QuotesLoader()
         {
-            m_quotes = LoadJson();
-            Random quoteNumber = new Random();
-            m_quoteNumber = quoteNumber.Next(0, m_quotes.Count - 1);
+            m_quotes = null;
         }
 
-        public List<string> LoadJson()
+        public List<string> LoadQuotesJson()
         {
             string json = null;
-            using (StreamReader r = new StreamReader("Quotes.json"))
+            if (!File.Exists("resources/Quotes.json"))
+            {
+                throw new FileLoadException("Failed to load quotes!");
+            }
+            using (StreamReader r = new StreamReader("resources/Quotes.json"))
             {
                 json = r.ReadToEnd();
             }
 
             if (json == null)
             {
-                throw new FileLoadException("Fail to load quotes!");
+                throw new FileLoadException("Failed to load quotes!");
             }
 
             return JsonConvert.DeserializeObject<List<string>>(json);
@@ -39,8 +40,13 @@ namespace FacebookApplicationLogic
 
         public string getRandomQuote()
         {
-            List<string> quotesList = LoadJson();
-            return quotesList[m_quoteNumber];
+            if (m_quotes == null)
+            {
+                m_quotes = LoadQuotesJson();
+            }
+            Random randomNumber = new Random();
+            int quoteNumber = randomNumber.Next(0, m_quotes.Count - 1);
+            return m_quotes[quoteNumber];
         }
     }
 }

@@ -102,7 +102,14 @@ namespace BasicFacebookFeatures
             buttonLogout.Visible = true;
             checkBoxRememberMe.Visible = false;
             labelInsperetionalQuote.Visible = true;
-            labelInsperetionalQuote.Text = m_FacebookLogicService.GetRandomQuote();
+            try
+            {
+                labelInsperetionalQuote.Text = m_FacebookLogicService.GetRandomQuote();
+            }
+            catch (FileLoadException e)
+            {
+                labelInsperetionalQuote.Text = e.Message;
+            }
             m_artistsList = m_infoLogic.GetArtistsList(m_FacebookLogicService.GetLikedPages());
         }
 

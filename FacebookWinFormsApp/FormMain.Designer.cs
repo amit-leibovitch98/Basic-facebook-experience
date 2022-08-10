@@ -32,8 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.TabWall = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxLikesIcon = new System.Windows.Forms.PictureBox();
             this.labelPostComments = new System.Windows.Forms.Label();
             this.labelPostLikes = new System.Windows.Forms.Label();
+            this.pictureBoxPostImg = new System.Windows.Forms.PictureBox();
             this.buttonPrevPost = new System.Windows.Forms.Button();
             this.buttonNextPost = new System.Windows.Forms.Button();
             this.labelPosts = new System.Windows.Forms.Label();
@@ -43,21 +46,29 @@
             this.buttonPrevPage = new System.Windows.Forms.Button();
             this.buttonNextPage = new System.Windows.Forms.Button();
             this.labelPageName = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxPageLogo = new System.Windows.Forms.PictureBox();
+            this.pictureBoxPageCover = new System.Windows.Forms.PictureBox();
             this.TabGroups = new System.Windows.Forms.TabPage();
             this.labelGroupDescription = new System.Windows.Forms.Label();
             this.buttonNextGroup = new System.Windows.Forms.Button();
             this.buttonPrevGroup = new System.Windows.Forms.Button();
             this.LabelGroupName = new System.Windows.Forms.Label();
+            this.pictureBoxGroup = new System.Windows.Forms.PictureBox();
             this.TabFriends = new System.Windows.Forms.TabPage();
             this.tabPageEvents = new System.Windows.Forms.TabPage();
             this.comboBoxEvents = new System.Windows.Forms.ComboBox();
             this.labelEvents = new System.Windows.Forms.Label();
+            this.pictureBoxEvent = new System.Windows.Forms.PictureBox();
             this.tabPageTeams = new System.Windows.Forms.TabPage();
+            this.pictureBoxTeam = new System.Windows.Forms.PictureBox();
             this.labelFavoriteTeamName = new System.Windows.Forms.Label();
             this.buttonNextTeam = new System.Windows.Forms.Button();
             this.buttonPrevTeam = new System.Windows.Forms.Button();
             this.tabPageAlbums = new System.Windows.Forms.TabPage();
             this.labelAlbumLikes = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxAlbum = new System.Windows.Forms.PictureBox();
             this.labelAlbumName = new System.Windows.Forms.Label();
             this.comboBoxAlbums = new System.Windows.Forms.ComboBox();
             this.tabPageArtists = new System.Windows.Forms.TabPage();
@@ -66,49 +77,38 @@
             this.buttonArtistsPrev = new System.Windows.Forms.Button();
             this.buttonArtistsNext = new System.Windows.Forms.Button();
             this.labelArtistsName = new System.Windows.Forms.Label();
+            this.pictureBoxArtistsLikesIcon = new System.Windows.Forms.PictureBox();
+            this.pictureBoxArtistsPicture = new System.Windows.Forms.PictureBox();
             this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
             this.imageListPageUploadedPictures = new System.Windows.Forms.ImageList(this.components);
             this.labelInsperetionalQuote = new System.Windows.Forms.Label();
-            this.labelUserName = new System.Windows.Forms.Label();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.pictureBoxLogin = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxLikesIcon = new System.Windows.Forms.PictureBox();
-            this.pictureBoxPostImg = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxPageLogo = new System.Windows.Forms.PictureBox();
-            this.pictureBoxPageCover = new System.Windows.Forms.PictureBox();
-            this.pictureBoxGroup = new System.Windows.Forms.PictureBox();
-            this.pictureBoxEvent = new System.Windows.Forms.PictureBox();
-            this.pictureBoxTeam = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxAlbum = new System.Windows.Forms.PictureBox();
-            this.pictureBoxArtistsLikesIcon = new System.Windows.Forms.PictureBox();
-            this.pictureBoxArtistsPicture = new System.Windows.Forms.PictureBox();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
+            this.labelUserName = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.TabWall.SuspendLayout();
-            this.TabLikedPages.SuspendLayout();
-            this.TabGroups.SuspendLayout();
-            this.tabPageEvents.SuspendLayout();
-            this.tabPageTeams.SuspendLayout();
-            this.tabPageAlbums.SuspendLayout();
-            this.tabPageArtists.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikesIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPostImg)).BeginInit();
+            this.TabLikedPages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPageLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPageCover)).BeginInit();
+            this.TabGroups.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).BeginInit();
+            this.tabPageEvents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEvent)).BeginInit();
+            this.tabPageTeams.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTeam)).BeginInit();
+            this.tabPageAlbums.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).BeginInit();
+            this.tabPageArtists.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsLikesIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,6 +151,30 @@
             this.TabWall.TabIndex = 0;
             this.TabWall.Text = "Wall";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(397, 398);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 34);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 65;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBoxLikesIcon
+            // 
+            this.pictureBoxLikesIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxLikesIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLikesIcon.Image")));
+            this.pictureBoxLikesIcon.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxLikesIcon.InitialImage")));
+            this.pictureBoxLikesIcon.Location = new System.Drawing.Point(64, 405);
+            this.pictureBoxLikesIcon.Name = "pictureBoxLikesIcon";
+            this.pictureBoxLikesIcon.Size = new System.Drawing.Size(27, 27);
+            this.pictureBoxLikesIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLikesIcon.TabIndex = 64;
+            this.pictureBoxLikesIcon.TabStop = false;
+            // 
             // labelPostComments
             // 
             this.labelPostComments.AutoSize = true;
@@ -175,6 +199,17 @@
             this.labelPostLikes.TabIndex = 62;
             this.labelPostLikes.Text = "Likes";
             this.labelPostLikes.Click += new System.EventHandler(this.labelLikes_Click);
+            // 
+            // pictureBoxPostImg
+            // 
+            this.pictureBoxPostImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxPostImg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxPostImg.Location = new System.Drawing.Point(133, 99);
+            this.pictureBoxPostImg.Name = "pictureBoxPostImg";
+            this.pictureBoxPostImg.Size = new System.Drawing.Size(284, 293);
+            this.pictureBoxPostImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPostImg.TabIndex = 61;
+            this.pictureBoxPostImg.TabStop = false;
             // 
             // buttonPrevPost
             // 
@@ -210,11 +245,11 @@
             // 
             this.labelPosts.AutoSize = true;
             this.labelPosts.BackColor = System.Drawing.Color.Transparent;
-            this.labelPosts.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.labelPosts.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPosts.Location = new System.Drawing.Point(235, 56);
             this.labelPosts.MaximumSize = new System.Drawing.Size(500, 30);
             this.labelPosts.Name = "labelPosts";
-            this.labelPosts.Size = new System.Drawing.Size(96, 29);
+            this.labelPosts.Size = new System.Drawing.Size(101, 29);
             this.labelPosts.TabIndex = 0;
             this.labelPosts.Text = "POSTS";
             this.labelPosts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -296,12 +331,42 @@
             // labelPageName
             // 
             this.labelPageName.AutoSize = true;
-            this.labelPageName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.labelPageName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPageName.Location = new System.Drawing.Point(188, 202);
             this.labelPageName.Name = "labelPageName";
-            this.labelPageName.Size = new System.Drawing.Size(141, 29);
+            this.labelPageName.Size = new System.Drawing.Size(150, 29);
             this.labelPageName.TabIndex = 0;
             this.labelPageName.Text = "Page Name";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
+            this.pictureBox2.Location = new System.Drawing.Point(192, 239);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 66;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBoxPageLogo
+            // 
+            this.pictureBoxPageLogo.Location = new System.Drawing.Point(32, 118);
+            this.pictureBoxPageLogo.Name = "pictureBoxPageLogo";
+            this.pictureBoxPageLogo.Size = new System.Drawing.Size(150, 150);
+            this.pictureBoxPageLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPageLogo.TabIndex = 1;
+            this.pictureBoxPageLogo.TabStop = false;
+            // 
+            // pictureBoxPageCover
+            // 
+            this.pictureBoxPageCover.Location = new System.Drawing.Point(8, 6);
+            this.pictureBoxPageCover.Name = "pictureBoxPageCover";
+            this.pictureBoxPageCover.Size = new System.Drawing.Size(562, 161);
+            this.pictureBoxPageCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxPageCover.TabIndex = 63;
+            this.pictureBoxPageCover.TabStop = false;
             // 
             // TabGroups
             // 
@@ -321,11 +386,11 @@
             // labelGroupDescription
             // 
             this.labelGroupDescription.AutoSize = true;
-            this.labelGroupDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGroupDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelGroupDescription.Location = new System.Drawing.Point(24, 355);
             this.labelGroupDescription.MaximumSize = new System.Drawing.Size(550, 50);
             this.labelGroupDescription.Name = "labelGroupDescription";
-            this.labelGroupDescription.Size = new System.Drawing.Size(104, 24);
+            this.labelGroupDescription.Size = new System.Drawing.Size(89, 20);
             this.labelGroupDescription.TabIndex = 66;
             this.labelGroupDescription.Text = "Description";
             this.labelGroupDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -364,7 +429,7 @@
             // 
             // LabelGroupName
             // 
-            this.LabelGroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelGroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelGroupName.Location = new System.Drawing.Point(156, 99);
             this.LabelGroupName.MaximumSize = new System.Drawing.Size(550, 50);
             this.LabelGroupName.Name = "LabelGroupName";
@@ -372,6 +437,15 @@
             this.LabelGroupName.TabIndex = 1;
             this.LabelGroupName.Text = "GroupName";
             this.LabelGroupName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBoxGroup
+            // 
+            this.pictureBoxGroup.Location = new System.Drawing.Point(210, 140);
+            this.pictureBoxGroup.Name = "pictureBoxGroup";
+            this.pictureBoxGroup.Size = new System.Drawing.Size(159, 174);
+            this.pictureBoxGroup.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxGroup.TabIndex = 0;
+            this.pictureBoxGroup.TabStop = false;
             // 
             // TabFriends
             // 
@@ -415,6 +489,14 @@
             this.labelEvents.TabIndex = 1;
             this.labelEvents.Text = "Event:";
             // 
+            // pictureBoxEvent
+            // 
+            this.pictureBoxEvent.Location = new System.Drawing.Point(185, 167);
+            this.pictureBoxEvent.Name = "pictureBoxEvent";
+            this.pictureBoxEvent.Size = new System.Drawing.Size(183, 198);
+            this.pictureBoxEvent.TabIndex = 0;
+            this.pictureBoxEvent.TabStop = false;
+            // 
             // tabPageTeams
             // 
             this.tabPageTeams.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
@@ -428,6 +510,15 @@
             this.tabPageTeams.Size = new System.Drawing.Size(576, 496);
             this.tabPageTeams.TabIndex = 5;
             this.tabPageTeams.Text = "Teams";
+            // 
+            // pictureBoxTeam
+            // 
+            this.pictureBoxTeam.Location = new System.Drawing.Point(177, 107);
+            this.pictureBoxTeam.Name = "pictureBoxTeam";
+            this.pictureBoxTeam.Size = new System.Drawing.Size(187, 196);
+            this.pictureBoxTeam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxTeam.TabIndex = 68;
+            this.pictureBoxTeam.TabStop = false;
             // 
             // labelFavoriteTeamName
             // 
@@ -499,6 +590,28 @@
             this.labelAlbumLikes.Size = new System.Drawing.Size(46, 20);
             this.labelAlbumLikes.TabIndex = 66;
             this.labelAlbumLikes.Text = "Likes";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
+            this.pictureBox4.Location = new System.Drawing.Point(110, 391);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 65;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBoxAlbum
+            // 
+            this.pictureBoxAlbum.Location = new System.Drawing.Point(189, 146);
+            this.pictureBoxAlbum.Name = "pictureBoxAlbum";
+            this.pictureBoxAlbum.Size = new System.Drawing.Size(198, 218);
+            this.pictureBoxAlbum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxAlbum.TabIndex = 2;
+            this.pictureBoxAlbum.TabStop = false;
+            this.pictureBoxAlbum.Click += new System.EventHandler(this.pictureBoxAlbum_Click);
             // 
             // labelAlbumName
             // 
@@ -596,12 +709,33 @@
             // labelArtistsName
             // 
             this.labelArtistsName.AutoSize = true;
-            this.labelArtistsName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.labelArtistsName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelArtistsName.Location = new System.Drawing.Point(189, 148);
             this.labelArtistsName.Name = "labelArtistsName";
-            this.labelArtistsName.Size = new System.Drawing.Size(141, 29);
+            this.labelArtistsName.Size = new System.Drawing.Size(150, 29);
             this.labelArtistsName.TabIndex = 67;
             this.labelArtistsName.Text = "Page Name";
+            // 
+            // pictureBoxArtistsLikesIcon
+            // 
+            this.pictureBoxArtistsLikesIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxArtistsLikesIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxArtistsLikesIcon.Image")));
+            this.pictureBoxArtistsLikesIcon.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxArtistsLikesIcon.InitialImage")));
+            this.pictureBoxArtistsLikesIcon.Location = new System.Drawing.Point(193, 185);
+            this.pictureBoxArtistsLikesIcon.Name = "pictureBoxArtistsLikesIcon";
+            this.pictureBoxArtistsLikesIcon.Size = new System.Drawing.Size(27, 27);
+            this.pictureBoxArtistsLikesIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxArtistsLikesIcon.TabIndex = 72;
+            this.pictureBoxArtistsLikesIcon.TabStop = false;
+            // 
+            // pictureBoxArtistsPicture
+            // 
+            this.pictureBoxArtistsPicture.Location = new System.Drawing.Point(33, 64);
+            this.pictureBoxArtistsPicture.Name = "pictureBoxArtistsPicture";
+            this.pictureBoxArtistsPicture.Size = new System.Drawing.Size(150, 150);
+            this.pictureBoxArtistsPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxArtistsPicture.TabIndex = 68;
+            this.pictureBoxArtistsPicture.TabStop = false;
             // 
             // checkBoxRememberMe
             // 
@@ -633,18 +767,6 @@
             this.labelInsperetionalQuote.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.labelInsperetionalQuote.Visible = false;
             // 
-            // labelUserName
-            // 
-            this.labelUserName.AutoSize = true;
-            this.labelUserName.Font = new System.Drawing.Font("Gisha", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUserName.Location = new System.Drawing.Point(13, 146);
-            this.labelUserName.MaximumSize = new System.Drawing.Size(144, 50);
-            this.labelUserName.Name = "labelUserName";
-            this.labelUserName.Size = new System.Drawing.Size(82, 18);
-            this.labelUserName.TabIndex = 63;
-            this.labelUserName.Text = "UserName";
-            this.labelUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // buttonLogin
             // 
             this.buttonLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
@@ -670,140 +792,6 @@
             this.pictureBoxLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxLogin.TabIndex = 61;
             this.pictureBoxLogin.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(397, 398);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 34);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 65;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBoxLikesIcon
-            // 
-            this.pictureBoxLikesIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxLikesIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLikesIcon.Image")));
-            this.pictureBoxLikesIcon.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxLikesIcon.InitialImage")));
-            this.pictureBoxLikesIcon.Location = new System.Drawing.Point(64, 405);
-            this.pictureBoxLikesIcon.Name = "pictureBoxLikesIcon";
-            this.pictureBoxLikesIcon.Size = new System.Drawing.Size(27, 27);
-            this.pictureBoxLikesIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxLikesIcon.TabIndex = 64;
-            this.pictureBoxLikesIcon.TabStop = false;
-            // 
-            // pictureBoxPostImg
-            // 
-            this.pictureBoxPostImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBoxPostImg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxPostImg.Location = new System.Drawing.Point(173, 99);
-            this.pictureBoxPostImg.Name = "pictureBoxPostImg";
-            this.pictureBoxPostImg.Size = new System.Drawing.Size(231, 293);
-            this.pictureBoxPostImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxPostImg.TabIndex = 61;
-            this.pictureBoxPostImg.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(192, 239);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(27, 27);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 66;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBoxPageLogo
-            // 
-            this.pictureBoxPageLogo.Location = new System.Drawing.Point(32, 118);
-            this.pictureBoxPageLogo.Name = "pictureBoxPageLogo";
-            this.pictureBoxPageLogo.Size = new System.Drawing.Size(150, 150);
-            this.pictureBoxPageLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxPageLogo.TabIndex = 1;
-            this.pictureBoxPageLogo.TabStop = false;
-            // 
-            // pictureBoxPageCover
-            // 
-            this.pictureBoxPageCover.Location = new System.Drawing.Point(8, 6);
-            this.pictureBoxPageCover.Name = "pictureBoxPageCover";
-            this.pictureBoxPageCover.Size = new System.Drawing.Size(562, 161);
-            this.pictureBoxPageCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxPageCover.TabIndex = 63;
-            this.pictureBoxPageCover.TabStop = false;
-            // 
-            // pictureBoxGroup
-            // 
-            this.pictureBoxGroup.Location = new System.Drawing.Point(210, 140);
-            this.pictureBoxGroup.Name = "pictureBoxGroup";
-            this.pictureBoxGroup.Size = new System.Drawing.Size(159, 174);
-            this.pictureBoxGroup.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxGroup.TabIndex = 0;
-            this.pictureBoxGroup.TabStop = false;
-            // 
-            // pictureBoxEvent
-            // 
-            this.pictureBoxEvent.Location = new System.Drawing.Point(185, 167);
-            this.pictureBoxEvent.Name = "pictureBoxEvent";
-            this.pictureBoxEvent.Size = new System.Drawing.Size(183, 198);
-            this.pictureBoxEvent.TabIndex = 0;
-            this.pictureBoxEvent.TabStop = false;
-            // 
-            // pictureBoxTeam
-            // 
-            this.pictureBoxTeam.Location = new System.Drawing.Point(177, 107);
-            this.pictureBoxTeam.Name = "pictureBoxTeam";
-            this.pictureBoxTeam.Size = new System.Drawing.Size(187, 196);
-            this.pictureBoxTeam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxTeam.TabIndex = 68;
-            this.pictureBoxTeam.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
-            this.pictureBox4.Location = new System.Drawing.Point(110, 391);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(27, 27);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 65;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBoxAlbum
-            // 
-            this.pictureBoxAlbum.Location = new System.Drawing.Point(189, 146);
-            this.pictureBoxAlbum.Name = "pictureBoxAlbum";
-            this.pictureBoxAlbum.Size = new System.Drawing.Size(198, 218);
-            this.pictureBoxAlbum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxAlbum.TabIndex = 2;
-            this.pictureBoxAlbum.TabStop = false;
-            this.pictureBoxAlbum.Click += new System.EventHandler(this.pictureBoxAlbum_Click);
-            // 
-            // pictureBoxArtistsLikesIcon
-            // 
-            this.pictureBoxArtistsLikesIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxArtistsLikesIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxArtistsLikesIcon.Image")));
-            this.pictureBoxArtistsLikesIcon.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxArtistsLikesIcon.InitialImage")));
-            this.pictureBoxArtistsLikesIcon.Location = new System.Drawing.Point(193, 185);
-            this.pictureBoxArtistsLikesIcon.Name = "pictureBoxArtistsLikesIcon";
-            this.pictureBoxArtistsLikesIcon.Size = new System.Drawing.Size(27, 27);
-            this.pictureBoxArtistsLikesIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxArtistsLikesIcon.TabIndex = 72;
-            this.pictureBoxArtistsLikesIcon.TabStop = false;
-            // 
-            // pictureBoxArtistsPicture
-            // 
-            this.pictureBoxArtistsPicture.Location = new System.Drawing.Point(33, 64);
-            this.pictureBoxArtistsPicture.Name = "pictureBoxArtistsPicture";
-            this.pictureBoxArtistsPicture.Size = new System.Drawing.Size(150, 150);
-            this.pictureBoxArtistsPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxArtistsPicture.TabIndex = 68;
-            this.pictureBoxArtistsPicture.TabStop = false;
             // 
             // buttonLogout
             // 
@@ -832,6 +820,19 @@
             this.pictureBoxProfile.TabIndex = 53;
             this.pictureBoxProfile.TabStop = false;
             // 
+            // labelUserName
+            // 
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.Font = new System.Drawing.Font("Gisha", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.labelUserName.Location = new System.Drawing.Point(13, 152);
+            this.labelUserName.MaximumSize = new System.Drawing.Size(144, 50);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(82, 18);
+            this.labelUserName.TabIndex = 63;
+            this.labelUserName.Text = "UserName";
+            this.labelUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -857,32 +858,32 @@
             this.tabControl.ResumeLayout(false);
             this.TabWall.ResumeLayout(false);
             this.TabWall.PerformLayout();
-            this.TabLikedPages.ResumeLayout(false);
-            this.TabLikedPages.PerformLayout();
-            this.TabGroups.ResumeLayout(false);
-            this.TabGroups.PerformLayout();
-            this.tabPageEvents.ResumeLayout(false);
-            this.tabPageEvents.PerformLayout();
-            this.tabPageTeams.ResumeLayout(false);
-            this.tabPageTeams.PerformLayout();
-            this.tabPageAlbums.ResumeLayout(false);
-            this.tabPageAlbums.PerformLayout();
-            this.tabPageArtists.ResumeLayout(false);
-            this.tabPageArtists.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikesIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPostImg)).EndInit();
+            this.TabLikedPages.ResumeLayout(false);
+            this.TabLikedPages.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPageLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPageCover)).EndInit();
+            this.TabGroups.ResumeLayout(false);
+            this.TabGroups.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).EndInit();
+            this.tabPageEvents.ResumeLayout(false);
+            this.tabPageEvents.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEvent)).EndInit();
+            this.tabPageTeams.ResumeLayout(false);
+            this.tabPageTeams.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTeam)).EndInit();
+            this.tabPageAlbums.ResumeLayout(false);
+            this.tabPageAlbums.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAlbum)).EndInit();
+            this.tabPageArtists.ResumeLayout(false);
+            this.tabPageArtists.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsLikesIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -936,7 +937,6 @@
         private System.Windows.Forms.Label labelAlbumName;
         private System.Windows.Forms.ComboBox comboBoxAlbums;
         private System.Windows.Forms.Label labelInsperetionalQuote;
-        private System.Windows.Forms.Label labelUserName;
         private System.Windows.Forms.PictureBox pictureBoxEvent;
         private System.Windows.Forms.ComboBox comboBoxEvents;
         private System.Windows.Forms.Label labelEvents;
@@ -948,6 +948,7 @@
         private System.Windows.Forms.PictureBox pictureBoxArtistsLikesIcon;
         private System.Windows.Forms.PictureBox pictureBoxArtistsPicture;
         private System.Windows.Forms.Button buttonSerarchMeOnWiki;
+        private System.Windows.Forms.Label labelUserName;
     }
 }
 
