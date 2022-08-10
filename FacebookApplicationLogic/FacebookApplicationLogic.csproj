@@ -37,13 +37,13 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="resources\Quotes.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtistPage.cs" />
     <Compile Include="QuotesLoader.cs" />
   </ItemGroup>
   <ItemGroup>

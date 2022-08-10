@@ -97,7 +97,6 @@
             this.tabPageArtists.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBulb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikesIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPostImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPageLogo)).BeginInit();
@@ -134,7 +133,6 @@
             // TabWall
             // 
             this.TabWall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.TabWall.Controls.Add(this.pictureBox1);
             this.TabWall.Controls.Add(this.pictureBoxLikesIcon);
             this.TabWall.Controls.Add(this.labelPostComments);
             this.TabWall.Controls.Add(this.labelPostLikes);
@@ -705,18 +703,6 @@
             this.pictureBoxLogin.TabIndex = 61;
             this.pictureBoxLogin.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(397, 398);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 34);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 65;
-            this.pictureBox1.TabStop = false;
-            // 
             // pictureBoxLikesIcon
             // 
             this.pictureBoxLikesIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -893,7 +879,6 @@
             this.tabPageArtists.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBulb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikesIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPostImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPageLogo)).EndInit();
@@ -924,7 +909,6 @@
         private System.Windows.Forms.Button buttonPrevPost;
         private System.Windows.Forms.Button buttonNextPost;
         private System.Windows.Forms.PictureBox pictureBoxPostImg;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBoxLikesIcon;
         private System.Windows.Forms.Label labelPostComments;
         private System.Windows.Forms.Label labelPostLikes;
@@ -934,7 +918,6 @@
         private System.Windows.Forms.PictureBox pictureBoxPageLogo;
         private System.Windows.Forms.Label labelPageName;
         private System.Windows.Forms.PictureBox pictureBoxPageCover;
-        //private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label labelPageLikes;
         private System.Windows.Forms.Label labelPageCategory;
         private System.Windows.Forms.ImageList imageListPageUploadedPictures;
