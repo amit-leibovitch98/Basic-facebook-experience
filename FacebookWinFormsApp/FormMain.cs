@@ -325,7 +325,6 @@ namespace BasicFacebookFeatures
             if (album != null)
             {
                 pictureBoxAlbum.Image = album.CoverPhoto.ImageNormal;
-                m_FacebookLogicService.AlbumIndex = 0;
             }
             else
             {

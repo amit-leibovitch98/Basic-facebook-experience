@@ -18,7 +18,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
             m_FacebookLogicService = i_FacebookLogicService;
-            textBoxToPost.Text = m_FacebookLogicService.Quote;
+            textBoxToPost.Text = m_FacebookLogicService.GetQuote();
         }
 
         private void buttonShareQuote_Click(object sender, EventArgs e)
