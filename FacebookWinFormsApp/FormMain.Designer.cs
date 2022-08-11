@@ -63,6 +63,8 @@
             this.buttonNextTeam = new System.Windows.Forms.Button();
             this.buttonPrevTeam = new System.Windows.Forms.Button();
             this.tabPageAlbums = new System.Windows.Forms.TabPage();
+            this.buttonPrevAlbumPhoto = new System.Windows.Forms.Button();
+            this.buttonNextAlbumPhoto = new System.Windows.Forms.Button();
             this.labelAlbumLikes = new System.Windows.Forms.Label();
             this.labelAlbumName = new System.Windows.Forms.Label();
             this.comboBoxAlbums = new System.Windows.Forms.ComboBox();
@@ -134,7 +136,6 @@
             // TabWall
             // 
             this.TabWall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.TabWall.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.pinpng_com_white_frame_png_312251;
             this.TabWall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.TabWall.Controls.Add(this.pictureBoxLikesIcon);
             this.TabWall.Controls.Add(this.labelPostComments);
@@ -162,7 +163,6 @@
             this.pictureBoxLikesIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxLikesIcon.TabIndex = 64;
             this.pictureBoxLikesIcon.TabStop = false;
-            this.pictureBoxLikesIcon.Click += new System.EventHandler(this.pictureBoxLikesIcon_Click);
             // 
             // labelPostComments
             // 
@@ -206,7 +206,7 @@
             this.buttonPrevPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPrevPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonPrevPost.ForeColor = System.Drawing.Color.White;
-            this.buttonPrevPost.Location = new System.Drawing.Point(34, 424);
+            this.buttonPrevPost.Location = new System.Drawing.Point(7, 459);
             this.buttonPrevPost.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPrevPost.Name = "buttonPrevPost";
             this.buttonPrevPost.Size = new System.Drawing.Size(30, 30);
@@ -221,7 +221,7 @@
             this.buttonNextPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNextPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonNextPost.ForeColor = System.Drawing.Color.White;
-            this.buttonNextPost.Location = new System.Drawing.Point(511, 424);
+            this.buttonNextPost.Location = new System.Drawing.Point(539, 459);
             this.buttonNextPost.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNextPost.Name = "buttonNextPost";
             this.buttonNextPost.Size = new System.Drawing.Size(30, 30);
@@ -535,6 +535,8 @@
             // tabPageAlbums
             // 
             this.tabPageAlbums.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.tabPageAlbums.Controls.Add(this.buttonPrevAlbumPhoto);
+            this.tabPageAlbums.Controls.Add(this.buttonNextAlbumPhoto);
             this.tabPageAlbums.Controls.Add(this.labelAlbumLikes);
             this.tabPageAlbums.Controls.Add(this.labelAlbumName);
             this.tabPageAlbums.Controls.Add(this.comboBoxAlbums);
@@ -546,6 +548,38 @@
             this.tabPageAlbums.Size = new System.Drawing.Size(576, 496);
             this.tabPageAlbums.TabIndex = 6;
             this.tabPageAlbums.Text = "Albums";
+            // 
+            // buttonPrevAlbumPhoto
+            // 
+            this.buttonPrevAlbumPhoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.buttonPrevAlbumPhoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonPrevAlbumPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrevAlbumPhoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonPrevAlbumPhoto.ForeColor = System.Drawing.Color.White;
+            this.buttonPrevAlbumPhoto.Location = new System.Drawing.Point(5, 460);
+            this.buttonPrevAlbumPhoto.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPrevAlbumPhoto.Name = "buttonPrevAlbumPhoto";
+            this.buttonPrevAlbumPhoto.Size = new System.Drawing.Size(30, 30);
+            this.buttonPrevAlbumPhoto.TabIndex = 72;
+            this.buttonPrevAlbumPhoto.Text = "<";
+            this.buttonPrevAlbumPhoto.UseVisualStyleBackColor = false;
+            this.buttonPrevAlbumPhoto.Click += new System.EventHandler(this.buttonPrevAlbumPhoto_Click);
+            // 
+            // buttonNextAlbumPhoto
+            // 
+            this.buttonNextAlbumPhoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.buttonNextAlbumPhoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonNextAlbumPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNextAlbumPhoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonNextAlbumPhoto.ForeColor = System.Drawing.Color.White;
+            this.buttonNextAlbumPhoto.Location = new System.Drawing.Point(542, 460);
+            this.buttonNextAlbumPhoto.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonNextAlbumPhoto.Name = "buttonNextAlbumPhoto";
+            this.buttonNextAlbumPhoto.Size = new System.Drawing.Size(30, 30);
+            this.buttonNextAlbumPhoto.TabIndex = 71;
+            this.buttonNextAlbumPhoto.Text = ">";
+            this.buttonNextAlbumPhoto.UseVisualStyleBackColor = false;
+            this.buttonNextAlbumPhoto.Click += new System.EventHandler(this.buttonNextAlbumPhoto_Click);
             // 
             // labelAlbumLikes
             // 
@@ -598,7 +632,6 @@
             this.pictureBoxAlbum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxAlbum.TabIndex = 2;
             this.pictureBoxAlbum.TabStop = false;
-            this.pictureBoxAlbum.Click += new System.EventHandler(this.pictureBoxAlbum_Click);
             // 
             // tabPageArtists
             // 
@@ -621,11 +654,11 @@
             // labelArtistError
             // 
             this.labelArtistError.AutoSize = true;
-            this.labelArtistError.Font = new System.Drawing.Font("Gisha", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelArtistError.ForeColor = System.Drawing.Color.Red;
+            this.labelArtistError.Font = new System.Drawing.Font("Gisha", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelArtistError.ForeColor = System.Drawing.Color.Firebrick;
             this.labelArtistError.Location = new System.Drawing.Point(30, 31);
             this.labelArtistError.Name = "labelArtistError";
-            this.labelArtistError.Size = new System.Drawing.Size(309, 14);
+            this.labelArtistError.Size = new System.Drawing.Size(420, 19);
             this.labelArtistError.TabIndex = 74;
             this.labelArtistError.Text = "Could not fetch artists, here is an artist you might like.";
             this.labelArtistError.Visible = false;
@@ -662,7 +695,7 @@
             this.buttonArtistsPrev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonArtistsPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonArtistsPrev.ForeColor = System.Drawing.Color.White;
-            this.buttonArtistsPrev.Location = new System.Drawing.Point(5, 403);
+            this.buttonArtistsPrev.Location = new System.Drawing.Point(5, 461);
             this.buttonArtistsPrev.Margin = new System.Windows.Forms.Padding(4);
             this.buttonArtistsPrev.Name = "buttonArtistsPrev";
             this.buttonArtistsPrev.Size = new System.Drawing.Size(30, 30);
@@ -678,7 +711,7 @@
             this.buttonArtistsNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonArtistsNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonArtistsNext.ForeColor = System.Drawing.Color.White;
-            this.buttonArtistsNext.Location = new System.Drawing.Point(542, 403);
+            this.buttonArtistsNext.Location = new System.Drawing.Point(542, 461);
             this.buttonArtistsNext.Margin = new System.Windows.Forms.Padding(4);
             this.buttonArtistsNext.Name = "buttonArtistsNext";
             this.buttonArtistsNext.Size = new System.Drawing.Size(30, 30);
@@ -975,6 +1008,8 @@
         private System.Windows.Forms.Button buttonShareQuote;
         private System.Windows.Forms.Label labelFirendsNumber;
         private System.Windows.Forms.Label labelArtistError;
+        private System.Windows.Forms.Button buttonPrevAlbumPhoto;
+        private System.Windows.Forms.Button buttonNextAlbumPhoto;
     }
 }
 

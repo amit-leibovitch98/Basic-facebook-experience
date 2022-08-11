@@ -42,5 +42,25 @@ namespace FacebookApplicationLogic
             }
             return artist;
         }
+
+        public Artist GetNextArtist()
+        {
+            m_currentArtistIndex++;
+            if (m_currentArtistIndex >= m_artistsList.Count)
+            {
+                m_currentArtistIndex = 0;
+            }
+            return GetArtist();
+        }
+
+        public Artist GetPreviousArtist()
+        {
+            m_currentArtistIndex--;
+            if (m_currentArtistIndex <= 0)
+            {
+                m_currentArtistIndex = m_artistsList.Count - 1;
+            }
+            return GetArtist();
+        }
     }
 }

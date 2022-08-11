@@ -320,6 +320,12 @@ namespace BasicFacebookFeatures
             }  
         }
 
+        private void displayArtist(Artist artist)
+        {
+            labelArtistsName.Text = artist.Name;
+            pictureBoxArtistsPicture.LoadAsync(artist.ImageUrl);
+        }
+
         private void comboBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
         {
             Album album = m_FacebookLogicService.GetAlbumByName((string)comboBoxAlbums.SelectedItem);
@@ -339,11 +345,6 @@ namespace BasicFacebookFeatures
             pictureBoxEvent.Image = userEvent.ImageNormal;
         }
 
-        private void pictureBoxAlbum_Click(object sender, EventArgs e)
-        {
-            //pictureBoxAlbum.LoadAsync(m_FacebookLogicService.GetNextPicInAlbum(comboBoxAlbums.SelectedIndex));
-        }
-
         private void fetchArtist()
         {
             bool successFetchingArtist;
@@ -356,8 +357,7 @@ namespace BasicFacebookFeatures
             {
                 labelArtistError.Visible = false;
             }
-            labelArtistsName.Text = artist.Name;
-            pictureBoxArtistsPicture.LoadAsync(artist.ImageUrl);
+            displayArtist(artist);
         }
 
         private void buttonSerarchMeOnWiki_Click(object sender, EventArgs e)
@@ -371,12 +371,20 @@ namespace BasicFacebookFeatures
 
         private void buttonArtistsPrev_Click(object sender, EventArgs e)
         {
-            Page artist = null; // m_FacebookLogicService.GetNextArtistPage();
+            Artist artist = m_FacebookLogicService.GetNextArtist();
+            if (artist != null)
+            {
+                displayArtist(artist);
+            }
         }
 
         private void buttonArtistsNext_Click(object sender, EventArgs e)
         {
-            Page artist = null; // m_FacebookLogicService.GetPreviousArtistPage();
+            Artist artist = m_FacebookLogicService.GetPreviousArtist();
+            if (artist != null)
+            {
+                displayArtist(artist);
+            }
         }
 
         private void buttonShareQuote_Click(object sender, EventArgs e)
@@ -385,9 +393,22 @@ namespace BasicFacebookFeatures
             formShareQuote.ShowDialog();
         }
 
-        private void pictureBoxLikesIcon_Click(object sender, EventArgs e)
+        private void buttonNextAlbumPhoto_Click(object sender, EventArgs e)
         {
+            Photo photo = m_FacebookLogicService.GetAlbumNextPhoto();
+            if (photo != null)
+            {
+                pictureBoxAlbum.Image = photo.ImageNormal;
+            }
+        }
 
+        private void buttonPrevAlbumPhoto_Click(object sender, EventArgs e)
+        {
+            Photo photo = m_FacebookLogicService.GetAlbumPreviousPhoto();
+            if (photo != null)
+            {
+                pictureBoxAlbum.Image = photo.ImageNormal;
+            }
         }
     }
 }

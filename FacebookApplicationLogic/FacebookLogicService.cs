@@ -22,8 +22,9 @@ namespace FacebookApplicationLogic
         private int m_teamsIndex = 0;
         private int m_pageIndex = 0;
         private int m_postsIndex = 0;
-        private int m_albumIndex = 0;
         private int m_artistIndex = 0;
+        private int m_albumPhotoIndex = 0;
+        private Album m_currentAlbum;
         private string m_quote;
         public AppSettings AppSettings { get; set; }
 
@@ -187,6 +188,7 @@ namespace FacebookApplicationLogic
                     returnedAlbum = album;
                 }
             }
+            m_currentAlbum = returnedAlbum;
             return returnedAlbum;
         }
 
@@ -302,35 +304,14 @@ namespace FacebookApplicationLogic
             return artist;
         }
 
-        public Page GetNextArtistPage()
+        public Artist GetNextArtist()
         {
-            Page artistPage = null;
-           /* if (m_artistsList == null)
-            {
-                m_artistsList = getArtistsList();
-            }
-            if (m_artistsList.Count > 0)
-            {
-                m_artistIndex = getNextIndex(m_artistIndex, m_artistsList.Count);
-                artistPage = m_artistsList[m_artistIndex];
-            }*/
-            return artistPage;
+            return m_artistsLogic.GetNextArtist();
         }
 
-        public Page GetPreviousArtistPage()
+        public Artist GetPreviousArtist()
         {
-            Page artistPage = null;
-            /*if (m_artistsList == null)
-            {
-                m_artistsList = getArtistsList();
-            }
-            if (m_artistsList.Count > 0)
-            {
-                m_artistIndex = getPrevIndex(m_artistIndex, m_artistsList.Count);
-                artistPage = m_artistsList[m_artistIndex];
-            }*/
-
-            return artistPage;
+            return m_artistsLogic.GetPreviousArtist();
         }
 
         public string GetFriendsNumber()
@@ -381,6 +362,18 @@ namespace FacebookApplicationLogic
         public string GetQuote()
         {
             return m_quote;
+        }
+
+        public Photo GetAlbumNextPhoto()
+        {
+            m_albumPhotoIndex = getNextIndex(m_albumPhotoIndex, m_currentAlbum.Photos.Count);
+            return m_currentAlbum.Photos[m_albumPhotoIndex];
+        }
+
+        public Photo GetAlbumPreviousPhoto()
+        {
+            m_albumPhotoIndex = getPrevIndex(m_albumPhotoIndex, m_currentAlbum.Photos.Count);
+            return m_currentAlbum.Photos[m_albumPhotoIndex];
         }
     }
 }
