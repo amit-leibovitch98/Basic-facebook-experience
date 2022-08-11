@@ -6,8 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.IO;
-using Newtonsoft.Json;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 using FacebookApplicationLogic;
@@ -30,11 +30,10 @@ namespace BasicFacebookFeatures
 
             if (m_FacebookLogicService.AppSettings.RememberMe)
             {
-                this.StartPosition = FormStartPosition.Manual;
-                this.Size = m_FacebookLogicService.AppSettings.WindowSize;
-                this.Location = m_FacebookLogicService.AppSettings.WindowLocation;
-                this.checkBoxRememberMe.Checked = m_FacebookLogicService.AppSettings.RememberMe;
-            
+                StartPosition = FormStartPosition.Manual;
+                Size = m_FacebookLogicService.AppSettings.WindowSize;
+                Location = m_FacebookLogicService.AppSettings.WindowLocation;
+                checkBoxRememberMe.Checked = m_FacebookLogicService.AppSettings.RememberMe;
             }
             else
             {
@@ -52,7 +51,7 @@ namespace BasicFacebookFeatures
 
             if (connectionSuccessful)
             {
-                InitInfoAfterLogin();
+                initInfoAfterLogin();
                 pictureBoxLogin.Visible = false;
             }
         }
@@ -70,7 +69,7 @@ namespace BasicFacebookFeatures
             if (success)
             {
                 pictureBoxLogin.Visible = false;
-                InitInfoAfterLogin();
+                initInfoAfterLogin();
             }
             else
             {
@@ -78,7 +77,7 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void InitInfoAfterLogin()
+        private void initInfoAfterLogin()
         {
             fetchUserInfo();
             labelUserName.Text = m_FacebookLogicService.GetName();
@@ -113,7 +112,6 @@ namespace BasicFacebookFeatures
         {
             string profilePictureUrl = m_FacebookLogicService.GetProfilePictureUrl();
             pictureBoxProfile.LoadAsync(profilePictureUrl);
-            //labelPosts.Text = LoggedInUser.Posts[0].Message;
             fetchGroup();
             fetchPost();
             fetchPage();
@@ -129,13 +127,13 @@ namespace BasicFacebookFeatures
             displayPost(post);
         }
 
-        private void displayPost(Post post)
+        private void displayPost(Post i_Post)
         {
             string postText, imgURL;
-            m_FacebookLogicService.GetPostTextAndPicture(post, out postText, out imgURL);
+            m_FacebookLogicService.GetPostTextAndPicture(i_Post, out postText, out imgURL);
             labelPosts.Text = postText;
-            labelPostComments.Text = string.Format("({0}) Comments", post.Comments.Count);
-            if (imgURL != "")
+            labelPostComments.Text = string.Format("({0}) Comments", i_Post.Comments.Count);
+            if (imgURL != string.Empty)
             {
                 pictureBoxPostImg.LoadAsync(imgURL);
             }
@@ -143,7 +141,7 @@ namespace BasicFacebookFeatures
             {
                 pictureBoxPostImg.Image = null;
             }
-            //labelLikes.Text = string.Format("({0}) Likes", originalPost.LikedBy.Count);
+            labelPostLikes.Text = string.Format("({0}) likes", m_FacebookLogicService.getPostLikes(i_Post));
         }
 
         private void buttonLogout_Click(object sender, EventArgs e)
@@ -156,18 +154,18 @@ namespace BasicFacebookFeatures
 
         private void switchToLoginMode()
         {
-            this.Size = new Size(180, 280);
-            this.pictureBoxLogin.Visible = false;
-            this.pictureBoxLogin.Visible = true;
-            this.buttonLogin.Visible = true;
-            this.labelUserName.Visible = false;
-            this.buttonLogout.Visible = false;
-            this.labelInsperetionalQuote.Visible = false;
-            this.checkBoxRememberMe.Visible = true;
-            this.pictureBoxBulb.Visible = false;
-            this.checkBoxRememberMe.Checked = false;
-            this.buttonShareQuote.Visible = false;
-            this.labelFirendsNumber.Visible = false;
+            Size = new Size(180, 280);
+            pictureBoxLogin.Visible = false;
+            pictureBoxLogin.Visible = true;
+            buttonLogin.Visible = true;
+            labelUserName.Visible = false;
+            buttonLogout.Visible = false;
+            labelInsperetionalQuote.Visible = false;
+            checkBoxRememberMe.Visible = true;
+            pictureBoxBulb.Visible = false;
+            checkBoxRememberMe.Checked = false;
+            buttonShareQuote.Visible = false;
+            labelFirendsNumber.Visible = false;
         }
 
         private void buttonNextPost_Click(object sender, EventArgs e)
@@ -195,31 +193,12 @@ namespace BasicFacebookFeatures
             displayPage(page);
         }
 
-        private void displayPage(Page page)
+        private void displayPage(Page i_Page)
         {
-            pictureBoxPageLogo.LoadAsync(page.PictureSqaureURL);
-            //pictureBoxPageCover.LoadAsync(page.Cover.SourceURL);
-            labelPageName.Text = page.Name;
-            labelPageCategory.Text = page.Category;
-            labelPageLikes.Text = string.Format("({0}) Likes", page.LikesCount);
-            /*
-            
-            DOESN"T WORK :(
-              
-            foreach (Photo picture in page.Pictures)
-            {
-                imageListPageUploadedPictures.Images.Add(picture.ImageNormal);
-            }
-            
-            foreach (Album album in page.Albums)
-            {
-
-                foreach (Photo picture in album.Photos)
-                {
-                    imageListPageUploadedPictures.Images.Add(picture.ImageNormal);
-                }
-            }
-            */
+            pictureBoxPageLogo.LoadAsync(i_Page.PictureSqaureURL);
+            labelPageName.Text = i_Page.Name;
+            labelPageCategory.Text = i_Page.Category;
+            labelPageLikes.Text = string.Format("({0}) Likes", i_Page.LikesCount);
         }
 
         private void buttonNextPage_Click(object sender, EventArgs e)
@@ -265,12 +244,12 @@ namespace BasicFacebookFeatures
             displayTeam(team);
         }
 
-        private void displayTeam(Page team)
+        private void displayTeam(Page i_team)
         {
-            if (team != null)
+            if (i_team != null)
             {
-                labelFavoriteTeamName.Text = team.Name;
-                pictureBoxTeam.Image = team.ImageNormal;
+                labelFavoriteTeamName.Text = i_team.Name;
+                pictureBoxTeam.Image = i_team.ImageNormal;
             }
             else
             {
@@ -286,6 +265,7 @@ namespace BasicFacebookFeatures
             {
                 comboBoxAlbums.Items.Add(albumName);
             }
+
             if (albumNames.Count > 0)
             {
                 comboBoxAlbums.SelectedIndex = 0;
@@ -317,13 +297,13 @@ namespace BasicFacebookFeatures
             if (eventNames.Count > 0)
             {
                 comboBoxEvents.SelectedIndex = 0;
-            }  
+            }
         }
 
-        private void displayArtist(Artist artist)
+        private void displayArtist(Artist i_Artist)
         {
-            labelArtistsName.Text = artist.Name;
-            pictureBoxArtistsPicture.LoadAsync(artist.ImageUrl);
+            labelArtistsName.Text = i_Artist.Name;
+            pictureBoxArtistsPicture.LoadAsync(i_Artist.ImageUrl);
         }
 
         private void comboBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
@@ -357,6 +337,7 @@ namespace BasicFacebookFeatures
             {
                 labelArtistError.Visible = false;
             }
+
             displayArtist(artist);
         }
 

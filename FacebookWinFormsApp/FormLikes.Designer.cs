@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBoxLikes = new System.Windows.Forms.ListBox();
-            this.SuspendLayout();
+            listBoxLikes = new System.Windows.Forms.ListBox();
+            SuspendLayout();
             // 
             // listBoxLikes
             // 
-            this.listBoxLikes.FormattingEnabled = true;
-            this.listBoxLikes.ItemHeight = 16;
-            this.listBoxLikes.Location = new System.Drawing.Point(6, 6);
-            this.listBoxLikes.Name = "listBoxLikes";
-            this.listBoxLikes.Size = new System.Drawing.Size(258, 308);
-            this.listBoxLikes.TabIndex = 0;
+            listBoxLikes.FormattingEnabled = true;
+            listBoxLikes.ItemHeight = 16;
+            listBoxLikes.Location = new System.Drawing.Point(6, 6);
+            listBoxLikes.Name = "listBoxLikes";
+            listBoxLikes.Size = new System.Drawing.Size(258, 308);
+            listBoxLikes.TabIndex = 0;
             // 
             // FormLikes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(272, 320);
-            this.Controls.Add(this.listBoxLikes);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormLikes";
-            this.Text = "Likes";
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(272, 320);
+            Controls.Add(listBoxLikes);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            Name = "FormLikes";
+            Text = "Likes";
+            ResumeLayout(false);
 
         }
 

@@ -30,11 +30,11 @@ namespace BasicFacebookFeatures
             }
             catch(Facebook.FacebookOAuthException)
             {
-                MessageBox.Show(string.Format("Can't post {0} Due to server error :(",Environment.NewLine), "Cant post", MessageBoxButtons.OK);
+                MessageBox.Show(string.Format("Can't post {0} Due to server error :(", Environment.NewLine), "Cant post", MessageBoxButtons.OK);
             }
             finally
             {
-                this.Close();
+                Close();
             }
         }
     }

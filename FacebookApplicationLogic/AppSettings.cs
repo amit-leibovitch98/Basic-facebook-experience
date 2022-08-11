@@ -12,8 +12,11 @@ namespace FacebookApplicationLogic
     public class AppSettings
     {
         public Size WindowSize { get; set; }
+
         public Point WindowLocation { get; set; }
+
         public string AccessToken { get; set; }
+
         public bool RememberMe { get; set; }
 
         public AppSettings()
@@ -24,11 +27,24 @@ namespace FacebookApplicationLogic
             RememberMe = false;
         }
 
-        public void SaveToXmlFile(string filePath)
+        public static AppSettings LoadFromXmlFile(string i_FilePath)
+        {
+            AppSettings appSettings = null;
+
+            using (Stream stream = new FileStream(i_FilePath, FileMode.Open))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
+                appSettings = serializer.Deserialize(stream) as AppSettings;
+            }
+
+            return appSettings;
+        }
+
+        public void SaveToXmlFile(string i_FilePath)
         {
             FileMode fileMode;
 
-            if (File.Exists(filePath))
+            if (File.Exists(i_FilePath))
             {
                 fileMode = FileMode.Truncate;
             }
@@ -36,25 +52,12 @@ namespace FacebookApplicationLogic
             {
                 fileMode = FileMode.CreateNew;
             }
-            
-            using (Stream stream = new FileStream(filePath, fileMode))
+
+            using (Stream stream = new FileStream(i_FilePath, fileMode))
             {
-                XmlSerializer serializer = new XmlSerializer(this.GetType());
+                XmlSerializer serializer = new XmlSerializer(GetType());
                 serializer.Serialize(stream, this);
             }
-        }
-
-        public static AppSettings LoadFromXmlFile(string filePath)
-        {
-            AppSettings appSettings = null;
-
-            using (Stream stream = new FileStream(filePath, FileMode.Open))
-            {
-                XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
-                appSettings = serializer.Deserialize(stream) as AppSettings;
-            }
-
-            return appSettings;
         }
     }
 }

@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace FacebookApplicationLogic
 {
     public class QuotesLoader
     {
-        private List<string> m_quotes;
+        private List<string> m_Quotes;
 
         public QuotesLoader()
         {
-            m_quotes = null;
+            m_Quotes = null;
         }
 
         public List<string> LoadQuotesJson()
@@ -24,6 +24,7 @@ namespace FacebookApplicationLogic
             {
                 throw new FileLoadException("Failed to load quotes!");
             }
+
             using (StreamReader r = new StreamReader("resources/Quotes.json"))
             {
                 json = r.ReadToEnd();
@@ -35,18 +36,18 @@ namespace FacebookApplicationLogic
             }
 
             return JsonConvert.DeserializeObject<List<string>>(json);
-
         }
 
-        public string getRandomQuote()
+        public string GetRandomQuote()
         {
-            if (m_quotes == null)
+            if (m_Quotes == null)
             {
-                m_quotes = LoadQuotesJson();
+                m_Quotes = LoadQuotesJson();
             }
+
             Random randomNumber = new Random();
-            int quoteNumber = randomNumber.Next(0, m_quotes.Count - 1);
-            return m_quotes[quoteNumber];
+            int quoteNumber = randomNumber.Next(0, m_Quotes.Count - 1);
+            return m_Quotes[quoteNumber];
         }
     }
 }

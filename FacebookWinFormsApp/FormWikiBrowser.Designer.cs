@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWikiBrowser));
-            this.webBrowserLikedArtists = new System.Windows.Forms.WebBrowser();
-            this.SuspendLayout();
+            webBrowserLikedArtists = new System.Windows.Forms.WebBrowser();
+            SuspendLayout();
             // 
             // webBrowserLikedArtists
             // 
-            this.webBrowserLikedArtists.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowserLikedArtists.Location = new System.Drawing.Point(0, 0);
-            this.webBrowserLikedArtists.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowserLikedArtists.Name = "webBrowserLikedArtists";
-            this.webBrowserLikedArtists.Size = new System.Drawing.Size(800, 450);
-            this.webBrowserLikedArtists.TabIndex = 0;
+            webBrowserLikedArtists.Dock = System.Windows.Forms.DockStyle.Fill;
+            webBrowserLikedArtists.Location = new System.Drawing.Point(0, 0);
+            webBrowserLikedArtists.MinimumSize = new System.Drawing.Size(20, 20);
+            webBrowserLikedArtists.Name = "webBrowserLikedArtists";
+            webBrowserLikedArtists.Size = new System.Drawing.Size(800, 450);
+            webBrowserLikedArtists.TabIndex = 0;
             // 
             // FormWikiBrowser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.webBrowserLikedArtists);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormWikiBrowser";
-            this.Text = "FormWikiBrowser";
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(800, 450);
+            Controls.Add(webBrowserLikedArtists);
+            Icon = ((System.Drawing.Icon)(resources.GetObject("$Icon")));
+            Name = "FormWikiBrowser";
+            Text = "FormWikiBrowser";
+            ResumeLayout(false);
 
         }
 

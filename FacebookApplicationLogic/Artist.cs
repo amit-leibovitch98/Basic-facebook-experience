@@ -9,7 +9,9 @@ namespace FacebookApplicationLogic
     public class Artist
     {
         public string Name { get; set; }
+
         public string ImageUrl { get; set; }
+
         public string WikiUrl { get; set; }
 
         public Artist(string i_Name, string i_ImageUrl)

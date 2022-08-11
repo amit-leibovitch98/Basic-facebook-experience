@@ -14,11 +14,13 @@ namespace BasicFacebookFeatures
 {
     public partial class FormLikes : Form
     {
-        public FormLikes(Post i_post)
+        public FormLikes(Post i_Post)
         {
             InitializeComponent();
-            foreach(User likedUser in i_post.LikedBy)
-            listBoxLikes.Items.Add(string.Format("{0} {1}", likedUser.FirstName, likedUser.LastName));
+            foreach (User likedUser in i_Post.LikedBy)
+            {
+                listBoxLikes.Items.Add(string.Format("{0} {1}", likedUser.FirstName, likedUser.LastName));
+            }
         }
     }
 }

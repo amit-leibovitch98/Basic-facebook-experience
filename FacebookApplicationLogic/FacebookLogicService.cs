@@ -14,37 +14,38 @@ namespace FacebookApplicationLogic
 {
     public class FacebookLogicService
     {
-        private QuotesLoader m_quotesLoader;
-        private ArtistsLogic m_artistsLogic;
-        private string m_filePath;
-        private LoginResult m_loginResult;
-        private int m_groupsIndex = 0;
-        private int m_teamsIndex = 0;
-        private int m_pageIndex = 0;
-        private int m_postsIndex = 0;
-        private int m_artistIndex = 0;
-        private int m_albumPhotoIndex = 0;
-        private Album m_currentAlbum;
-        private string m_quote;
+        private string m_AppSettingsXmlFilePath;
+        private QuotesLoader m_QuotesLoader;
+        private ArtistsLogic m_ArtistsLogic;
+        private LoginResult m_LoginResult;
+        private int m_GroupsIndex = 0;
+        private int m_TeamsIndex = 0;
+        private int m_PageIndex = 0;
+        private int m_PostsIndex = 0;
+        private int m_AlbumPhotoIndex = 0;
+        private Album m_CurrentAlbum;
+        private string m_Quote;
+
         public AppSettings AppSettings { get; set; }
 
         public FacebookLogicService()
         {
-            m_quotesLoader = new QuotesLoader();
+            m_QuotesLoader = new QuotesLoader();
             initXmlPath();
         }
+
         private void initXmlPath()
         {
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string file = Path.Combine(currentDirectory, @"AppSettings.xml");
-            m_filePath = Path.GetFullPath(file);
+            m_AppSettingsXmlFilePath = Path.GetFullPath(file);
         }
 
         public void LoadAppSettings()
         {
-            if (File.Exists(m_filePath) && File.ReadAllText(m_filePath) != "")
+            if (File.Exists(m_AppSettingsXmlFilePath) && File.ReadAllText(m_AppSettingsXmlFilePath) != string.Empty)
             {
-                AppSettings = AppSettings.LoadFromXmlFile(m_filePath);
+                AppSettings = AppSettings.LoadFromXmlFile(m_AppSettingsXmlFilePath);
             }
             else
             {
@@ -52,38 +53,36 @@ namespace FacebookApplicationLogic
             }
         }
 
-        public void SaveSettings(Size i_size, Point i_location)
+        public void SaveSettings(Size i_Size, Point i_Location)
         {
-            AppSettings.WindowSize = i_size;
-            AppSettings.WindowLocation = i_location;
+            AppSettings.WindowSize = i_Size;
+            AppSettings.WindowLocation = i_Location;
 
             if (AppSettings.RememberMe)
             {
-                AppSettings.AccessToken = m_loginResult.AccessToken;
+                AppSettings.AccessToken = m_LoginResult.AccessToken;
             }
             else
             {
                 AppSettings.AccessToken = string.Empty;
             }
 
-            AppSettings.SaveToXmlFile(m_filePath);
+            AppSettings.SaveToXmlFile(m_AppSettingsXmlFilePath);
         }
-       
+
         public bool Login(out string o_LoginFailedErrorMessage)
         {
-            m_loginResult = FacebookService.Login(
+            m_LoginResult = FacebookService.Login(/// requested permissions:
                 "329595859268386",
-                /// requested permissions:
                 "email",
                 "user_friends",
                 "public_profile",
                 "groups_access_member_info",
                 "user_posts",
                 "user_photos",
-                "user_likes"
-                );
-            o_LoginFailedErrorMessage = m_loginResult.ErrorMessage;
-            return !string.IsNullOrEmpty(m_loginResult.AccessToken);
+                "user_likes");
+            o_LoginFailedErrorMessage = m_LoginResult.ErrorMessage;
+            return !string.IsNullOrEmpty(m_LoginResult.AccessToken);
         }
 
         public bool Connect()
@@ -91,79 +90,80 @@ namespace FacebookApplicationLogic
             bool success = false;
             if (AppSettings.RememberMe && !string.IsNullOrEmpty(AppSettings.AccessToken))
             {
-                m_loginResult = FacebookService.Connect(AppSettings.AccessToken);
+                m_LoginResult = FacebookService.Connect(AppSettings.AccessToken);
                 success = true;
             }
+
             return success;
         }
 
         public void Logout()
         {
-            m_loginResult = null;
-            m_artistsLogic = null;
+            m_LoginResult = null;
+            m_ArtistsLogic = null;
             AppSettings.RememberMe = false;
             AppSettings.AccessToken = string.Empty;
-            AppSettings.SaveToXmlFile(m_filePath);
+            AppSettings.SaveToXmlFile(m_AppSettingsXmlFilePath);
         }
 
         public string GetProfilePictureUrl()
         {
-            return m_loginResult.LoggedInUser.PictureNormalURL;
+            return m_LoginResult.LoggedInUser.PictureNormalURL;
         }
 
         public string GetName()
         {
-            return m_loginResult.LoggedInUser.Name;
+            return m_LoginResult.LoggedInUser.Name;
         }
 
         public Group GetGroup()
         {
-            return m_loginResult.LoggedInUser.Groups[m_groupsIndex];
+            return m_LoginResult.LoggedInUser.Groups[m_GroupsIndex];
         }
 
         public Group GetNextGroup()
         {
-            m_groupsIndex = getNextIndex(m_groupsIndex, m_loginResult.LoggedInUser.Groups.Count);
+            m_GroupsIndex = getNextIndex(m_GroupsIndex, m_LoginResult.LoggedInUser.Groups.Count);
             return GetGroup();
         }
 
         public Group GetPreviousGroup()
         {
-            m_groupsIndex = getPrevIndex(m_groupsIndex, m_loginResult.LoggedInUser.Groups.Count);
+            m_GroupsIndex = getPrevIndex(m_GroupsIndex, m_LoginResult.LoggedInUser.Groups.Count);
             return GetGroup();
         }
 
         public Post GetPost()
         {
-            return m_loginResult.LoggedInUser.Posts[m_postsIndex];
+            return m_LoginResult.LoggedInUser.Posts[m_PostsIndex];
         }
 
         public Post GetNextPost()
         {
-            m_postsIndex = getNextIndex(m_postsIndex, m_loginResult.LoggedInUser.Posts.Count);
+            m_PostsIndex = getNextIndex(m_PostsIndex, m_LoginResult.LoggedInUser.Posts.Count);
             return GetPost();
         }
 
         public Post GetPreviousPost()
         {
-            m_postsIndex = getPrevIndex(m_postsIndex, m_loginResult.LoggedInUser.Posts.Count);
+            m_PostsIndex = getPrevIndex(m_PostsIndex, m_LoginResult.LoggedInUser.Posts.Count);
             return GetPost();
         }
 
         public Page GetPage()
         {
-            return m_loginResult.LoggedInUser.LikedPages[m_pageIndex];
+            return m_LoginResult.LoggedInUser.LikedPages[m_PageIndex];
         }
 
         public Page GetNextPage()
         {
-            m_pageIndex = getNextIndex(m_pageIndex, m_loginResult.LoggedInUser.LikedPages.Count);
+            m_PageIndex = getNextIndex(m_PageIndex, m_LoginResult.LoggedInUser.LikedPages.Count);
             return GetPage();
         }
 
         public Page GetPreviousPage()
         {
-            m_pageIndex = getPrevIndex(m_pageIndex, m_loginResult.LoggedInUser.LikedPages.Count);
+            m_PageIndex = getPrevIndex(m_PageIndex, m_LoginResult.LoggedInUser.LikedPages.Count);
             return GetPage();
         }
 
@@ -171,34 +171,37 @@ namespace FacebookApplicationLogic
         {
             List<string> albumNames = new List<string>();
 
-            foreach (Album album in m_loginResult.LoggedInUser.Albums)
+            foreach (Album album in m_LoginResult.LoggedInUser.Albums)
             {
                 albumNames.Add(album.Name);
             }
+
             return albumNames;
         }
 
-        public Album GetAlbumByName(string i_albumName)
+        public Album GetAlbumByName(string i_AlbumName)
         {
             Album returnedAlbum = null;
-            foreach (Album album in m_loginResult.LoggedInUser.Albums)
+            foreach (Album album in m_LoginResult.LoggedInUser.Albums)
             {
-                if (album.Name == i_albumName)
+                if (album.Name == i_AlbumName)
                 {
                     returnedAlbum = album;
                 }
             }
-            m_currentAlbum = returnedAlbum;
+
+            m_CurrentAlbum = returnedAlbum;
             return returnedAlbum;
         }
 
         public Page GetFavoriteTeam()
         {
             Page page = null;
-            if (m_loginResult.LoggedInUser.FavofriteTeams != null)
+            if (m_LoginResult.LoggedInUser.FavofriteTeams != null)
             {
-                page = m_loginResult.LoggedInUser.FavofriteTeams[m_teamsIndex];
+                page = m_LoginResult.LoggedInUser.FavofriteTeams[m_TeamsIndex];
             }
+
             return page;
         }
 
@@ -206,11 +209,12 @@ namespace FacebookApplicationLogic
         {
             Page page = null;
 
-            if (m_loginResult.LoggedInUser.FavofriteTeams != null)
+            if (m_LoginResult.LoggedInUser.FavofriteTeams != null)
             {
-                m_teamsIndex = getNextIndex(m_teamsIndex, m_loginResult.LoggedInUser.FavofriteTeams.Length);
-                page = m_loginResult.LoggedInUser.FavofriteTeams[m_teamsIndex];
+                m_TeamsIndex = getNextIndex(m_TeamsIndex, m_LoginResult.LoggedInUser.FavofriteTeams.Length);
+                page = m_LoginResult.LoggedInUser.FavofriteTeams[m_TeamsIndex];
             }
+
             page = GetFavoriteTeam();
             return page;
         }
@@ -219,14 +223,15 @@ namespace FacebookApplicationLogic
         {
             Page page = null;
 
-            if (m_loginResult.LoggedInUser.FavofriteTeams != null)
+            if (m_LoginResult.LoggedInUser.FavofriteTeams != null)
             {
-                if (m_teamsIndex < 0)
+                if (m_TeamsIndex < 0)
                 {
-                    m_teamsIndex = getPrevIndex(m_teamsIndex, m_loginResult.LoggedInUser.FavofriteTeams.Length);
-                    page = m_loginResult.LoggedInUser.FavofriteTeams[m_teamsIndex];
+                    m_TeamsIndex = getPrevIndex(m_TeamsIndex, m_LoginResult.LoggedInUser.FavofriteTeams.Length);
+                    page = m_LoginResult.LoggedInUser.FavofriteTeams[m_TeamsIndex];
                 }
             }
+
             page = GetFavoriteTeam();
             return page;
         }
@@ -234,84 +239,88 @@ namespace FacebookApplicationLogic
         public List<string> GetEventNames()
         {
             List<string> eventNames = new List<string>();
-            foreach (Event userEvent in m_loginResult.LoggedInUser.Events)
+            foreach (Event userEvent in m_LoginResult.LoggedInUser.Events)
             {
                 eventNames.Add(userEvent.Name);
             }
+
             return eventNames;
         }
 
-        public Event GetEventByName(string i_eventName)
+        public Event GetEventByName(string i_EventName)
         {
             Event returnedEvent = null;
-            foreach (Event userEvent in m_loginResult.LoggedInUser.Events)
+            foreach (Event userEvent in m_LoginResult.LoggedInUser.Events)
             {
-                if (userEvent.Name == i_eventName)
+                if (userEvent.Name == i_EventName)
                 {
                     returnedEvent = userEvent;
                 }
             }
+
             return returnedEvent;
         }
 
         public string GetRandomQuote()
         {
-            string quote = m_quotesLoader.getRandomQuote();
-            m_quote = quote;
+            string quote = m_QuotesLoader.GetRandomQuote();
+            m_Quote = quote;
             return quote;
         }
 
-        public void GetPostTextAndPicture(Post i_post, out string o_text, out string o_imgURL)
+        public void GetPostTextAndPicture(Post i_Post, out string o_Text, out string o_ImgURL)
         {
-            o_text = string.Empty;
-            o_imgURL = string.Empty;
-            if (i_post.Message != null)
+            o_Text = string.Empty;
+            o_ImgURL = string.Empty;
+            if (i_Post.Message != null)
             {
-                o_text = i_post.Message;
+                o_Text = i_Post.Message;
             }
-            else if (i_post.Caption != null)
+            else if (i_Post.Caption != null)
             {
-                o_text = i_post.Caption;
+                o_Text = i_Post.Caption;
             }
             else
             {
-                o_text = "";
+                o_Text = string.Empty;
             }
 
-            if (i_post.Type == Post.eType.photo)
+            if (i_Post.Type == Post.eType.photo)
             {
-                o_imgURL = i_post.PictureURL;
+                o_ImgURL = i_Post.PictureURL;
             }
         }
 
-        public Artist GetArtist(out bool o_success)
+        public Artist GetArtist(out bool o_Success)
         {
             Artist artist = null;
-            if (m_artistsLogic == null)
+            if (m_ArtistsLogic == null)
             {
-                m_artistsLogic = new ArtistsLogic(m_loginResult.LoggedInUser.LikedPages);
+                m_ArtistsLogic = new ArtistsLogic(m_LoginResult.LoggedInUser.LikedPages);
             }
-            artist = m_artistsLogic.GetArtist();
+
+            artist = m_ArtistsLogic.GetArtist();
             if (artist == null)
             {
-                o_success = false;
-                artist = m_artistsLogic.GetDefaultArtist();
+                o_Success = false;
+                artist = m_ArtistsLogic.GetDefaultArtist();
             }
             else
             {
-                o_success = true;
+                o_Success = true;
             }
+
             return artist;
         }
 
         public Artist GetNextArtist()
         {
-            return m_artistsLogic.GetNextArtist();
+            return m_ArtistsLogic.GetNextArtist();
         }
 
         public Artist GetPreviousArtist()
         {
-            return m_artistsLogic.GetPreviousArtist();
+            return m_ArtistsLogic.GetPreviousArtist();
         }
 
         public string GetFriendsNumber()
@@ -319,61 +328,73 @@ namespace FacebookApplicationLogic
             string numberOfFriends;
             try
             {
-                numberOfFriends = m_loginResult.LoggedInUser.FriendLists.Count.ToString();
+                numberOfFriends = m_LoginResult.LoggedInUser.FriendLists.Count.ToString();
             }
             catch(Facebook.FacebookOAuthException)
             {
-                numberOfFriends = "";
+                numberOfFriends = string.Empty;
             }
 
             return numberOfFriends;
         }
 
-        public int getPostLikes(Post i_post)
+        public string getPostLikes(Post i_post)
         {
-            return m_loginResult.LoggedInUser.Posts[m_postsIndex].LikedBy.Count;
+            string likesCount;
+            try
+            {
+                likesCount = m_LoginResult.LoggedInUser.Posts[m_PostsIndex].LikedBy.Count.ToString();
+            }
+            catch(Facebook.FacebookOAuthException)
+            {
+                likesCount = string.Empty;
+            }
+
+            return likesCount;
         }
 
-        private int getNextIndex(int i_currentIndex, int i_listCount)
+        private int getNextIndex(int i_CurrentIndex, int i_ListCount)
         {
-            i_currentIndex++;
-            if (i_currentIndex >= i_listCount)
+            i_CurrentIndex++;
+            if (i_CurrentIndex >= i_ListCount)
             {
-                i_currentIndex = 0;
+                i_CurrentIndex = 0;
             }
-            return i_currentIndex;
+
+            return i_CurrentIndex;
         }
 
-        private int getPrevIndex(int i_currentIndex, int i_listCount)
+        private int getPrevIndex(int i_CurrentIndex, int i_ListCount)
         {
-            i_currentIndex--;
-            if (i_currentIndex < 0)
+            i_CurrentIndex--;
+            if (i_CurrentIndex < 0)
             {
-                i_currentIndex = i_listCount;
+                i_CurrentIndex = i_ListCount;
             }
-            return i_currentIndex;
+
+            return i_CurrentIndex;
         }
 
         public void PostStatus(string i_Status)
         {
-            m_loginResult.LoggedInUser.PostStatus(i_Status);
+            m_LoginResult.LoggedInUser.PostStatus(i_Status);
         }
 
         public string GetQuote()
         {
-            return m_quote;
+            return m_Quote;
         }
 
         public Photo GetAlbumNextPhoto()
         {
-            m_albumPhotoIndex = getNextIndex(m_albumPhotoIndex, m_currentAlbum.Photos.Count);
-            return m_currentAlbum.Photos[m_albumPhotoIndex];
+            m_AlbumPhotoIndex = getNextIndex(m_AlbumPhotoIndex, m_CurrentAlbum.Photos.Count);
+            return m_CurrentAlbum.Photos[m_AlbumPhotoIndex];
         }
 
         public Photo GetAlbumPreviousPhoto()
         {
-            m_albumPhotoIndex = getPrevIndex(m_albumPhotoIndex, m_currentAlbum.Photos.Count);
-            return m_currentAlbum.Photos[m_albumPhotoIndex];
+            m_AlbumPhotoIndex = getPrevIndex(m_AlbumPhotoIndex, m_CurrentAlbum.Photos.Count);
+            return m_CurrentAlbum.Photos[m_AlbumPhotoIndex];
         }
     }
 }
