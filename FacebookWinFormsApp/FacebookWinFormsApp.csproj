@@ -93,8 +93,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppSettings.cs" />
-    <Compile Include="FacebookLogicService.cs" />
     <Compile Include="FormLikes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +206,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Untitled-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue-g07acfb6b5_1280.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\510-5102442_border-kpop-aesthetic-tumblr-frame-abstract-splash-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\204-2046434_navy-clipart-frame-clipart-navy-blue-frame-hd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7bb8aac02c1b2ea004b91d74210434ae.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7bb8aac02c1b2ea004b91d74210434ae1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pinpng.com-white-frame-png-312251.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

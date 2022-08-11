@@ -12,10 +12,10 @@ namespace BasicFacebookFeatures
 {
     public partial class FormWikiBrowser : Form
     {
-        public FormWikiBrowser(string i_artistsName)
+        public FormWikiBrowser(string i_WikiUrl)
         {
             InitializeComponent();
-            webBrowserLikedArtists.Url = new System.Uri(string.Format("https://en.wikipedia.org/wiki/{0}", i_artistsName));
+            webBrowserLikedArtists.Url = new System.Uri(i_WikiUrl);
         }
     }
 }

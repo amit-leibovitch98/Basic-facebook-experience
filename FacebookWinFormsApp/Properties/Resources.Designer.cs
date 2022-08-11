@@ -19,7 +19,7 @@ namespace BasicFacebookFeatures.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -63,9 +63,59 @@ namespace BasicFacebookFeatures.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _204_2046434_navy_clipart_frame_clipart_navy_blue_frame_hd {
+            get {
+                object obj = ResourceManager.GetObject("204-2046434_navy-clipart-frame-clipart-navy-blue-frame-hd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _39446caa52f53369b92bc97253d2b2f1 {
             get {
                 object obj = ResourceManager.GetObject("39446caa52f53369b92bc97253d2b2f1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _510_5102442_border_kpop_aesthetic_tumblr_frame_abstract_splash_blue {
+            get {
+                object obj = ResourceManager.GetObject("510-5102442_border-kpop-aesthetic-tumblr-frame-abstract-splash-blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _7bb8aac02c1b2ea004b91d74210434ae {
+            get {
+                object obj = ResourceManager.GetObject("7bb8aac02c1b2ea004b91d74210434ae", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _7bb8aac02c1b2ea004b91d74210434ae1 {
+            get {
+                object obj = ResourceManager.GetObject("7bb8aac02c1b2ea004b91d74210434ae1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap blue_g07acfb6b5_1280 {
+            get {
+                object obj = ResourceManager.GetObject("blue-g07acfb6b5_1280", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +246,16 @@ namespace BasicFacebookFeatures.Properties {
         internal static System.Drawing.Bitmap pictureLogin2 {
             get {
                 object obj = ResourceManager.GetObject("pictureLogin2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pinpng_com_white_frame_png_312251 {
+            get {
+                object obj = ResourceManager.GetObject("pinpng.com-white-frame-png-312251", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

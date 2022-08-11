@@ -120,6 +120,7 @@ namespace BasicFacebookFeatures
             fetchFavoriteTeams();
             fetchEvents();
             fetchAlbums();
+            fetchArtist();
         }
 
         private void fetchPost()
@@ -343,31 +344,50 @@ namespace BasicFacebookFeatures
             //pictureBoxAlbum.LoadAsync(m_FacebookLogicService.GetNextPicInAlbum(comboBoxAlbums.SelectedIndex));
         }
 
+        private void fetchArtist()
+        {
+            bool successFetchingArtist;
+            Artist artist = m_FacebookLogicService.GetArtist(out successFetchingArtist);
+            if (!successFetchingArtist)
+            {
+                labelArtistError.Visible = true;
+            }
+            else
+            {
+                labelArtistError.Visible = false;
+            }
+            labelArtistsName.Text = artist.Name;
+            pictureBoxArtistsPicture.LoadAsync(artist.ImageUrl);
+        }
+
         private void buttonSerarchMeOnWiki_Click(object sender, EventArgs e)
         {
-            string artistsName = "Lady Gaga"; // m_artistsList[LikedArtistsIndex].Name;
-            if(artistsName.Contains(" "))
-            {
-                artistsName.Replace(" ", "_");
-            }
-            FormWikiBrowser wiki = new FormWikiBrowser(artistsName);
+            bool successFetchingArtist;
+            Artist artist = m_FacebookLogicService.GetArtist(out successFetchingArtist);
+
+            FormWikiBrowser wiki = new FormWikiBrowser(artist.WikiUrl);
             wiki.ShowDialog();
         }
 
         private void buttonArtistsPrev_Click(object sender, EventArgs e)
         {
-            Page artist = m_FacebookLogicService.GetNextArtistPage();
+            Page artist = null; // m_FacebookLogicService.GetNextArtistPage();
         }
 
         private void buttonArtistsNext_Click(object sender, EventArgs e)
         {
-            Page artist = m_FacebookLogicService.GetPreviousArtistPage();
+            Page artist = null; // m_FacebookLogicService.GetPreviousArtistPage();
         }
 
         private void buttonShareQuote_Click(object sender, EventArgs e)
         {
             FormShareQuote formShareQuote = new FormShareQuote(m_FacebookLogicService);
             formShareQuote.ShowDialog();
+        }
+
+        private void pictureBoxLikesIcon_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

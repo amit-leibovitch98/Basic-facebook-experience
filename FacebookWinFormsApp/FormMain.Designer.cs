@@ -69,6 +69,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBoxAlbum = new System.Windows.Forms.PictureBox();
             this.tabPageArtists = new System.Windows.Forms.TabPage();
+            this.labelArtistError = new System.Windows.Forms.Label();
             this.buttonSerarchMeOnWiki = new System.Windows.Forms.Button();
             this.labelArtistsLikes = new System.Windows.Forms.Label();
             this.buttonArtistsPrev = new System.Windows.Forms.Button();
@@ -83,10 +84,10 @@
             this.buttonLogout = new System.Windows.Forms.Button();
             this.labelUserName = new System.Windows.Forms.Label();
             this.buttonShareQuote = new System.Windows.Forms.Button();
+            this.labelFirendsNumber = new System.Windows.Forms.Label();
             this.pictureBoxBulb = new System.Windows.Forms.PictureBox();
             this.pictureBoxLogin = new System.Windows.Forms.PictureBox();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
-            this.labelFirendsNumber = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.TabWall.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikesIcon)).BeginInit();
@@ -133,6 +134,8 @@
             // TabWall
             // 
             this.TabWall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.TabWall.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.pinpng_com_white_frame_png_312251;
+            this.TabWall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.TabWall.Controls.Add(this.pictureBoxLikesIcon);
             this.TabWall.Controls.Add(this.labelPostComments);
             this.TabWall.Controls.Add(this.labelPostLikes);
@@ -153,12 +156,13 @@
             this.pictureBoxLikesIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBoxLikesIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLikesIcon.Image")));
             this.pictureBoxLikesIcon.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxLikesIcon.InitialImage")));
-            this.pictureBoxLikesIcon.Location = new System.Drawing.Point(64, 405);
+            this.pictureBoxLikesIcon.Location = new System.Drawing.Point(91, 358);
             this.pictureBoxLikesIcon.Name = "pictureBoxLikesIcon";
             this.pictureBoxLikesIcon.Size = new System.Drawing.Size(27, 27);
             this.pictureBoxLikesIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxLikesIcon.TabIndex = 64;
             this.pictureBoxLikesIcon.TabStop = false;
+            this.pictureBoxLikesIcon.Click += new System.EventHandler(this.pictureBoxLikesIcon_Click);
             // 
             // labelPostComments
             // 
@@ -166,7 +170,7 @@
             this.labelPostComments.BackColor = System.Drawing.Color.Transparent;
             this.labelPostComments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labelPostComments.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelPostComments.Location = new System.Drawing.Point(432, 412);
+            this.labelPostComments.Location = new System.Drawing.Point(398, 365);
             this.labelPostComments.Name = "labelPostComments";
             this.labelPostComments.Size = new System.Drawing.Size(86, 20);
             this.labelPostComments.TabIndex = 63;
@@ -178,7 +182,7 @@
             this.labelPostLikes.BackColor = System.Drawing.Color.Transparent;
             this.labelPostLikes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labelPostLikes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelPostLikes.Location = new System.Drawing.Point(88, 412);
+            this.labelPostLikes.Location = new System.Drawing.Point(115, 365);
             this.labelPostLikes.Name = "labelPostLikes";
             this.labelPostLikes.Size = new System.Drawing.Size(46, 20);
             this.labelPostLikes.TabIndex = 62;
@@ -189,9 +193,9 @@
             // 
             this.pictureBoxPostImg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBoxPostImg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxPostImg.Location = new System.Drawing.Point(133, 99);
+            this.pictureBoxPostImg.Location = new System.Drawing.Point(146, 114);
             this.pictureBoxPostImg.Name = "pictureBoxPostImg";
-            this.pictureBoxPostImg.Size = new System.Drawing.Size(284, 293);
+            this.pictureBoxPostImg.Size = new System.Drawing.Size(255, 236);
             this.pictureBoxPostImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPostImg.TabIndex = 61;
             this.pictureBoxPostImg.TabStop = false;
@@ -202,7 +206,7 @@
             this.buttonPrevPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPrevPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonPrevPost.ForeColor = System.Drawing.Color.White;
-            this.buttonPrevPost.Location = new System.Drawing.Point(4, 453);
+            this.buttonPrevPost.Location = new System.Drawing.Point(34, 424);
             this.buttonPrevPost.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPrevPost.Name = "buttonPrevPost";
             this.buttonPrevPost.Size = new System.Drawing.Size(30, 30);
@@ -217,7 +221,7 @@
             this.buttonNextPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNextPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonNextPost.ForeColor = System.Drawing.Color.White;
-            this.buttonNextPost.Location = new System.Drawing.Point(541, 453);
+            this.buttonNextPost.Location = new System.Drawing.Point(511, 424);
             this.buttonNextPost.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNextPost.Name = "buttonNextPost";
             this.buttonNextPost.Size = new System.Drawing.Size(30, 30);
@@ -230,11 +234,12 @@
             // 
             this.labelPosts.AutoSize = true;
             this.labelPosts.BackColor = System.Drawing.Color.Transparent;
-            this.labelPosts.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPosts.Location = new System.Drawing.Point(220, 59);
+            this.labelPosts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPosts.ForeColor = System.Drawing.Color.White;
+            this.labelPosts.Location = new System.Drawing.Point(147, 59);
             this.labelPosts.MaximumSize = new System.Drawing.Size(500, 30);
             this.labelPosts.Name = "labelPosts";
-            this.labelPosts.Size = new System.Drawing.Size(101, 29);
+            this.labelPosts.Size = new System.Drawing.Size(67, 20);
             this.labelPosts.TabIndex = 0;
             this.labelPosts.Text = "POSTS";
             this.labelPosts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -316,7 +321,8 @@
             // 
             this.labelPageName.AutoSize = true;
             this.labelPageName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPageName.Location = new System.Drawing.Point(188, 202);
+            this.labelPageName.Location = new System.Drawing.Point(188, 175);
+            this.labelPageName.MaximumSize = new System.Drawing.Size(375, 100);
             this.labelPageName.Name = "labelPageName";
             this.labelPageName.Size = new System.Drawing.Size(150, 29);
             this.labelPageName.TabIndex = 0;
@@ -597,6 +603,7 @@
             // tabPageArtists
             // 
             this.tabPageArtists.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.tabPageArtists.Controls.Add(this.labelArtistError);
             this.tabPageArtists.Controls.Add(this.buttonSerarchMeOnWiki);
             this.tabPageArtists.Controls.Add(this.labelArtistsLikes);
             this.tabPageArtists.Controls.Add(this.buttonArtistsPrev);
@@ -610,6 +617,18 @@
             this.tabPageArtists.Size = new System.Drawing.Size(576, 496);
             this.tabPageArtists.TabIndex = 7;
             this.tabPageArtists.Text = "Artists";
+            // 
+            // labelArtistError
+            // 
+            this.labelArtistError.AutoSize = true;
+            this.labelArtistError.Font = new System.Drawing.Font("Gisha", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelArtistError.ForeColor = System.Drawing.Color.Red;
+            this.labelArtistError.Location = new System.Drawing.Point(30, 31);
+            this.labelArtistError.Name = "labelArtistError";
+            this.labelArtistError.Size = new System.Drawing.Size(309, 14);
+            this.labelArtistError.TabIndex = 74;
+            this.labelArtistError.Text = "Could not fetch artists, here is an artist you might like.";
+            this.labelArtistError.Visible = false;
             // 
             // buttonSerarchMeOnWiki
             // 
@@ -792,6 +811,20 @@
             this.buttonShareQuote.Visible = false;
             this.buttonShareQuote.Click += new System.EventHandler(this.buttonShareQuote_Click);
             // 
+            // labelFirendsNumber
+            // 
+            this.labelFirendsNumber.AutoSize = true;
+            this.labelFirendsNumber.Font = new System.Drawing.Font("Gisha", 10F, System.Drawing.FontStyle.Bold);
+            this.labelFirendsNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.labelFirendsNumber.Location = new System.Drawing.Point(12, 174);
+            this.labelFirendsNumber.MaximumSize = new System.Drawing.Size(144, 50);
+            this.labelFirendsNumber.Name = "labelFirendsNumber";
+            this.labelFirendsNumber.Size = new System.Drawing.Size(68, 16);
+            this.labelFirendsNumber.TabIndex = 66;
+            this.labelFirendsNumber.Text = "# Friends";
+            this.labelFirendsNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelFirendsNumber.Visible = false;
+            // 
             // pictureBoxBulb
             // 
             this.pictureBoxBulb.Image = global::BasicFacebookFeatures.Properties.Resources.Illustration_of_light_bulb_icon_on_transparent_background_PNG1;
@@ -822,20 +855,6 @@
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfile.TabIndex = 53;
             this.pictureBoxProfile.TabStop = false;
-            // 
-            // labelFirendsNumber
-            // 
-            this.labelFirendsNumber.AutoSize = true;
-            this.labelFirendsNumber.Font = new System.Drawing.Font("Gisha", 10F, System.Drawing.FontStyle.Bold);
-            this.labelFirendsNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.labelFirendsNumber.Location = new System.Drawing.Point(12, 174);
-            this.labelFirendsNumber.MaximumSize = new System.Drawing.Size(144, 50);
-            this.labelFirendsNumber.Name = "labelFirendsNumber";
-            this.labelFirendsNumber.Size = new System.Drawing.Size(68, 16);
-            this.labelFirendsNumber.TabIndex = 66;
-            this.labelFirendsNumber.Text = "# Friends";
-            this.labelFirendsNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelFirendsNumber.Visible = false;
             // 
             // FormMain
             // 
@@ -955,6 +974,7 @@
         private System.Windows.Forms.PictureBox pictureBoxBulb;
         private System.Windows.Forms.Button buttonShareQuote;
         private System.Windows.Forms.Label labelFirendsNumber;
+        private System.Windows.Forms.Label labelArtistError;
     }
 }
 

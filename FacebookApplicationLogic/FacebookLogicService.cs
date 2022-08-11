@@ -9,14 +9,13 @@ using System.IO;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
-using FacebookApplicationLogic;
 
-namespace BasicFacebookFeatures
+namespace FacebookApplicationLogic
 {
     public class FacebookLogicService
     {
         private QuotesLoader m_quotesLoader;
-        private List<Page> m_artistsList;
+        private ArtistsLogic m_artistsLogic;
         private string m_filePath;
         private LoginResult m_loginResult;
         private int m_groupsIndex = 0;
@@ -100,7 +99,7 @@ namespace BasicFacebookFeatures
         public void Logout()
         {
             m_loginResult = null;
-            m_artistsList = null;
+            m_artistsLogic = null;
             AppSettings.RememberMe = false;
             AppSettings.AccessToken = string.Empty;
             AppSettings.SaveToXmlFile(m_filePath);
@@ -274,7 +273,7 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                o_text = "-no text to show-";
+                o_text = "";
             }
 
             if (i_post.Type == Post.eType.photo)
@@ -283,52 +282,30 @@ namespace BasicFacebookFeatures
             }
         }
 
-        public List<Page> GetArtistsList(List<Page> i_likedPages)
+        public Artist GetArtist(out bool o_success)
         {
-            List<Page> artistsList = new List<Page>();
-            foreach (Page page in i_likedPages)
+            Artist artist = null;
+            if (m_artistsLogic == null)
             {
-                if (page.Category == "Musician/band" || page.Category == "מוזיקאי/להקה" || page.Category == "Artist")
-                {
-                    artistsList.Add(page);
-                }
+                m_artistsLogic = new ArtistsLogic(m_loginResult.LoggedInUser.LikedPages);
             }
-
-            return artistsList;
-        }
-
-        private List<Page> getArtistsList()
-        {
-            List<Page> artistsList = new List<Page>();
-            foreach (Page page in m_loginResult.LoggedInUser.LikedPages)
+            artist = m_artistsLogic.GetArtist();
+            if (artist == null)
             {
-                if (page.Category == "Musician/band" || page.Category == "מוזיקאי/להקה" || page.Category == "Artist")
-                {
-                    artistsList.Add(page);
-                }
+                o_success = false;
+                artist = m_artistsLogic.GetDefaultArtist();
             }
-
-            return artistsList;
-        }
-
-        public Page GetArtistPage()
-        {
-            Page artistPage = null;
-            if (m_artistsList == null)
+            else
             {
-                m_artistsList = getArtistsList();
+                o_success = true;
             }
-            if (m_artistsList.Count > 0)
-            {
-                artistPage = m_artistsList[m_artistIndex];
-            }
-            return artistPage;
+            return artist;
         }
 
         public Page GetNextArtistPage()
         {
             Page artistPage = null;
-            if (m_artistsList == null)
+           /* if (m_artistsList == null)
             {
                 m_artistsList = getArtistsList();
             }
@@ -336,14 +313,14 @@ namespace BasicFacebookFeatures
             {
                 m_artistIndex = getNextIndex(m_artistIndex, m_artistsList.Count);
                 artistPage = m_artistsList[m_artistIndex];
-            }
+            }*/
             return artistPage;
         }
 
         public Page GetPreviousArtistPage()
         {
             Page artistPage = null;
-            if (m_artistsList == null)
+            /*if (m_artistsList == null)
             {
                 m_artistsList = getArtistsList();
             }
@@ -351,7 +328,7 @@ namespace BasicFacebookFeatures
             {
                 m_artistIndex = getPrevIndex(m_artistIndex, m_artistsList.Count);
                 artistPage = m_artistsList[m_artistIndex];
-            }
+            }*/
 
             return artistPage;
         }
