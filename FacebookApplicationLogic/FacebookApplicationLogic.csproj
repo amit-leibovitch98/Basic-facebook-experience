@@ -37,7 +37,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="resources\Quotes.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
