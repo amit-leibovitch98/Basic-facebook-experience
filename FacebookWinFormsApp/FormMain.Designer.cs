@@ -231,7 +231,7 @@
             this.labelPosts.AutoSize = true;
             this.labelPosts.BackColor = System.Drawing.Color.Transparent;
             this.labelPosts.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPosts.Location = new System.Drawing.Point(235, 56);
+            this.labelPosts.Location = new System.Drawing.Point(220, 59);
             this.labelPosts.MaximumSize = new System.Drawing.Size(500, 30);
             this.labelPosts.Name = "labelPosts";
             this.labelPosts.Size = new System.Drawing.Size(101, 29);
@@ -486,7 +486,7 @@
             // 
             this.labelFavoriteTeamName.AutoSize = true;
             this.labelFavoriteTeamName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFavoriteTeamName.Location = new System.Drawing.Point(214, 63);
+            this.labelFavoriteTeamName.Location = new System.Drawing.Point(201, 63);
             this.labelFavoriteTeamName.MaximumSize = new System.Drawing.Size(250, 50);
             this.labelFavoriteTeamName.Name = "labelFavoriteTeamName";
             this.labelFavoriteTeamName.Size = new System.Drawing.Size(130, 25);

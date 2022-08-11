@@ -52,10 +52,10 @@ namespace BasicFacebookFeatures
             }
         }
 
-        public void SaveSettings(Size size, Point location)
+        public void SaveSettings(Size i_size, Point i_location)
         {
-            AppSettings.WindowSize = size;
-            AppSettings.WindowLocation = location;
+            AppSettings.WindowSize = i_size;
+            AppSettings.WindowLocation = i_location;
 
             if (AppSettings.RememberMe)
             {
@@ -178,12 +178,12 @@ namespace BasicFacebookFeatures
             return albumNames;
         }
 
-        public Album GetAlbumByName(string albumName)
+        public Album GetAlbumByName(string i_albumName)
         {
             Album returnedAlbum = null;
             foreach (Album album in m_loginResult.LoggedInUser.Albums)
             {
-                if (album.Name == albumName)
+                if (album.Name == i_albumName)
                 {
                     returnedAlbum = album;
                 }
@@ -240,12 +240,12 @@ namespace BasicFacebookFeatures
             return eventNames;
         }
 
-        public Event GetEventByName(string eventName)
+        public Event GetEventByName(string i_eventName)
         {
             Event returnedEvent = null;
             foreach (Event userEvent in m_loginResult.LoggedInUser.Events)
             {
-                if (userEvent.Name == eventName)
+                if (userEvent.Name == i_eventName)
                 {
                     returnedEvent = userEvent;
                 }
