@@ -19,7 +19,7 @@ namespace FacebookApplicationLogic
 
         public bool RememberMe { get; set; }
 
-        public AppSettings()
+        private AppSettings()
         {
             WindowSize = new Size(770, 565);
             WindowLocation = new Point(0, 0);
@@ -27,17 +27,20 @@ namespace FacebookApplicationLogic
             RememberMe = false;
         }
 
-        public static AppSettings LoadFromXmlFile(string i_FilePath)
+        public void LoadFromXmlFile(string i_FilePath)
         {
-            AppSettings appSettings = null;
+            AppSettings savedAppSettings = null;
 
             using (Stream stream = new FileStream(i_FilePath, FileMode.Open))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
-                appSettings = serializer.Deserialize(stream) as AppSettings;
+                savedAppSettings = serializer.Deserialize(stream) as AppSettings;
             }
 
-            return appSettings;
+            WindowSize = savedAppSettings.WindowSize;
+            WindowLocation = savedAppSettings.WindowLocation;
+            AccessToken = savedAppSettings.AccessToken;
+            RememberMe = savedAppSettings.RememberMe;
         }
 
         public void SaveToXmlFile(string i_FilePath)

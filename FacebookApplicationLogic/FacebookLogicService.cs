@@ -28,7 +28,7 @@ namespace FacebookApplicationLogic
 
         public AppSettings AppSettings { get; set; }
 
-        public FacebookLogicService()
+        private FacebookLogicService()
         {
             m_QuotesLoader = new QuotesLoader();
             initXmlPath();
@@ -43,13 +43,10 @@ namespace FacebookApplicationLogic
 
         public void LoadAppSettings()
         {
+            AppSettings = Singleton<AppSettings>.Instance;
             if (File.Exists(m_AppSettingsXmlFilePath) && File.ReadAllText(m_AppSettingsXmlFilePath) != string.Empty)
             {
-                AppSettings = AppSettings.LoadFromXmlFile(m_AppSettingsXmlFilePath);
-            }
-            else
-            {
-                AppSettings = new AppSettings();
+                AppSettings.LoadFromXmlFile(m_AppSettingsXmlFilePath);
             }
         }
 

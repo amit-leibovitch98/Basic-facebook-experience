@@ -15,10 +15,10 @@ namespace BasicFacebookFeatures
     {
         private FacebookLogicService m_FacebookLogicService;
 
-        public FormShareQuote(FacebookLogicService i_FacebookLogicService)
+        public FormShareQuote()
         {
             InitializeComponent();
-            m_FacebookLogicService = i_FacebookLogicService;
+            m_FacebookLogicService = Singleton<FacebookLogicService>.Instance;
             textBoxToPost.Text = m_FacebookLogicService.GetQuote();
         }
 

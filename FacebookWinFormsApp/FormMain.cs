@@ -22,7 +22,8 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
 
-            m_FacebookLogicService = new FacebookLogicService();
+            //m_FacebookLogicService = new FacebookLogicService();
+            m_FacebookLogicService = Singleton<FacebookLogicService>.Instance;
 
             Size = new Size(180, 280);
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;
@@ -370,7 +371,7 @@ namespace BasicFacebookFeatures
 
         private void buttonShareQuote_Click(object sender, EventArgs e)
         {
-            FormShareQuote formShareQuote = new FormShareQuote(m_FacebookLogicService);
+            FormShareQuote formShareQuote = new FormShareQuote();
             formShareQuote.ShowDialog();
         }
 
