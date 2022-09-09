@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.IO;
 using System.Text.Json;
+using System.Net;
 
 namespace FacebookApplicationLogic
 {
@@ -17,7 +18,7 @@ namespace FacebookApplicationLogic
             o_quote = null;
             try
             {
-                o_quote = getRandomQuoteAsync().Result;
+                o_quote = getQuote();
             }
             catch
             {
@@ -27,9 +28,10 @@ namespace FacebookApplicationLogic
             return isSucceed;
         }
 
-        private async Task<string> getRandomQuoteAsync()
+        private string getQuote()
         {
             string quote;
+            /*
             var client = new HttpClient();
             var request = new HttpRequestMessage
             {
@@ -43,19 +45,34 @@ namespace FacebookApplicationLogic
                 string body = await response.Content.ReadAsStringAsync();
                 quote = QuoteToStringDisplay(jasonToQuoteObj(body));
             }
+            */
+            string url = "https://goquotes-api.herokuapp.com/api/v1/random?count=1";
+            var request = WebRequest.Create(url);
+            request.Method = "GET";
+            var webResponse = request.GetResponse();
+            using (var webStream = webResponse.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(webStream);
+                string body = reader.ReadToEnd();
+                quote = QuoteToStringDisplay(jasonToQuoteObj(body));
+            }
 
             return quote;
         }
 
         private Quote jasonToQuoteObj(string i_jsonInString)
         {
-            Quote quote = JsonSerializer.Deserialize<Quote>(i_jsonInString);
-            return quote;
+            Quote quote;
+            QuoteWrapper quoteWrapper = JsonSerializer.Deserialize<QuoteWrapper>(i_jsonInString);
+            //DELETEEEEEEEEEEEEEEEEEE
+            //throw new NotImplementedException();
+            //DELETEEEEEEEEEEEEEEEEEE
+            return quoteWrapper.quotes[0];
         }
 
         public string QuoteToStringDisplay(Quote i_quote)
         {
-            return string.Format("{0}{1}-{2}", i_quote.Text, System.Environment.NewLine, i_quote.Author);
+            return string.Format("{0}{1}-{2}", i_quote.text, System.Environment.NewLine, i_quote.author);
         }
     }
 }

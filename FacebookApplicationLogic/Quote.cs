@@ -8,9 +8,10 @@ namespace FacebookApplicationLogic
 {
     public class Quote
     {
-        public string Text { get; set; }
-        public string Author { get; set; }
-        public string Tag { get; set; }
+        public string text { get; set; }
 
+        public string author { get; set; }
+
+        public string tag { get; set; }
     }
 }
