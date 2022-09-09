@@ -120,12 +120,19 @@ namespace BasicFacebookFeatures
             fetchEvents();
             fetchAlbums();
             fetchArtist();
+            fetchSettings();
         }
 
         private void fetchPost()
         {
             Post post = m_FacebookLogicService.GetPost();
             displayPost(post);
+        }
+
+        //shachar
+        private void fetchSettings()
+        {
+            loginResultBindingSource.DataSource = m_FacebookLogicService.CurrentLoginResult;
         }
 
         private void displayPost(Post i_Post)

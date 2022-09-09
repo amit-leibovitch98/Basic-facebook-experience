@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label labelSettingsEmail;
+            System.Windows.Forms.Label labelSettingsBirthday;
+            System.Windows.Forms.Label labelSettingsName;
+            System.Windows.Forms.Label LabelSettingsUserName;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.TabWall = new System.Windows.Forms.TabPage();
@@ -79,8 +83,16 @@
             this.labelArtistsName = new System.Windows.Forms.Label();
             this.pictureBoxArtistsLikesIcon = new System.Windows.Forms.PictureBox();
             this.pictureBoxArtistsPicture = new System.Windows.Forms.PictureBox();
+            this.tabSettings = new System.Windows.Forms.TabPage();
+            this.labelProfileSettings = new System.Windows.Forms.Label();
+            this.panelSettings = new System.Windows.Forms.Panel();
+            this.textBoxSettingsUserName = new System.Windows.Forms.TextBox();
+            this.loginResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textBoxSettingsName = new System.Windows.Forms.TextBox();
+            this.DateTimePickerSettingsBirthday = new System.Windows.Forms.DateTimePicker();
+            this.textBoxSettingsEmail = new System.Windows.Forms.TextBox();
+            this.imageNormalPictureBox = new System.Windows.Forms.PictureBox();
             this.checkBoxRememberMe = new System.Windows.Forms.CheckBox();
-            this.imageListPageUploadedPictures = new System.Windows.Forms.ImageList(this.components);
             this.labelInsperetionalQuote = new System.Windows.Forms.Label();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
@@ -90,6 +102,10 @@
             this.pictureBoxBulb = new System.Windows.Forms.PictureBox();
             this.pictureBoxLogin = new System.Windows.Forms.PictureBox();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
+            labelSettingsEmail = new System.Windows.Forms.Label();
+            labelSettingsBirthday = new System.Windows.Forms.Label();
+            labelSettingsName = new System.Windows.Forms.Label();
+            LabelSettingsUserName = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.TabWall.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikesIcon)).BeginInit();
@@ -109,10 +125,50 @@
             this.tabPageArtists.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsLikesIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsPicture)).BeginInit();
+            this.tabSettings.SuspendLayout();
+            this.panelSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loginResultBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBulb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
+            // 
+            // labelSettingsEmail
+            // 
+            labelSettingsEmail.AutoSize = true;
+            labelSettingsEmail.Location = new System.Drawing.Point(69, 241);
+            labelSettingsEmail.Name = "labelSettingsEmail";
+            labelSettingsEmail.Size = new System.Drawing.Size(40, 13);
+            labelSettingsEmail.TabIndex = 20;
+            labelSettingsEmail.Text = "Email:";
+            // 
+            // labelSettingsBirthday
+            // 
+            labelSettingsBirthday.AutoSize = true;
+            labelSettingsBirthday.Location = new System.Drawing.Point(68, 211);
+            labelSettingsBirthday.Name = "labelSettingsBirthday";
+            labelSettingsBirthday.Size = new System.Drawing.Size(55, 13);
+            labelSettingsBirthday.TabIndex = 18;
+            labelSettingsBirthday.Text = "Birthday:";
+            // 
+            // labelSettingsName
+            // 
+            labelSettingsName.AutoSize = true;
+            labelSettingsName.Location = new System.Drawing.Point(68, 178);
+            labelSettingsName.Name = "labelSettingsName";
+            labelSettingsName.Size = new System.Drawing.Size(41, 13);
+            labelSettingsName.TabIndex = 29;
+            labelSettingsName.Text = "Name:";
+            // 
+            // LabelSettingsUserName
+            // 
+            LabelSettingsUserName.AutoSize = true;
+            LabelSettingsUserName.Location = new System.Drawing.Point(69, 277);
+            LabelSettingsUserName.Name = "LabelSettingsUserName";
+            LabelSettingsUserName.Size = new System.Drawing.Size(67, 13);
+            LabelSettingsUserName.TabIndex = 31;
+            LabelSettingsUserName.Text = "User Name:";
             // 
             // tabControl
             // 
@@ -123,6 +179,7 @@
             this.tabControl.Controls.Add(this.tabPageTeams);
             this.tabControl.Controls.Add(this.tabPageAlbums);
             this.tabControl.Controls.Add(this.tabPageArtists);
+            this.tabControl.Controls.Add(this.tabSettings);
             this.tabControl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabControl.Font = new System.Drawing.Font("Gisha", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl.ImeMode = System.Windows.Forms.ImeMode.Alpha;
@@ -752,6 +809,96 @@
             this.pictureBoxArtistsPicture.TabIndex = 68;
             this.pictureBoxArtistsPicture.TabStop = false;
             // 
+            // tabSettings
+            // 
+            this.tabSettings.AutoScroll = true;
+            this.tabSettings.CausesValidation = false;
+            this.tabSettings.Controls.Add(this.labelProfileSettings);
+            this.tabSettings.Controls.Add(this.panelSettings);
+            this.tabSettings.Location = new System.Drawing.Point(4, 22);
+            this.tabSettings.Name = "tabSettings";
+            this.tabSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSettings.Size = new System.Drawing.Size(576, 496);
+            this.tabSettings.TabIndex = 8;
+            this.tabSettings.Text = "Settings";
+            this.tabSettings.UseVisualStyleBackColor = true;
+            // 
+            // labelProfileSettings
+            // 
+            this.labelProfileSettings.AutoSize = true;
+            this.labelProfileSettings.Font = new System.Drawing.Font("Gisha", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProfileSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.labelProfileSettings.Location = new System.Drawing.Point(177, 50);
+            this.labelProfileSettings.Name = "labelProfileSettings";
+            this.labelProfileSettings.Size = new System.Drawing.Size(250, 38);
+            this.labelProfileSettings.TabIndex = 1;
+            this.labelProfileSettings.Text = "Profile Settings";
+            // 
+            // panelSettings
+            // 
+            this.panelSettings.CausesValidation = false;
+            this.panelSettings.Controls.Add(LabelSettingsUserName);
+            this.panelSettings.Controls.Add(this.textBoxSettingsUserName);
+            this.panelSettings.Controls.Add(labelSettingsName);
+            this.panelSettings.Controls.Add(this.textBoxSettingsName);
+            this.panelSettings.Controls.Add(labelSettingsBirthday);
+            this.panelSettings.Controls.Add(this.DateTimePickerSettingsBirthday);
+            this.panelSettings.Controls.Add(labelSettingsEmail);
+            this.panelSettings.Controls.Add(this.textBoxSettingsEmail);
+            this.panelSettings.Controls.Add(this.imageNormalPictureBox);
+            this.panelSettings.DataBindings.Add(new System.Windows.Forms.Binding("BorderStyle", this.loginResultBindingSource, "LoggedInUser", true));
+            this.panelSettings.Location = new System.Drawing.Point(84, 101);
+            this.panelSettings.Name = "panelSettings";
+            this.panelSettings.Size = new System.Drawing.Size(438, 358);
+            this.panelSettings.TabIndex = 0;
+            // 
+            // textBoxSettingsUserName
+            // 
+            this.textBoxSettingsUserName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.loginResultBindingSource, "LoggedInUser.UserName", true));
+            this.textBoxSettingsUserName.Location = new System.Drawing.Point(161, 274);
+            this.textBoxSettingsUserName.Name = "textBoxSettingsUserName";
+            this.textBoxSettingsUserName.Size = new System.Drawing.Size(200, 20);
+            this.textBoxSettingsUserName.TabIndex = 32;
+            // 
+            // loginResultBindingSource
+            // 
+            this.loginResultBindingSource.DataSource = typeof(FacebookWrapper.LoginResult);
+            // 
+            // textBoxSettingsName
+            // 
+            this.textBoxSettingsName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.loginResultBindingSource, "LoggedInUser.Name", true));
+            this.textBoxSettingsName.Location = new System.Drawing.Point(161, 171);
+            this.textBoxSettingsName.Name = "textBoxSettingsName";
+            this.textBoxSettingsName.Size = new System.Drawing.Size(200, 20);
+            this.textBoxSettingsName.TabIndex = 30;
+            // 
+            // DateTimePickerSettingsBirthday
+            // 
+            this.DateTimePickerSettingsBirthday.CausesValidation = false;
+            this.DateTimePickerSettingsBirthday.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.loginResultBindingSource, "LoggedInUser.Birthday", true));
+            this.DateTimePickerSettingsBirthday.Location = new System.Drawing.Point(161, 204);
+            this.DateTimePickerSettingsBirthday.Name = "DateTimePickerSettingsBirthday";
+            this.DateTimePickerSettingsBirthday.Size = new System.Drawing.Size(200, 20);
+            this.DateTimePickerSettingsBirthday.TabIndex = 19;
+            // 
+            // textBoxSettingsEmail
+            // 
+            this.textBoxSettingsEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.loginResultBindingSource, "LoggedInUser.Email", true));
+            this.textBoxSettingsEmail.Location = new System.Drawing.Point(161, 238);
+            this.textBoxSettingsEmail.Name = "textBoxSettingsEmail";
+            this.textBoxSettingsEmail.Size = new System.Drawing.Size(200, 20);
+            this.textBoxSettingsEmail.TabIndex = 21;
+            // 
+            // imageNormalPictureBox
+            // 
+            this.imageNormalPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.loginResultBindingSource, "LoggedInUser.ImageNormal", true));
+            this.imageNormalPictureBox.Location = new System.Drawing.Point(145, 3);
+            this.imageNormalPictureBox.Name = "imageNormalPictureBox";
+            this.imageNormalPictureBox.Size = new System.Drawing.Size(142, 145);
+            this.imageNormalPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageNormalPictureBox.TabIndex = 25;
+            this.imageNormalPictureBox.TabStop = false;
+            // 
             // checkBoxRememberMe
             // 
             this.checkBoxRememberMe.AutoSize = true;
@@ -763,12 +910,6 @@
             this.checkBoxRememberMe.TabIndex = 60;
             this.checkBoxRememberMe.Text = "Remember Me";
             this.checkBoxRememberMe.UseVisualStyleBackColor = true;
-            // 
-            // imageListPageUploadedPictures
-            // 
-            this.imageListPageUploadedPictures.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPageUploadedPictures.ImageStream")));
-            this.imageListPageUploadedPictures.TransparentColor = System.Drawing.Color.DimGray;
-            this.imageListPageUploadedPictures.Images.SetKeyName(0, "39446caa52f53369b92bc97253d2b2f1.png");
             // 
             // labelInsperetionalQuote
             // 
@@ -819,6 +960,7 @@
             // labelUserName
             // 
             this.labelUserName.AutoSize = true;
+            this.labelUserName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.loginResultBindingSource, "LoggedInUser.Name", true));
             this.labelUserName.Font = new System.Drawing.Font("Gisha", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUserName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
             this.labelUserName.Location = new System.Drawing.Point(13, 152);
@@ -940,6 +1082,12 @@
             this.tabPageArtists.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsLikesIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArtistsPicture)).EndInit();
+            this.tabSettings.ResumeLayout(false);
+            this.tabSettings.PerformLayout();
+            this.panelSettings.ResumeLayout(false);
+            this.panelSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loginResultBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBulb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
@@ -972,7 +1120,6 @@
         private System.Windows.Forms.PictureBox pictureBoxPageCover;
         private System.Windows.Forms.Label labelPageLikes;
         private System.Windows.Forms.Label labelPageCategory;
-        private System.Windows.Forms.ImageList imageListPageUploadedPictures;
         private System.Windows.Forms.Label LabelGroupName;
         private System.Windows.Forms.PictureBox pictureBoxGroup;
         private System.Windows.Forms.Button buttonPrevGroup;
@@ -1010,6 +1157,15 @@
         private System.Windows.Forms.Label labelArtistError;
         private System.Windows.Forms.Button buttonPrevAlbumPhoto;
         private System.Windows.Forms.Button buttonNextAlbumPhoto;
+        private System.Windows.Forms.TabPage tabSettings;
+        private System.Windows.Forms.Label labelProfileSettings;
+        private System.Windows.Forms.BindingSource loginResultBindingSource;
+        private System.Windows.Forms.Panel panelSettings;
+        private System.Windows.Forms.DateTimePicker DateTimePickerSettingsBirthday;
+        private System.Windows.Forms.TextBox textBoxSettingsEmail;
+        private System.Windows.Forms.PictureBox imageNormalPictureBox;
+        private System.Windows.Forms.TextBox textBoxSettingsName;
+        private System.Windows.Forms.TextBox textBoxSettingsUserName;
     }
 }
 

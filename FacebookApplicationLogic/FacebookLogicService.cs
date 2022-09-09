@@ -34,6 +34,15 @@ namespace FacebookApplicationLogic
             initXmlPath();
         }
 
+        //shachar
+        public LoginResult CurrentLoginResult
+        {
+            get
+            {
+                return m_LoginResult;
+            }
+        }
+
         private void initXmlPath()
         {
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
