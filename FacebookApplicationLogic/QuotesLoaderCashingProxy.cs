@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -24,18 +25,20 @@ namespace FacebookApplicationLogic
         public void LoadQuotesToCashIfNeeded()
         {
             string fileContent;
-            string filePath = "resources/Quotes.json";
+            System.IO.FileStream quotesFile;
+            string filePath = "resources/CashedQuotes.json";
+            if (!File.Exists(filePath))
+            {
+                quotesFile = System.IO.File.Create(filePath);
+                quotesFile.Close();
+            }
+
             using (StreamReader r = new StreamReader(filePath))
             {
-                System.IO.FileStream quotesFile;
-                if (!File.Exists(filePath))
-                {
-                    quotesFile = System.IO.File.Create(filePath);
-                }
-
                 fileContent = r.ReadToEnd();
-                if (fileContent == null)
+                if (fileContent == string.Empty)
                 {
+                    r.Close();
                     LoadQuotesToCash(filePath);
                 }
             }
@@ -43,6 +46,7 @@ namespace FacebookApplicationLogic
 
         public async void LoadQuotesToCash(string i_filePath)
         {
+            /*
             var client = new HttpClient();
             var request = new HttpRequestMessage
             {
@@ -58,17 +62,30 @@ namespace FacebookApplicationLogic
                     File.WriteAllText(i_filePath, body);
                 }
             }
+            */
+
+            string url = "https://goquotes-api.herokuapp.com/api/v1/random?count=20";
+            var request = WebRequest.Create(url);
+            request.Method = "GET";
+            var webResponse = request.GetResponse();
+            using (var webStream = webResponse.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(webStream);
+                string body = reader.ReadToEnd();
+                File.WriteAllText(i_filePath, body);
+                reader.Close();
+            }
         }
 
         public void LoadQuotesFromJson()
         {
             string json = null;
-            if (!File.Exists("resources/Quotes.json"))
+            if (!File.Exists("resources/CashedQuotes.json"))
             {
                 throw new FileLoadException("Failed to load quotes!");
             }
 
-            using (StreamReader r = new StreamReader("resources/Quotes.json"))
+            using (StreamReader r = new StreamReader("resources/CashedQuotes.json"))
             {
                 json = r.ReadToEnd();
             }
@@ -78,7 +95,8 @@ namespace FacebookApplicationLogic
                 throw new FileLoadException("Failed to load quotes!");
             }
 
-            CashedQuotes = JsonSerializer.Deserialize<List<Quote>>(json);
+            QuoteWrapper quoteWrapper = JsonSerializer.Deserialize<QuoteWrapper>(json);
+            CashedQuotes = quoteWrapper.quotes;
         }
 
         public bool GetRandomQuote(out string o_quote)

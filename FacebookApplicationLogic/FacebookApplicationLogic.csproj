@@ -51,6 +51,7 @@
     <Compile Include="Artist.cs" />
     <Compile Include="ArtistsLogic.cs" />
     <Compile Include="FacebookLogicService.cs" />
+    <Compile Include="QuoteWrapper.cs" />
     <Compile Include="IQuotesLoader.cs" />
     <Compile Include="Quote.cs" />
     <Compile Include="QuotesLoader.cs" />
