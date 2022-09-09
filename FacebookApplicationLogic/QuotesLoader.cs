@@ -3,51 +3,59 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
 using System.IO;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace FacebookApplicationLogic
 {
-    public class QuotesLoader
+    public class QuoteLoader : IQuotesLoader
     {
-        private List<string> m_Quotes;
-
-        public QuotesLoader()
+        public bool GetRandomQuote(out string o_quote)
         {
-            m_Quotes = null;
+            bool isSucceed = true;
+            o_quote = null;
+            try
+            {
+                o_quote = getRandomQuoteAsync().Result;
+            }
+            catch
+            {
+                isSucceed = false;
+            }
+
+            return isSucceed;
         }
 
-        public List<string> LoadQuotesJson()
+        private async Task<string> getRandomQuoteAsync()
         {
-            string json = null;
-            if (!File.Exists("resources/Quotes.json"))
+            string quote;
+            var client = new HttpClient();
+            var request = new HttpRequestMessage
             {
-                throw new FileLoadException("Failed to load quotes!");
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://goquotes-api.herokuapp.com/api/v1/random?count=1"),
+            };
+
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                string body = await response.Content.ReadAsStringAsync();
+                quote = QuoteToStringDisplay(jasonToQuoteObj(body));
             }
 
-            using (StreamReader r = new StreamReader("resources/Quotes.json"))
-            {
-                json = r.ReadToEnd();
-            }
-
-            if (json == null)
-            {
-                throw new FileLoadException("Failed to load quotes!");
-            }
-
-            return JsonConvert.DeserializeObject<List<string>>(json);
+            return quote;
         }
 
-        public string GetRandomQuote()
+        private Quote jasonToQuoteObj(string i_jsonInString)
         {
-            if (m_Quotes == null)
-            {
-                m_Quotes = LoadQuotesJson();
-            }
+            Quote quote = JsonSerializer.Deserialize<Quote>(i_jsonInString);
+            return quote;
+        }
 
-            Random randomNumber = new Random();
-            int quoteNumber = randomNumber.Next(0, m_Quotes.Count - 1);
-            return m_Quotes[quoteNumber];
+        public string QuoteToStringDisplay(Quote i_quote)
+        {
+            return string.Format("{0}{1}-{2}", i_quote.Text, System.Environment.NewLine, i_quote.Author);
         }
     }
 }

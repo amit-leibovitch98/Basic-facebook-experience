@@ -15,7 +15,7 @@ namespace FacebookApplicationLogic
     public class FacebookLogicService
     {
         private string m_AppSettingsXmlFilePath;
-        private QuotesLoader m_QuotesLoader;
+        private QuotesLoaderCashingProxy m_QuotesLoader;
         private ArtistsLogic m_ArtistsLogic;
         private LoginResult m_LoginResult;
         private int m_GroupsIndex = 0;
@@ -30,7 +30,7 @@ namespace FacebookApplicationLogic
 
         public FacebookLogicService()
         {
-            m_QuotesLoader = new QuotesLoader();
+            m_QuotesLoader = new QuotesLoaderCashingProxy();
             initXmlPath();
         }
 
@@ -263,9 +263,8 @@ namespace FacebookApplicationLogic
 
         public string GetRandomQuote()
         {
-            string quote = m_QuotesLoader.GetRandomQuote();
-            m_Quote = quote;
-            return quote;
+            m_QuotesLoader.GetRandomQuote(out m_Quote);
+            return m_Quote;
         }
 
         public void GetPostTextAndPicture(Post i_Post, out string o_Text, out string o_ImgURL)
