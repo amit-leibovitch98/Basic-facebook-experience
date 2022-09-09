@@ -150,6 +150,7 @@ namespace BasicFacebookFeatures
             {
                 pictureBoxPostImg.Image = null;
             }
+
             labelPostLikes.Text = string.Format("({0}) likes", m_FacebookLogicService.getPostLikes(i_Post));
         }
 

@@ -222,12 +222,6 @@
     <None Include="Resources\pinpng.com-white-frame-png-312251.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FacebookApplicationLogic\FacebookApplicationLogic.csproj">
-      <Project>{b79184b1-e93c-4145-ae32-3f09e9ee1b93}</Project>
-      <Name>FacebookApplicationLogic</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
