@@ -36,11 +36,8 @@ namespace FacebookApplicationLogic
             using (StreamReader r = new StreamReader(filePath))
             {
                 fileContent = r.ReadToEnd();
-                if (fileContent == string.Empty)
-                {
-                    r.Close();
-                    LoadQuotesToCash(filePath);
-                }
+                r.Close();
+                LoadQuotesToCash(filePath);
             }
         }
 
