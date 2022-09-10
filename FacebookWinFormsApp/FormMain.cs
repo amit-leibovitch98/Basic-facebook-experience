@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.Threading;
 using Newtonsoft.Json;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
@@ -113,20 +114,20 @@ namespace BasicFacebookFeatures
         {
             string profilePictureUrl = m_FacebookLogicService.GetProfilePictureUrl();
             pictureBoxProfile.LoadAsync(profilePictureUrl);
-            fetchGroup();
-            fetchPost();
-            fetchPage();
-            fetchFavoriteTeams();
-            fetchEvents();
-            fetchAlbums();
-            fetchArtist();
-            fetchSettings();
+            new Thread(fetchGroup).Start();
+            new Thread(fetchPost).Start();
+            new Thread(fetchPage).Start();
+            new Thread(fetchFavoriteTeams).Start();
+            new Thread(fetchEvents).Start();
+            new Thread(fetchAlbums).Start();
+            new Thread(fetchArtist).Start();
+            new Thread(fetchSettings).Start();
         }
 
         private void fetchPost()
         {
             Post post = m_FacebookLogicService.GetPost();
-            displayPost(post);
+            this.Invoke(new Action(() => displayPost(post)));
         }
 
         //shachar
@@ -198,7 +199,8 @@ namespace BasicFacebookFeatures
         private void fetchPage()
         {
             Page page = m_FacebookLogicService.GetPage();
-            displayPage(page);
+
+            this.Invoke(new Action(() => displayPage(page)));
         }
 
         private void displayPage(Page i_Page)
@@ -224,7 +226,7 @@ namespace BasicFacebookFeatures
         private void fetchGroup()
         {
             Group group = m_FacebookLogicService.GetGroup();
-            displayGroup(group);
+            this.Invoke(new Action(() => displayGroup(group)));
         }
 
         private void displayGroup(Group group)
@@ -249,7 +251,7 @@ namespace BasicFacebookFeatures
         private void fetchFavoriteTeams()
         {
             Page team = m_FacebookLogicService.GetFavoriteTeam();
-            displayTeam(team);
+            this.Invoke(new Action(() => displayTeam(team)));
         }
 
         private void displayTeam(Page i_team)
@@ -271,7 +273,8 @@ namespace BasicFacebookFeatures
             List<string> albumNames = m_FacebookLogicService.GetAlbumNames();
             foreach (string albumName in albumNames)
             {
-                comboBoxAlbums.Items.Add(albumName);
+
+                this.Invoke(new Action(() => comboBoxAlbums.Items.Add(albumName)));
             }
 
             if (albumNames.Count > 0)
@@ -299,7 +302,7 @@ namespace BasicFacebookFeatures
             List<string> eventNames = m_FacebookLogicService.GetEventNames();
             foreach (string eventName in eventNames)
             {
-                comboBoxEvents.Items.Add(eventName);
+                this.Invoke(new Action(() => comboBoxEvents.Items.Add(eventName)));
             }
 
             if (eventNames.Count > 0)
@@ -346,7 +349,7 @@ namespace BasicFacebookFeatures
                 labelArtistError.Visible = false;
             }
 
-            displayArtist(artist);
+            this.Invoke(new Action(() => displayArtist(artist)));
         }
 
         private void buttonSerarchMeOnWiki_Click(object sender, EventArgs e)
