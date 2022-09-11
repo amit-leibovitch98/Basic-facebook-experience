@@ -62,6 +62,7 @@ namespace BasicFacebookFeatures
         {
             base.OnFormClosing(e);
             m_FacebookLogicService.SaveSettings(Size, Location);
+
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -401,6 +402,16 @@ namespace BasicFacebookFeatures
             {
                 pictureBoxAlbum.Image = photo.ImageNormal;
             }
+        }
+
+        private void labelInsperetionalQuote_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelUserName_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

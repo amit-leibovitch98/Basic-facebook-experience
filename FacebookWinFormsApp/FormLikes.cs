@@ -26,7 +26,6 @@ namespace BasicFacebookFeatures
                     listBoxLikes.Items.Add(string.Format("{0} {1}", likedUser.FirstName, likedUser.LastName));
                 }
             }
-
         }
     }
 }
