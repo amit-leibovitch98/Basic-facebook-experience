@@ -55,7 +55,7 @@
     <Compile Include="IQuotesLoader.cs" />
     <Compile Include="Quote.cs" />
     <Compile Include="QuotesLoader.cs" />
-    <Compile Include="QuotesLoaderCashingProxy.cs" />
+    <Compile Include="QuotesLoaderCachingProxy.cs" />
     <Compile Include="Singleton.cs" />
   </ItemGroup>
   <ItemGroup>

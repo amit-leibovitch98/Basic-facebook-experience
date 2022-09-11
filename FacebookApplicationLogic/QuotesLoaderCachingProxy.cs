@@ -10,19 +10,22 @@ using System.Threading.Tasks;
 
 namespace FacebookApplicationLogic
 {
-    public class QuotesLoaderCashingProxy : IQuotesLoader
+    public class QuotesLoaderCachingProxy : IQuotesLoader
     {
-        public List<Quote> CashedQuotes { get; set; }
+        //private List<Quote> m_CachedQuotes;
+        private readonly string m_DefaultQuote = "Inspiration does exist, but it must find you working.” —Pablo Picasso";
+        private readonly int m_CacheSize = 20;
+        private List<string> m_CachedQuotes;
+        private QuoteLoader m_QuotesLoader;
 
-        public QuoteLoader quotesLoader { get; set; }
-
-        public QuotesLoaderCashingProxy()
+        public QuotesLoaderCachingProxy()
         {
-            quotesLoader = new QuoteLoader();
-            LoadQuotesToCashIfNeeded();
+            m_QuotesLoader = new QuoteLoader();
+            m_CachedQuotes = new List<string>() { m_DefaultQuote };
+            //LoadQuotesToCashIfNeeded();
         }
 
-        public void LoadQuotesToCashIfNeeded()
+        /*public void LoadQuotesToCashIfNeeded()
         {
             string fileContent;
             System.IO.FileStream quotesFile;
@@ -39,31 +42,13 @@ namespace FacebookApplicationLogic
                 if (fileContent == string.Empty)
                 {
                     r.Close();
-                    LoadQuotesToCash(filePath);
+                    LoadQuotesToCache(filePath);
                 }
             }
         }
 
-        public async void LoadQuotesToCash(string i_filePath)
+        public void LoadQuotesToCache(string i_filePath)
         {
-            /*
-            var client = new HttpClient();
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri("https://goquotes-api.herokuapp.com/api/v1/random?count=20"),
-            };
-            using (var response = await client.SendAsync(request))
-            {
-                response.EnsureSuccessStatusCode();
-                string body = await response.Content.ReadAsStringAsync();
-                using (StreamReader r = new StreamReader(i_filePath))
-                {
-                    File.WriteAllText(i_filePath, body);
-                }
-            }
-            */
-
             string url = "https://goquotes-api.herokuapp.com/api/v1/random?count=20";
             var request = WebRequest.Create(url);
             request.Method = "GET";
@@ -96,17 +81,26 @@ namespace FacebookApplicationLogic
             }
 
             QuoteWrapper quoteWrapper = JsonSerializer.Deserialize<QuoteWrapper>(json);
-            CashedQuotes = quoteWrapper.quotes;
-        }
+            m_CachedQuotes = quoteWrapper.quotes;
+        }*/
 
         public bool GetRandomQuote(out string o_quote)
         {
-            if(!quotesLoader.GetRandomQuote(out o_quote))
+            if (m_QuotesLoader.GetRandomQuote(out o_quote))
             {
-                LoadQuotesFromJson();
+                m_CachedQuotes.Add(o_quote);
+                if (m_CachedQuotes.Count > m_CacheSize)
+                {
+                    m_CachedQuotes.RemoveAt(0);
+                }
+            }
+            else
+            {
+                //LoadQuotesFromJson();
                 Random rnd = new Random();
-                int quoteIndx = rnd.Next(CashedQuotes.Count - 1);
-                o_quote = quotesLoader.QuoteToStringDisplay(CashedQuotes[quoteIndx]);
+                int quoteIndx = rnd.Next(m_CachedQuotes.Count - 1);
+                //o_quote = m_QuotesLoader.QuoteToStringDisplay(m_CachedQuotes[quoteIndx]);
+                o_quote = m_CachedQuotes[quoteIndx];
             }
 
             return true;

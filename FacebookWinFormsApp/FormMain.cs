@@ -23,7 +23,7 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
 
-            //m_FacebookLogicService = new FacebookLogicService();
+            // m_FacebookLogicService = new FacebookLogicService();
             m_FacebookLogicService = Singleton<FacebookLogicService>.Instance;
 
             Size = new Size(180, 280);
@@ -130,7 +130,7 @@ namespace BasicFacebookFeatures
             this.Invoke(new Action(() => displayPost(post)));
         }
 
-        //shachar
+        // shachar
         private void fetchSettings()
         {
             loginResultBindingSource.DataSource = m_FacebookLogicService.CurrentLoginResult;
@@ -274,7 +274,6 @@ namespace BasicFacebookFeatures
             List<string> albumNames = m_FacebookLogicService.GetAlbumNames();
             foreach (string albumName in albumNames)
             {
-
                 this.Invoke(new Action(() => comboBoxAlbums.Items.Add(albumName)));
             }
 

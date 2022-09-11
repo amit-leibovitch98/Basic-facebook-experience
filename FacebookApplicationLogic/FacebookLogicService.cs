@@ -15,7 +15,7 @@ namespace FacebookApplicationLogic
     public class FacebookLogicService
     {
         private string m_AppSettingsXmlFilePath;
-        private QuotesLoaderCashingProxy m_QuotesLoader;
+        private IQuotesLoader m_QuotesLoader;
         private ArtistsLogic m_ArtistsLogic;
         private LoginResult m_LoginResult;
         private int m_GroupsIndex = 0;
@@ -30,7 +30,7 @@ namespace FacebookApplicationLogic
 
         private FacebookLogicService()
         {
-            m_QuotesLoader = new QuotesLoaderCashingProxy();
+            m_QuotesLoader = new QuotesLoaderCachingProxy();
             initXmlPath();
         }
 

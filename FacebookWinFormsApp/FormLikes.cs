@@ -17,10 +17,16 @@ namespace BasicFacebookFeatures
         public FormLikes(Post i_Post)
         {
             InitializeComponent();
-            foreach (User likedUser in i_Post.LikedBy)
+            bool isLikedByexist = false;
+
+            if (isLikedByexist)
             {
-                listBoxLikes.Items.Add(string.Format("{0} {1}", likedUser.FirstName, likedUser.LastName));
+                foreach (User likedUser in i_Post.LikedBy)
+                {
+                    listBoxLikes.Items.Add(string.Format("{0} {1}", likedUser.FirstName, likedUser.LastName));
+                }
             }
+
         }
     }
 }

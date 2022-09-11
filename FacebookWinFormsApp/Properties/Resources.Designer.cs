@@ -83,6 +83,16 @@ namespace BasicFacebookFeatures.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _432998 {
+            get {
+                object obj = ResourceManager.GetObject("432998", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _510_5102442_border_kpop_aesthetic_tumblr_frame_abstract_splash_blue {
             get {
                 object obj = ResourceManager.GetObject("510-5102442_border-kpop-aesthetic-tumblr-frame-abstract-splash-blue", resourceCulture);
@@ -173,6 +183,36 @@ namespace BasicFacebookFeatures.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap light_grey_blurred_empty_background_260nw_1901849932 {
+            get {
+                object obj = ResourceManager.GetObject("light-grey-blurred-empty-background-260nw-1901849932", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap light_grey_blurred_empty_background_260nw_19018499321 {
+            get {
+                object obj = ResourceManager.GetObject("light-grey-blurred-empty-background-260nw-19018499321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap light_grey_moroccan_pattern {
+            get {
+                object obj = ResourceManager.GetObject("light-grey-moroccan-pattern", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap loginPicture {
             get {
                 object obj = ResourceManager.GetObject("loginPicture", resourceCulture);
@@ -256,6 +296,26 @@ namespace BasicFacebookFeatures.Properties {
         internal static System.Drawing.Bitmap pinpng_com_white_frame_png_312251 {
             get {
                 object obj = ResourceManager.GetObject("pinpng.com-white-frame-png-312251", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap surface_light_stripes_lines_wallpaper_preview {
+            get {
+                object obj = ResourceManager.GetObject("surface-light-stripes-lines-wallpaper-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap surface_light_stripes_lines_wallpaper_preview1 {
+            get {
+                object obj = ResourceManager.GetObject("surface-light-stripes-lines-wallpaper-preview1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
