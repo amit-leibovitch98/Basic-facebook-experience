@@ -24,6 +24,7 @@ namespace FacebookApplicationLogic
         private int m_TeamsIndex = 0;
         private int m_PageIndex = 0;
         private int m_PostsIndex = 0;
+        private int m_AlbumPhotoIndex = 0;
         private Album m_CurrentAlbum;
         private string m_Quote;
 
