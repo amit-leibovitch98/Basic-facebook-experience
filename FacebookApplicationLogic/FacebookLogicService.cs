@@ -12,8 +12,10 @@ using FacebookWrapper;
 
 namespace FacebookApplicationLogic
 {
-    public class FacebookLogicService
+    public sealed class FacebookLogicService
     {
+        private static FacebookLogicService s_Instance = null;
+        private static object s_LockObj = new Object();
         private string m_AppSettingsXmlFilePath;
         private IQuotesLoader m_QuotesLoader;
         private ArtistsLogic m_ArtistsLogic;
@@ -22,7 +24,6 @@ namespace FacebookApplicationLogic
         private int m_TeamsIndex = 0;
         private int m_PageIndex = 0;
         private int m_PostsIndex = 0;
-        private int m_AlbumPhotoIndex = 0;
         private Album m_CurrentAlbum;
         private string m_Quote;
 
@@ -34,7 +35,25 @@ namespace FacebookApplicationLogic
             initXmlPath();
         }
 
-        //shachar
+        public static FacebookLogicService Instance
+        {
+            get
+            {
+                if (s_Instance == null)
+                {
+                    lock (s_LockObj)
+                    {
+                        if (s_Instance == null)
+                        {
+                            s_Instance = new FacebookLogicService();
+                        }
+                    }
+                }
+
+                return s_Instance;
+            }
+        }
+
         public LoginResult CurrentLoginResult
         {
             get

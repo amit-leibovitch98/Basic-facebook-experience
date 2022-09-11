@@ -24,16 +24,53 @@
   <Class Name="FacebookApplicationLogic.FacebookLogicService">
     <Position X="0.5" Y="1.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AMAAUQAAmIAQBlAggCqBCIKAAAQQAEAcQYASIMEkRYA=</HashCode>
+      <HashCode>AMAAQQAAmIAQBlAggiqBCIKAAAQYAEAcQYASIMEkRaA=</HashCode>
       <FileName>FacebookLogicService.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="FacebookApplicationLogic.QuotesLoader" Collapsed="true">
-    <Position X="4.25" Y="3" Width="1.5" />
+  <Class Name="FacebookApplicationLogic.Quote">
+    <Position X="8.75" Y="3.5" Width="1.25" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
-      <FileName>QuotesLoader.cs</FileName>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAIAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Quote.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="FacebookApplicationLogic.QuoteLoader" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAABAAAAAAAAAAAQAAAAAAAAIAAAAA=</HashCode>
+      <FileName>QuotesLoader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.685" Collapsed="true" />
+  </Class>
+  <Class Name="FacebookApplicationLogic.QuotesLoaderCachingProxy" BaseTypeListCollapsed="true">
+    <Position X="6" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAACAAAAAAAAACAAAAAAIAAACA=</HashCode>
+      <FileName>QuotesLoaderCachingProxy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FacebookApplicationLogic.QuoteWrapper">
+    <Position X="10.25" Y="2.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAABACAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>QuoteWrapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FacebookApplicationLogic.Singleton&lt;T&gt;" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAQAAAAAAAACA=</HashCode>
+      <FileName>Singleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="FacebookApplicationLogic.IQuotesLoader">
+    <Position X="6" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>IQuotesLoader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

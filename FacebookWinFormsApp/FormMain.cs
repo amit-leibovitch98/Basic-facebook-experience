@@ -24,7 +24,7 @@ namespace BasicFacebookFeatures
             InitializeComponent();
 
             // m_FacebookLogicService = new FacebookLogicService();
-            m_FacebookLogicService = Singleton<FacebookLogicService>.Instance;
+            m_FacebookLogicService = FacebookLogicService.Instance;
 
             Size = new Size(180, 280);
             FacebookWrapper.FacebookService.s_CollectionLimit = 100;

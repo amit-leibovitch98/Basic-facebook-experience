@@ -12,6 +12,7 @@ namespace FacebookApplicationLogic
 {
     public class QuoteLoader : IQuotesLoader
     {
+
         public bool GetRandomQuote(out string o_quote)
         {
             bool isSucceed = true;

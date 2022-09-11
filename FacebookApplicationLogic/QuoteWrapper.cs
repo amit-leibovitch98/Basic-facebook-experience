@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FacebookApplicationLogic
 {
-    internal class QuoteWrapper
+    public class QuoteWrapper
     {
         public int status { get; set; }
 
