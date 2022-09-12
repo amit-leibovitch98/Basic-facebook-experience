@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.IO;
 using System.Windows.Forms;
 using System.Threading;
-using Newtonsoft.Json;
 using FacebookWrapper.ObjectModel;
-using FacebookWrapper;
 using FacebookApplicationLogic;
 
 namespace BasicFacebookFeatures
@@ -23,7 +17,6 @@ namespace BasicFacebookFeatures
         {
             InitializeComponent();
 
-            // m_FacebookLogicService = new FacebookLogicService();
             m_FacebookLogicService = FacebookLogicService.Instance;
 
             Size = new Size(180, 280);
@@ -45,16 +38,19 @@ namespace BasicFacebookFeatures
 
         protected override void OnShown(EventArgs e)
         {
-            bool connectionSuccessful = false;
-
             base.OnShown(e);
 
-            connectionSuccessful = m_FacebookLogicService.Connect();
+            new Thread(tryAutoConnect).Start();
+        }
+
+        private void tryAutoConnect()
+        {
+            bool connectionSuccessful = m_FacebookLogicService.Connect();
 
             if (connectionSuccessful)
             {
-                initInfoAfterLogin();
-                pictureBoxLogin.Visible = false;
+                this.Invoke(new Action(() => initInfoAfterLogin()));
+                pictureBoxLogin.Invoke(new Action(() => pictureBoxLogin.Visible = false));
             }
         }
 
@@ -62,13 +58,13 @@ namespace BasicFacebookFeatures
         {
             base.OnFormClosing(e);
             m_FacebookLogicService.SaveSettings(Size, Location);
-
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             string loginFailedErrorMessage;
             bool success = m_FacebookLogicService.Login(out loginFailedErrorMessage);
+
             if (success)
             {
                 pictureBoxLogin.Visible = false;
@@ -114,6 +110,7 @@ namespace BasicFacebookFeatures
         private void fetchUserInfo()
         {
             string profilePictureUrl = m_FacebookLogicService.GetProfilePictureUrl();
+
             pictureBoxProfile.LoadAsync(profilePictureUrl);
             new Thread(fetchGroup).Start();
             new Thread(fetchPost).Start();
@@ -128,10 +125,10 @@ namespace BasicFacebookFeatures
         private void fetchPost()
         {
             Post post = m_FacebookLogicService.GetPost();
+
             this.Invoke(new Action(() => displayPost(post)));
         }
 
-        // shachar
         private void fetchSettings()
         {
             loginResultBindingSource.DataSource = m_FacebookLogicService.CurrentLoginResult;
@@ -140,6 +137,7 @@ namespace BasicFacebookFeatures
         private void displayPost(Post i_Post)
         {
             string postText, imgURL;
+
             m_FacebookLogicService.GetPostTextAndPicture(i_Post, out postText, out imgURL);
             labelPosts.Text = postText;
             labelPostComments.Text = string.Format("({0}) Comments", i_Post.Comments.Count);
@@ -166,7 +164,6 @@ namespace BasicFacebookFeatures
         private void switchToLoginMode()
         {
             Size = new Size(180, 280);
-            pictureBoxLogin.Visible = false;
             pictureBoxLogin.Visible = true;
             buttonLogin.Visible = true;
             labelUserName.Visible = false;
@@ -182,12 +179,14 @@ namespace BasicFacebookFeatures
         private void buttonNextPost_Click(object sender, EventArgs e)
         {
             Post post = m_FacebookLogicService.GetNextPost();
+
             displayPost(post);
         }
 
         private void buttonPrevPost_Click(object sender, EventArgs e)
         {
             Post post = m_FacebookLogicService.GetPreviousPost();
+
             displayPost(post);
         }
 
@@ -195,6 +194,7 @@ namespace BasicFacebookFeatures
         {
             Post post = m_FacebookLogicService.GetPost();
             FormLikes formLikes = new FormLikes(post);
+
             formLikes.ShowDialog();
         }
 
@@ -216,52 +216,58 @@ namespace BasicFacebookFeatures
         private void buttonNextPage_Click(object sender, EventArgs e)
         {
             Page page = m_FacebookLogicService.GetNextPage();
+
             displayPage(page);
         }
 
         private void buttonPrevPage_Click(object sender, EventArgs e)
         {
             Page page = m_FacebookLogicService.GetPreviousPage();
+
             displayPage(page);
         }
 
         private void fetchGroup()
         {
             Group group = m_FacebookLogicService.GetGroup();
+
             this.Invoke(new Action(() => displayGroup(group)));
         }
 
-        private void displayGroup(Group group)
+        private void displayGroup(Group i_Group)
         {
-            LabelGroupName.Text = group.Name;
-            pictureBoxGroup.Image = group.ImageNormal;
-            labelGroupDescription.Text = group.Description;
+            LabelGroupName.Text = i_Group.Name;
+            pictureBoxGroup.Image = i_Group.ImageNormal;
+            labelGroupDescription.Text = i_Group.Description;
         }
 
         private void buttonNextGroup_Click(object sender, EventArgs e)
         {
             Group group = m_FacebookLogicService.GetNextGroup();
+
             displayGroup(group);
         }
 
         private void buttonPrevGroup_Click(object sender, EventArgs e)
         {
             Group group = m_FacebookLogicService.GetPreviousGroup();
+
             displayGroup(group);
         }
 
         private void fetchFavoriteTeams()
         {
             Page team = m_FacebookLogicService.GetFavoriteTeam();
+
             this.Invoke(new Action(() => displayTeam(team)));
         }
 
-        private void displayTeam(Page i_team)
+        private void displayTeam(Page i_Team)
         {
-            if (i_team != null)
+            if (i_Team != null)
             {
-                labelFavoriteTeamName.Text = i_team.Name;
-                pictureBoxTeam.Image = i_team.ImageNormal;
+                labelFavoriteTeamName.Text = i_Team.Name;
+                pictureBoxTeam.Image = i_Team.ImageNormal;
             }
             else
             {
@@ -273,6 +279,7 @@ namespace BasicFacebookFeatures
         {
             Album album;
             List<string> albumNames = m_FacebookLogicService.GetAlbumNames();
+
             foreach (string albumName in albumNames)
             {
                 this.Invoke(new Action(() => comboBoxAlbums.Items.Add(albumName)));
@@ -289,18 +296,21 @@ namespace BasicFacebookFeatures
         private void buttonNextTeam_Click(object sender, EventArgs e)
         {
             Page team = m_FacebookLogicService.GetNextFavoriteTeam();
+
             displayTeam(team);
         }
 
         private void buttonPrevTeam_Click(object sender, EventArgs e)
         {
             Page team = m_FacebookLogicService.GetPreviousFavoriteTeam();
+
             displayTeam(team);
         }
 
         private void fetchEvents()
         {
             List<string> eventNames = m_FacebookLogicService.GetEventNames();
+
             foreach (string eventName in eventNames)
             {
                 this.Invoke(new Action(() => comboBoxEvents.Items.Add(eventName)));
@@ -321,6 +331,7 @@ namespace BasicFacebookFeatures
         private void comboBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
         {
             Album album = m_FacebookLogicService.GetAlbumByName((string)comboBoxAlbums.SelectedItem);
+
             if (album != null)
             {
                 pictureBoxAlbum.Image = album.CoverPhoto.ImageNormal;
@@ -334,6 +345,7 @@ namespace BasicFacebookFeatures
         private void comboBoxEvents_SelectedIndexChanged(object sender, EventArgs e)
         {
             Event userEvent = m_FacebookLogicService.GetEventByName((string)comboBoxEvents.SelectedItem);
+
             pictureBoxEvent.Image = userEvent.ImageNormal;
         }
 
@@ -341,6 +353,7 @@ namespace BasicFacebookFeatures
         {
             bool successFetchingArtist;
             Artist artist = m_FacebookLogicService.GetArtist(out successFetchingArtist);
+
             if (!successFetchingArtist)
             {
                 labelArtistError.Visible = true;
@@ -357,14 +370,15 @@ namespace BasicFacebookFeatures
         {
             bool successFetchingArtist;
             Artist artist = m_FacebookLogicService.GetArtist(out successFetchingArtist);
-
             FormWikiBrowser wiki = new FormWikiBrowser(artist.WikiUrl);
+
             wiki.ShowDialog();
         }
 
         private void buttonArtistsPrev_Click(object sender, EventArgs e)
         {
             Artist artist = m_FacebookLogicService.GetNextArtist();
+
             if (artist != null)
             {
                 displayArtist(artist);
@@ -374,6 +388,7 @@ namespace BasicFacebookFeatures
         private void buttonArtistsNext_Click(object sender, EventArgs e)
         {
             Artist artist = m_FacebookLogicService.GetPreviousArtist();
+
             if (artist != null)
             {
                 displayArtist(artist);
@@ -383,12 +398,14 @@ namespace BasicFacebookFeatures
         private void buttonShareQuote_Click(object sender, EventArgs e)
         {
             FormShareQuote formShareQuote = new FormShareQuote();
+
             formShareQuote.ShowDialog();
         }
 
         private void buttonNextAlbumPhoto_Click(object sender, EventArgs e)
         {
             Photo photo = m_FacebookLogicService.GetAlbumNextPhoto();
+
             if (photo != null)
             {
                 pictureBoxAlbum.Image = photo.ImageNormal;
@@ -398,20 +415,11 @@ namespace BasicFacebookFeatures
         private void buttonPrevAlbumPhoto_Click(object sender, EventArgs e)
         {
             Photo photo = m_FacebookLogicService.GetAlbumPreviousPhoto();
+
             if (photo != null)
             {
                 pictureBoxAlbum.Image = photo.ImageNormal;
             }
-        }
-
-        private void labelInsperetionalQuote_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelUserName_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

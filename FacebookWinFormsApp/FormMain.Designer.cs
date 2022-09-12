@@ -36,6 +36,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.TabWall = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBoxLikesIcon = new System.Windows.Forms.PictureBox();
             this.labelPostComments = new System.Windows.Forms.Label();
@@ -102,13 +103,13 @@
             this.pictureBoxBulb = new System.Windows.Forms.PictureBox();
             this.pictureBoxLogin = new System.Windows.Forms.PictureBox();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             labelSettingsEmail = new System.Windows.Forms.Label();
             labelSettingsBirthday = new System.Windows.Forms.Label();
             labelSettingsName = new System.Windows.Forms.Label();
             LabelSettingsUserName = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.TabWall.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikesIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPostImg)).BeginInit();
             this.TabLikedPages.SuspendLayout();
@@ -132,7 +133,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBulb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSettingsEmail
@@ -212,6 +212,18 @@
             this.TabWall.Size = new System.Drawing.Size(576, 496);
             this.TabWall.TabIndex = 0;
             this.TabWall.Text = "Wall";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(369, 394);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(27, 27);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 66;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -933,12 +945,13 @@
             this.checkBoxRememberMe.AutoSize = true;
             this.checkBoxRememberMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.checkBoxRememberMe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.checkBoxRememberMe.Location = new System.Drawing.Point(16, 190);
+            this.checkBoxRememberMe.Location = new System.Drawing.Point(26, 190);
             this.checkBoxRememberMe.Name = "checkBoxRememberMe";
             this.checkBoxRememberMe.Size = new System.Drawing.Size(119, 21);
             this.checkBoxRememberMe.TabIndex = 60;
             this.checkBoxRememberMe.Text = "Remember Me";
             this.checkBoxRememberMe.UseVisualStyleBackColor = true;
+            this.checkBoxRememberMe.Visible = false;
             // 
             // labelInsperetionalQuote
             // 
@@ -952,7 +965,6 @@
             this.labelInsperetionalQuote.Text = "Loading quote...";
             this.labelInsperetionalQuote.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.labelInsperetionalQuote.Visible = false;
-            this.labelInsperetionalQuote.Click += new System.EventHandler(this.labelInsperetionalQuote_Click);
             // 
             // buttonLogin
             // 
@@ -968,6 +980,7 @@
             this.buttonLogin.TabIndex = 36;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = false;
+            this.buttonLogin.Visible = false;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // buttonLogout
@@ -1000,7 +1013,6 @@
             this.labelUserName.TabIndex = 63;
             this.labelUserName.Text = "UserName";
             this.labelUserName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelUserName.Click += new System.EventHandler(this.labelUserName_Click);
             // 
             // buttonShareQuote
             // 
@@ -1025,7 +1037,7 @@
             this.labelFirendsNumber.Location = new System.Drawing.Point(13, 190);
             this.labelFirendsNumber.MaximumSize = new System.Drawing.Size(144, 50);
             this.labelFirendsNumber.Name = "labelFirendsNumber";
-            this.labelFirendsNumber.Size = new System.Drawing.Size(67, 16);
+            this.labelFirendsNumber.Size = new System.Drawing.Size(68, 16);
             this.labelFirendsNumber.TabIndex = 66;
             this.labelFirendsNumber.Text = "# Friends";
             this.labelFirendsNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1062,18 +1074,6 @@
             this.pictureBoxProfile.TabIndex = 53;
             this.pictureBoxProfile.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(369, 394);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(27, 27);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 66;
-            this.pictureBox1.TabStop = false;
-            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1102,6 +1102,7 @@
             this.tabControl.ResumeLayout(false);
             this.TabWall.ResumeLayout(false);
             this.TabWall.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLikesIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPostImg)).EndInit();
             this.TabLikedPages.ResumeLayout(false);
@@ -1133,7 +1134,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBulb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -12,14 +12,13 @@ namespace FacebookApplicationLogic
 {
     public class QuoteLoader : IQuotesLoader
     {
-
-        public bool GetRandomQuote(out string o_quote)
+        public bool GetRandomQuote(out string o_Quote)
         {
             bool isSucceed = true;
-            o_quote = null;
+            o_Quote = null;
             try
             {
-                o_quote = getQuote();
+                o_Quote = getQuote();
             }
             catch
             {
@@ -33,9 +32,11 @@ namespace FacebookApplicationLogic
         {
             string quote;
             string url = "https://goquotes-api.herokuapp.com/api/v1/random?count=1";
+            WebResponse webResponse;
             WebRequest request = WebRequest.Create(url);
+
             request.Method = "GET";
-            WebResponse webResponse = request.GetResponse();
+            webResponse = request.GetResponse();
             using (Stream webStream = webResponse.GetResponseStream())
             {
                 StreamReader reader = new StreamReader(webStream);
@@ -46,16 +47,16 @@ namespace FacebookApplicationLogic
             return quote;
         }
 
-        private Quote jsonToQuoteObj(string i_jsonInString)
+        private Quote jsonToQuoteObj(string i_JsonInString)
         {
-            QuoteWrapper quoteWrapper = JsonSerializer.Deserialize<QuoteWrapper>(i_jsonInString);
+            QuoteWrapper quoteWrapper = JsonSerializer.Deserialize<QuoteWrapper>(i_JsonInString);
 
             return quoteWrapper.quotes[0];
         }
 
-        public string QuoteToStringDisplay(Quote i_quote)
+        public string QuoteToStringDisplay(Quote i_Quote)
         {
-            return string.Format("{0}{1}-{2}", i_quote.text, System.Environment.NewLine, i_quote.author);
+            return string.Format("{0}{1}-{2}", i_Quote.text, System.Environment.NewLine, i_Quote.author);
         }
     }
 }

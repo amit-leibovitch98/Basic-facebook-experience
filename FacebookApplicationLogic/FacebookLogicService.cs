@@ -67,12 +67,13 @@ namespace FacebookApplicationLogic
         {
             string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string file = Path.Combine(currentDirectory, @"AppSettings.xml");
+
             m_AppSettingsXmlFilePath = Path.GetFullPath(file);
         }
 
         public void LoadAppSettings()
         {
-            AppSettings = Singleton<AppSettings>.Instance;
+            AppSettings = new AppSettings();
             if (File.Exists(m_AppSettingsXmlFilePath) && File.ReadAllText(m_AppSettingsXmlFilePath) != string.Empty)
             {
                 AppSettings.LoadFromXmlFile(m_AppSettingsXmlFilePath);
@@ -108,12 +109,14 @@ namespace FacebookApplicationLogic
                 "user_photos",
                 "user_likes");
             o_LoginFailedErrorMessage = m_LoginResult.ErrorMessage;
+
             return !string.IsNullOrEmpty(m_LoginResult.AccessToken);
         }
 
         public bool Connect()
         {
             bool success = false;
+
             if (AppSettings.RememberMe && !string.IsNullOrEmpty(AppSettings.AccessToken))
             {
                 m_LoginResult = FacebookService.Connect(AppSettings.AccessToken);
@@ -150,12 +153,14 @@ namespace FacebookApplicationLogic
         public Group GetNextGroup()
         {
             m_GroupsIndex = getNextIndex(m_GroupsIndex, m_LoginResult.LoggedInUser.Groups.Count);
+
             return GetGroup();
         }
 
         public Group GetPreviousGroup()
         {
             m_GroupsIndex = getPrevIndex(m_GroupsIndex, m_LoginResult.LoggedInUser.Groups.Count);
+
             return GetGroup();
         }
 
@@ -167,12 +172,14 @@ namespace FacebookApplicationLogic
         public Post GetNextPost()
         {
             m_PostsIndex = getNextIndex(m_PostsIndex, m_LoginResult.LoggedInUser.Posts.Count);
+
             return GetPost();
         }
 
         public Post GetPreviousPost()
         {
             m_PostsIndex = getPrevIndex(m_PostsIndex, m_LoginResult.LoggedInUser.Posts.Count);
+
             return GetPost();
         }
 
@@ -184,12 +191,14 @@ namespace FacebookApplicationLogic
         public Page GetNextPage()
         {
             m_PageIndex = getNextIndex(m_PageIndex, m_LoginResult.LoggedInUser.LikedPages.Count);
+
             return GetPage();
         }
 
         public Page GetPreviousPage()
         {
             m_PageIndex = getPrevIndex(m_PageIndex, m_LoginResult.LoggedInUser.LikedPages.Count);
+
             return GetPage();
         }
 
@@ -208,6 +217,7 @@ namespace FacebookApplicationLogic
         public Album GetAlbumByName(string i_AlbumName)
         {
             Album returnedAlbum = null;
+
             foreach (Album album in m_LoginResult.LoggedInUser.Albums)
             {
                 if (album.Name == i_AlbumName)
@@ -217,12 +227,14 @@ namespace FacebookApplicationLogic
             }
 
             m_CurrentAlbum = returnedAlbum;
+
             return returnedAlbum;
         }
 
         public Page GetFavoriteTeam()
         {
             Page page = null;
+
             if (m_LoginResult.LoggedInUser.FavofriteTeams != null)
             {
                 page = m_LoginResult.LoggedInUser.FavofriteTeams[m_TeamsIndex];
@@ -242,6 +254,7 @@ namespace FacebookApplicationLogic
             }
 
             page = GetFavoriteTeam();
+
             return page;
         }
 
@@ -259,6 +272,7 @@ namespace FacebookApplicationLogic
             }
 
             page = GetFavoriteTeam();
+
             return page;
         }
 
@@ -290,6 +304,7 @@ namespace FacebookApplicationLogic
         public string GetRandomQuote()
         {
             m_QuotesLoader.GetRandomQuote(out m_Quote);
+
             return m_Quote;
         }
 
@@ -363,12 +378,12 @@ namespace FacebookApplicationLogic
             return numberOfFriends;
         }
 
-        public string getPostLikes(Post i_post)
+        public string getPostLikes(Post i_Post)
         {
             string likesCount;
             try
             {
-                likesCount = m_LoginResult.LoggedInUser.Posts[m_PostsIndex].LikedBy.Count.ToString();
+                likesCount = i_Post.LikedBy.Count.ToString();
             }
             catch(Facebook.FacebookOAuthException)
             {
@@ -413,12 +428,14 @@ namespace FacebookApplicationLogic
         public Photo GetAlbumNextPhoto()
         {
             m_AlbumPhotoIndex = getNextIndex(m_AlbumPhotoIndex, m_CurrentAlbum.Photos.Count);
+
             return m_CurrentAlbum.Photos[m_AlbumPhotoIndex];
         }
 
         public Photo GetAlbumPreviousPhoto()
         {
             m_AlbumPhotoIndex = getPrevIndex(m_AlbumPhotoIndex, m_CurrentAlbum.Photos.Count);
+
             return m_CurrentAlbum.Photos[m_AlbumPhotoIndex];
         }
     }
