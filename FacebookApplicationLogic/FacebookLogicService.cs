@@ -437,5 +437,13 @@ namespace FacebookApplicationLogic
 
             return m_CurrentAlbum.Photos[m_AlbumPhotoIndex];
         }
+
+        //shachar
+        public void SortPostsByCommentsNumber()
+        {
+            PostsSorter postsSorter = new PostsSorter(new DownByLikesComparer());
+
+            postsSorter.Sort(m_LoginResult.LoggedInUser.Posts);
+        }
     }
 }

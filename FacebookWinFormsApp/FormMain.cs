@@ -443,5 +443,15 @@ namespace BasicFacebookFeatures
                 pictureBoxAlbum.Image = photo.ImageNormal;
             }
         }
+
+        //shachar
+        private void buttonSortPosts_Click(object sender, EventArgs e)
+        {
+            buttonSortPosts.Text = "Sorting...";
+            buttonSortPosts.Enabled = false;
+            m_FacebookLogicService.SortPostsByCommentsNumber();
+            fetchPost();
+            buttonSortPosts.Text = "Posts are sorted";
+        }
     }
 }

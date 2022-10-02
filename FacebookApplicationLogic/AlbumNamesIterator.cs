@@ -9,6 +9,7 @@ using FacebookWrapper;
 
 namespace FacebookApplicationLogic
 {
+    //shachar
     public interface IIterator
     {
         bool MoveNext();
@@ -41,6 +42,7 @@ namespace FacebookApplicationLogic
             {
                 throw new Exception("Collection can not be changed during iteration!");
             }
+
             if (m_CurrentIdx >= m_Count)
             {
                 throw new Exception("Already reached the end of the collection");

@@ -103,6 +103,7 @@
             this.pictureBoxBulb = new System.Windows.Forms.PictureBox();
             this.pictureBoxLogin = new System.Windows.Forms.PictureBox();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
+            this.buttonSortPosts = new System.Windows.Forms.Button();
             labelSettingsEmail = new System.Windows.Forms.Label();
             labelSettingsBirthday = new System.Windows.Forms.Label();
             labelSettingsName = new System.Windows.Forms.Label();
@@ -196,6 +197,7 @@
             this.TabWall.BackColor = System.Drawing.Color.Transparent;
             this.TabWall.BackgroundImage = global::BasicFacebookFeatures.Properties.Resources.light_grey_blurred_empty_background_260nw_1901849932;
             this.TabWall.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.TabWall.Controls.Add(this.buttonSortPosts);
             this.TabWall.Controls.Add(this.pictureBox1);
             this.TabWall.Controls.Add(this.label1);
             this.TabWall.Controls.Add(this.pictureBoxLikesIcon);
@@ -945,7 +947,7 @@
             this.checkBoxRememberMe.AutoSize = true;
             this.checkBoxRememberMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.checkBoxRememberMe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
-            this.checkBoxRememberMe.Location = new System.Drawing.Point(26, 190);
+            this.checkBoxRememberMe.Location = new System.Drawing.Point(24, 190);
             this.checkBoxRememberMe.Name = "checkBoxRememberMe";
             this.checkBoxRememberMe.Size = new System.Drawing.Size(119, 21);
             this.checkBoxRememberMe.TabIndex = 60;
@@ -973,7 +975,7 @@
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.buttonLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonLogin.Location = new System.Drawing.Point(12, 152);
+            this.buttonLogin.Location = new System.Drawing.Point(9, 152);
             this.buttonLogin.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(144, 28);
@@ -1057,7 +1059,7 @@
             // pictureBoxLogin
             // 
             this.pictureBoxLogin.Image = global::BasicFacebookFeatures.Properties.Resources.Facebook_PNG_Clipart;
-            this.pictureBoxLogin.Location = new System.Drawing.Point(5, 32);
+            this.pictureBoxLogin.Location = new System.Drawing.Point(4, 32);
             this.pictureBoxLogin.Name = "pictureBoxLogin";
             this.pictureBoxLogin.Size = new System.Drawing.Size(153, 82);
             this.pictureBoxLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1073,6 +1075,17 @@
             this.pictureBoxProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfile.TabIndex = 53;
             this.pictureBoxProfile.TabStop = false;
+            // 
+            // buttonSortPosts
+            // 
+            this.buttonSortPosts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(103)))), ((int)(((byte)(178)))));
+            this.buttonSortPosts.Location = new System.Drawing.Point(157, 459);
+            this.buttonSortPosts.Name = "buttonSortPosts";
+            this.buttonSortPosts.Size = new System.Drawing.Size(243, 23);
+            this.buttonSortPosts.TabIndex = 67;
+            this.buttonSortPosts.Text = "Sort posts by number of comments";
+            this.buttonSortPosts.UseVisualStyleBackColor = true;
+            this.buttonSortPosts.Click += new System.EventHandler(this.buttonSortPosts_Click);
             // 
             // FormMain
             // 
@@ -1210,6 +1223,7 @@
         private System.Windows.Forms.TextBox textBoxSettingsUserName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button buttonSortPosts;
     }
 }
 
