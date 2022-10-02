@@ -217,7 +217,6 @@ namespace FacebookApplicationLogic
         public Album GetAlbumByName(string i_AlbumName)
         {
             Album returnedAlbum = null;
-
             foreach (Album album in m_LoginResult.LoggedInUser.Albums)
             {
                 if (album.Name == i_AlbumName)

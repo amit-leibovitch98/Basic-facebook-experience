@@ -277,13 +277,35 @@ namespace BasicFacebookFeatures
 
         private void fetchAlbums()
         {
+            //shachar
+            //Album album;
+            /*            List<string> albumNames = m_FacebookLogicService.GetAlbumNames();
+
+                        foreach (string albumName in albumNames)
+                        {
+                            this.Invoke(new Action(() => comboBoxAlbums.Items.Add(albumName)));
+                        }
+
+                        if (albumNames.Count > 0)
+                        {
+                            comboBoxAlbums.SelectedIndex = 0;
+                            album = m_FacebookLogicService.GetAlbumByName(albumNames[0]);
+                            pictureBoxAlbum.Image = album.CoverPhoto.ImageNormal;
+                        }*/
+
+            IIterator albumNamesIterator = new AlbumNamesIterator(m_FacebookLogicService.CurrentLoginResult);
+            while (albumNamesIterator.MoveNext())
+            {
+                this.Invoke(new Action(() => comboBoxAlbums.Items.Add(albumNamesIterator.Current)));
+            }
+
+            initAlbumSelection();
+        }
+
+        private void initAlbumSelection()
+        {
             Album album;
             List<string> albumNames = m_FacebookLogicService.GetAlbumNames();
-
-            foreach (string albumName in albumNames)
-            {
-                this.Invoke(new Action(() => comboBoxAlbums.Items.Add(albumName)));
-            }
 
             if (albumNames.Count > 0)
             {
