@@ -444,6 +444,7 @@ namespace FacebookApplicationLogic
             PostsSorter postsSorter = new PostsSorter(new DownByLikesComparer());
 
             postsSorter.Sort(m_LoginResult.LoggedInUser.Posts);
+            m_PostsIndex = 0;
         }
     }
 }
