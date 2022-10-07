@@ -446,5 +446,10 @@ namespace FacebookApplicationLogic
             postsSorter.Sort(m_LoginResult.LoggedInUser.Posts);
             m_PostsIndex = 0;
         }
+
+        public void ChangeQuote(string i_NewQuote)
+        {
+            m_Quote = i_NewQuote + string.Format("{0}(This Quote may has been edited.)", Environment.NewLine);
+        }
     }
 }
