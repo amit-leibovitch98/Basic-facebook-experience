@@ -408,7 +408,7 @@ namespace FacebookApplicationLogic
             i_CurrentIndex--;
             if (i_CurrentIndex < 0)
             {
-                i_CurrentIndex = i_ListCount;
+                i_CurrentIndex = i_ListCount - 1;
             }
 
             return i_CurrentIndex;
