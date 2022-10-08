@@ -23,8 +23,9 @@ namespace BasicFacebookFeatures
             bool dontPost = false;
             if(m_FacebookLogicService.GetQuote() != textBoxToPost.Text)
             {
+                m_QuoteChanges.NewQuote = textBoxToPost.Text;
                 m_QuoteChanges.NotifyAll();
-                DialogResult dialogResult = MessageBox.Show(string.Format("notice! {0} Since youv'e ultered the quote, we added a disclouser to your post. {1} It will now look like this: {2} {3} Are you still ant to post it?", Environment.NewLine, Environment.NewLine, m_FacebookLogicService.GetQuote(), Environment.NewLine), "Notice!", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show(string.Format("notice! {0} Since youv'e ultered the quote, we added a disclouser to your post. {1} It will now look like this: {2} \"{3}\" {4} Are you still ant to post it?", Environment.NewLine, Environment.NewLine, Environment.NewLine, m_FacebookLogicService.GetQuote(), Environment.NewLine), "Notice!", MessageBoxButtons.YesNo);
                 if (dialogResult.Equals(DialogResult.No))
                 {
                     Close();

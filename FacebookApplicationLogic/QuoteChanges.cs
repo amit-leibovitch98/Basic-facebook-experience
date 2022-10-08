@@ -12,18 +12,18 @@ namespace FacebookApplicationLogic
     {
         public event QuoteChagedEventHandler QuoteIsChaged;
 
-        private string m_NewQuote;
+        public string NewQuote { get; set; }
 
         public QuoteChanges(string i_NewQuote)
         {
-            m_NewQuote = i_NewQuote;
+            NewQuote = i_NewQuote;
         }
 
         protected virtual void OnActionQuoteChaged()
         {
             if (QuoteIsChaged != null)
             {
-                QuoteIsChaged.Invoke(m_NewQuote);
+                QuoteIsChaged.Invoke(NewQuote);
             }
         }
 
