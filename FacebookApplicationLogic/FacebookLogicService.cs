@@ -445,6 +445,10 @@ namespace FacebookApplicationLogic
             {
                 m_Quote = i_NewQuote + string.Format("{0}(This Quote may has been edited.)", Environment.NewLine);
             }
+            else
+            {
+                m_Quote = i_NewQuote;
+            }
         }
 
         public IIterator GetAlbumNamesIterator()
