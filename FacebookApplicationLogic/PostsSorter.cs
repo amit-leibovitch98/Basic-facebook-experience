@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
 
-
 namespace FacebookApplicationLogic
 {
-    // shachar
     public class PostsSorter
     {
         public IPostsComparer Comparer { get; set; }
@@ -35,21 +33,6 @@ namespace FacebookApplicationLogic
                 }
             }
         }
-
-        /*public void Sort2(FacebookObjectCollection<Post> i_Posts)
-        {
-            for (int i = 0; i < i_Posts.Count - 1; i++)
-            {
-                for (int j = 0; j < i_Posts.Count - i - 1; j++)
-                {
-                    if (Comparer.ShouldSwap(i_Posts[j], i_Posts[j + 1]))
-                    {
-                        swap(i_Posts, j, j + 1);
-                    }
-                }
-            }
-        }*/
-
 
         private void swap(FacebookObjectCollection<Post> i_Posts, int i_FirstIndex, int i_SecondIndex)
         {

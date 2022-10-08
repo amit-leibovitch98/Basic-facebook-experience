@@ -277,22 +277,6 @@ namespace BasicFacebookFeatures
 
         private void fetchAlbums()
         {
-            //shachar
-            //Album album;
-            /*            List<string> albumNames = m_FacebookLogicService.GetAlbumNames();
-
-                        foreach (string albumName in albumNames)
-                        {
-                            this.Invoke(new Action(() => comboBoxAlbums.Items.Add(albumName)));
-                        }
-
-                        if (albumNames.Count > 0)
-                        {
-                            comboBoxAlbums.SelectedIndex = 0;
-                            album = m_FacebookLogicService.GetAlbumByName(albumNames[0]);
-                            pictureBoxAlbum.Image = album.CoverPhoto.ImageNormal;
-                        }*/
-
             IIterator albumNamesIterator = m_FacebookLogicService.GetAlbumNamesIterator();
             while (albumNamesIterator.MoveNext())
             {
@@ -445,7 +429,6 @@ namespace BasicFacebookFeatures
             }
         }
 
-        //shachar
         private void buttonSortPosts_Click(object sender, EventArgs e)
         {
             buttonSortPosts.Text = "Sorting...";

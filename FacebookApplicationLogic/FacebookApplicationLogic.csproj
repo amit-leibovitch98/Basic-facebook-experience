@@ -57,7 +57,7 @@
     <Compile Include="IAggregator.cs" />
     <Compile Include="IIterator.cs" />
     <Compile Include="IPostsComparer.cs" />
-    <Compile Include="QuoteChanges.cs" />
+    <Compile Include="QuoteChangesNotifier.cs" />
     <Compile Include="QuoteWrapper.cs" />
     <Compile Include="IQuotesLoader.cs" />
     <Compile Include="Quote.cs" />

@@ -9,8 +9,6 @@ using FacebookWrapper;
 
 namespace FacebookApplicationLogic
 {
-    //shachar
-
     public class AlbumNamesIterator : IIterator
     {
         private LoginResult m_Agregate;

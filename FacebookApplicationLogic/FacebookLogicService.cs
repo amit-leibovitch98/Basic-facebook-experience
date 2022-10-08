@@ -27,6 +27,7 @@ namespace FacebookApplicationLogic
         private int m_AlbumPhotoIndex = 0;
         private Album m_CurrentAlbum;
         private string m_Quote;
+        private string m_PostedQuote;
         private AlbumNamesAggregator m_AlbumNamesAggregator;
 
         public AppSettings AppSettings { get; set; }
@@ -428,19 +429,22 @@ namespace FacebookApplicationLogic
             return m_CurrentAlbum.Photos[m_AlbumPhotoIndex];
         }
 
-        //shachar
         public void SortPostsByCommentsNumber()
         {
             PostsSorter postsSorter = new PostsSorter(new DownByCommentsPostsComparer());
 
-            //postsSorter.Sort2(m_LoginResult.LoggedInUser.Posts);
             postsSorter.Sort(m_LoginResult.LoggedInUser.Posts);
             m_PostsIndex = 0;
         }
 
-        public void ChangeQuote(string i_NewQuote)
+        public void ModifiedQuote(string i_NewQuote)
         {
-            m_Quote = i_NewQuote + string.Format("{0}(This Quote may has been edited.)", Environment.NewLine);
+            m_PostedQuote = i_NewQuote + string.Format("{0}(This Quote may have been edited.)", Environment.NewLine);
+        }
+
+        public string GetPostedQuote()
+        {
+            return m_PostedQuote;
         }
 
         public IIterator GetAlbumNamesIterator()

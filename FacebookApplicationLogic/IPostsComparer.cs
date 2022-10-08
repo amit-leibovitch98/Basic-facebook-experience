@@ -7,7 +7,6 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookApplicationLogic
 {
-    // shachar
     public interface IPostsComparer
     {
         bool ShouldSwap(Post i_Post1, Post i_Post2);
