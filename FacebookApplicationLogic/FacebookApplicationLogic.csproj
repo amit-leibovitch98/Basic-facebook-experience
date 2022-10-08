@@ -47,12 +47,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumNamesAggregator.cs" />
     <Compile Include="AlbumNamesIterator.cs" />
     <Compile Include="AppSettings.cs" />
     <Compile Include="Artist.cs" />
     <Compile Include="ArtistsLogic.cs" />
+    <Compile Include="DownByCommentsPostsComparer.cs" />
     <Compile Include="FacebookLogicService.cs" />
-    <Compile Include="IComparer.cs" />
+    <Compile Include="IAggregator.cs" />
+    <Compile Include="IIterator.cs" />
+    <Compile Include="IPostsComparer.cs" />
     <Compile Include="QuoteChanges.cs" />
     <Compile Include="QuoteWrapper.cs" />
     <Compile Include="IQuotesLoader.cs" />

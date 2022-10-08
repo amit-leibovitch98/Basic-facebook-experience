@@ -10,14 +10,6 @@ using FacebookWrapper;
 namespace FacebookApplicationLogic
 {
     //shachar
-    public interface IIterator
-    {
-        bool MoveNext();
-
-        object Current { get; }
-
-        void Reset();
-    }
 
     public class AlbumNamesIterator : IIterator
     {

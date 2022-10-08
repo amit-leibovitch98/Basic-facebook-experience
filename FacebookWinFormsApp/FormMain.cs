@@ -293,7 +293,7 @@ namespace BasicFacebookFeatures
                             pictureBoxAlbum.Image = album.CoverPhoto.ImageNormal;
                         }*/
 
-            IIterator albumNamesIterator = new AlbumNamesIterator(m_FacebookLogicService.CurrentLoginResult);
+            IIterator albumNamesIterator = m_FacebookLogicService.GetAlbumNamesIterator();
             while (albumNamesIterator.MoveNext())
             {
                 this.Invoke(new Action(() => comboBoxAlbums.Items.Add(albumNamesIterator.Current)));
@@ -304,13 +304,14 @@ namespace BasicFacebookFeatures
 
         private void initAlbumSelection()
         {
+            string firstAlbumName;
             Album album;
-            List<string> albumNames = m_FacebookLogicService.GetAlbumNames();
 
-            if (albumNames.Count > 0)
+            if (comboBoxAlbums.Items.Count > 0)
             {
                 comboBoxAlbums.SelectedIndex = 0;
-                album = m_FacebookLogicService.GetAlbumByName(albumNames[0]);
+                firstAlbumName = (string)comboBoxAlbums.Items[0];
+                album = m_FacebookLogicService.GetAlbumByName(firstAlbumName);
                 pictureBoxAlbum.Image = album.CoverPhoto.ImageNormal;
             }
         }

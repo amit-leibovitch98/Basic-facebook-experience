@@ -10,7 +10,7 @@ namespace FacebookApplicationLogic
 
     public class QuoteChanges
     {
-        public event QuoteChagedEventHandler QuoteIsChaged;
+        public event QuoteChagedEventHandler QuoteIsChanged;
 
         public string NewQuote { get; set; }
 
@@ -19,9 +19,9 @@ namespace FacebookApplicationLogic
             NewQuote = i_NewQuote;
         }
 
-        protected virtual void OnActionQuoteChaged()
+        protected virtual void OnActionQuoteChanged()
         {
-            if (QuoteIsChaged != null)
+            if (QuoteIsChanged != null)
             {
                 QuoteIsChaged.Invoke(NewQuote);
             }
@@ -29,7 +29,7 @@ namespace FacebookApplicationLogic
 
         public void NotifyAll()
         {
-            OnActionQuoteChaged();
+            OnActionQuoteChanged();
         }
     }
 }
