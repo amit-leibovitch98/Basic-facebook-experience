@@ -440,7 +440,11 @@ namespace FacebookApplicationLogic
 
         public void ChangeQuote(string i_NewQuote)
         {
-            m_Quote = i_NewQuote + string.Format("{0}(This Quote may has been edited.)", Environment.NewLine);
+            string massege = "(This Quote may has been edited.)";
+            if (!i_NewQuote.EndsWith(massege))
+            {
+                m_Quote = i_NewQuote + string.Format("{0}(This Quote may has been edited.)", Environment.NewLine);
+            }
         }
 
         public IIterator GetAlbumNamesIterator()

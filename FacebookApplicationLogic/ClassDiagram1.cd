@@ -1,76 +1,135 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FacebookApplicationLogic.AlbumNamesAggregator" BaseTypeListCollapsed="true">
+    <Position X="1.75" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>AlbumNamesAggregator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FacebookApplicationLogic.AlbumNamesIterator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgBAAAAACAAAAAAAAAAAAEIAAAAAQAAAA=</HashCode>
+      <FileName>AlbumNamesIterator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="FacebookApplicationLogic.AppSettings" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAEAAAAAAAAAgEAAAgEAA=</HashCode>
       <FileName>AppSettings.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FacebookApplicationLogic.Artist" Collapsed="true">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Artist.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FacebookApplicationLogic.ArtistsLogic" Collapsed="true">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAQAAIAAAACAAgAAAAACAAAAACAAAAAABAAAAAAA=</HashCode>
       <FileName>ArtistsLogic.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="FacebookApplicationLogic.FacebookLogicService">
-    <Position X="0.5" Y="1.5" Width="2.25" />
+  <Class Name="FacebookApplicationLogic.DownByCommentsPostsComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AMAAQQAAmIAQBlAggiqBCIKAAAQYAEAcQYASIMEkRaA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>DownByCommentsPostsComparer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FacebookApplicationLogic.FacebookLogicService" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAKUQgAmIAQBlAggiqBCIKAAAQYAEAcQIASIMEkTaA=</HashCode>
       <FileName>FacebookLogicService.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="FacebookApplicationLogic.Quote">
-    <Position X="8.75" Y="3.5" Width="1.25" />
+  <Class Name="FacebookApplicationLogic.PostsSorter">
+    <Position X="8.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAQAAAAAAAQA=</HashCode>
+      <FileName>PostsSorter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FacebookApplicationLogic.Quote" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAAAAAAAAAIAAAAAAAAAIAAAAAAAAAAA=</HashCode>
       <FileName>Quote.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="FacebookApplicationLogic.QuoteLoader" BaseTypeListCollapsed="true">
-    <Position X="9.25" Y="0.5" Width="1.75" />
+  <Class Name="FacebookApplicationLogic.QuoteChanges" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAACAIAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>QuoteChanges.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FacebookApplicationLogic.QuoteLoader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAABAAAAAAAAAAAQAAAAAAAAIAAAAA=</HashCode>
       <FileName>QuotesLoader.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.685" Collapsed="true" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="FacebookApplicationLogic.QuotesLoaderCachingProxy" BaseTypeListCollapsed="true">
-    <Position X="6" Y="0.5" Width="2.25" />
+  <Class Name="FacebookApplicationLogic.QuotesLoaderCachingProxy" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAgAACAAAAAAAAACAAAAAAIAAACA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAEgAACAAAAAAEAAIAAAAAAIAQAAA=</HashCode>
       <FileName>QuotesLoaderCachingProxy.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="FacebookApplicationLogic.QuoteWrapper">
-    <Position X="10.25" Y="2.75" Width="1.25" />
+  <Class Name="FacebookApplicationLogic.QuoteWrapper" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAAAABACAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
       <FileName>QuoteWrapper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="FacebookApplicationLogic.Singleton&lt;T&gt;" Collapsed="true">
-    <Position X="4" Y="2.5" Width="1.5" />
+  <Interface Name="FacebookApplicationLogic.IAggregator">
+    <Position X="7.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAQAAAAAAAACA=</HashCode>
-      <FileName>Singleton.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>IAggregator.cs</FileName>
     </TypeIdentifier>
-  </Class>
-  <Interface Name="FacebookApplicationLogic.IQuotesLoader">
-    <Position X="6" Y="4.25" Width="1.5" />
+  </Interface>
+  <Interface Name="FacebookApplicationLogic.IIterator">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAACAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>IIterator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FacebookApplicationLogic.IPostsComparer" Collapsed="true">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>IPostsComparer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FacebookApplicationLogic.IQuotesLoader" Collapsed="true">
+    <Position X="5.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>IQuotesLoader.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Delegate Name="FacebookApplicationLogic.QuoteChagedEventHandler" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QuoteChanges.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
