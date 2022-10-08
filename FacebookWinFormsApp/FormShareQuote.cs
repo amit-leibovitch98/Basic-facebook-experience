@@ -15,7 +15,7 @@ namespace BasicFacebookFeatures
             m_FacebookLogicService = FacebookLogicService.Instance;
             textBoxToPost.Text = m_FacebookLogicService.GetQuote();
             m_QuoteChanges = new QuoteChanges(textBoxToPost.Text);
-            m_QuoteChanges.QuoteIsChaged += m_FacebookLogicService.ChangeQuote;
+            m_QuoteChanges.QuoteIsChanged += m_FacebookLogicService.ChangeQuote;
         }
 
         private void buttonShareQuote_Click(object sender, EventArgs e)

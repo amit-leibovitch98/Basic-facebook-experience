@@ -27,6 +27,7 @@ namespace FacebookApplicationLogic
         private int m_AlbumPhotoIndex = 0;
         private Album m_CurrentAlbum;
         private string m_Quote;
+        private AlbumNamesAggregator m_AlbumNamesAggregator;
 
         public AppSettings AppSettings { get; set; }
 
@@ -130,6 +131,7 @@ namespace FacebookApplicationLogic
         {
             m_LoginResult = null;
             m_ArtistsLogic = null;
+            m_AlbumNamesAggregator = null;
             AppSettings.RememberMe = false;
             AppSettings.AccessToken = string.Empty;
             AppSettings.SaveToXmlFile(m_AppSettingsXmlFilePath);
@@ -200,18 +202,6 @@ namespace FacebookApplicationLogic
             m_PageIndex = getPrevIndex(m_PageIndex, m_LoginResult.LoggedInUser.LikedPages.Count);
 
             return GetPage();
-        }
-
-        public List<string> GetAlbumNames()
-        {
-            List<string> albumNames = new List<string>();
-
-            foreach (Album album in m_LoginResult.LoggedInUser.Albums)
-            {
-                albumNames.Add(album.Name);
-            }
-
-            return albumNames;
         }
 
         public Album GetAlbumByName(string i_AlbumName)
@@ -441,8 +431,9 @@ namespace FacebookApplicationLogic
         //shachar
         public void SortPostsByCommentsNumber()
         {
-            PostsSorter postsSorter = new PostsSorter(new DownByLikesComparer());
+            PostsSorter postsSorter = new PostsSorter(new DownByCommentsPostsComparer());
 
+            //postsSorter.Sort2(m_LoginResult.LoggedInUser.Posts);
             postsSorter.Sort(m_LoginResult.LoggedInUser.Posts);
             m_PostsIndex = 0;
         }
@@ -450,6 +441,16 @@ namespace FacebookApplicationLogic
         public void ChangeQuote(string i_NewQuote)
         {
             m_Quote = i_NewQuote + string.Format("{0}(This Quote may has been edited.)", Environment.NewLine);
+        }
+
+        public IIterator GetAlbumNamesIterator()
+        {
+            if (m_AlbumNamesAggregator == null)
+            {
+                m_AlbumNamesAggregator = new AlbumNamesAggregator(m_LoginResult);
+            }
+
+            return m_AlbumNamesAggregator.GetIterator();
         }
     }
 }
