@@ -23,7 +23,7 @@ namespace FacebookApplicationLogic
         {
             if (QuoteIsChanged != null)
             {
-                QuoteIsChaged.Invoke(NewQuote);
+                QuoteIsChanged.Invoke(NewQuote);
             }
         }
 
